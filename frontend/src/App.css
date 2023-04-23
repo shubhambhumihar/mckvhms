@@ -1,0 +1,103 @@
+:root {
+  --photo: #4cb256;
+  --video: #4a4eb7;
+  --location: #ef5757;
+  --shedule: #e1ae4a;
+  --yellow: #f5c32c;
+  --orange: #fca61f;
+  --black: #242d49;
+  --gray: rgba(36, 45, 73, 0.65);
+  --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
+  --hrColor: #cfcdcd;
+  --cardColor: rgba(255, 255, 255, 0.64);
+  --buttonBg: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+  --inputColor: rgba(40, 52, 62, 0.02);
+}
+
+.authForm {
+  /* background-color: var(--cardColor); */
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.authForm > div {
+  width: 100%;
+  align-items: center;
+
+  justify-content: center;
+}
+.ant-float-btn-body {
+  background-color: var(--location) !important;
+}
+.ant-float-btn-body:hover {
+  background-color: var(--buttonBg) !important;
+}
+
+.sh {
+  box-shadow: rgba(118, 239, 134, 0.5) 0px 2px 6px;
+}
+
+.infoForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.infoInput {
+  border: none;
+  outline: none;
+  background-color: rgb(233 239 244 / 2%);
+  border-radius: 8px;
+  padding: 14px;
+  width: 100%;
+  flex: 1;
+}
+.infoInput:focus {
+  background-color: rgb(63, 60, 73);
+}
+.a-left {
+  gap: 2rem;
+}
+
+.a-left > img {
+  width: 4rem;
+  height: 4rem;
+}
+.infoForm div {
+  display: flex;
+  gap: 1rem;
+  /* height: 2rem;
+  width: 90%; */
+}
+.infoButton {
+  width: 6rem;
+  height: 2rem;
+  align-self: flex-end;
+  align-items: center;
+}
+
+.hero {
+  background: url("./assets/herobg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.info {
+  background: url("./assets/herobg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* .blog {
+  background-color: rgb(20, 19, 19);
+} */
+.blur {
+  position: absolute;
+  height: 13rem;
+  width: 13rem;
+  background: #9294f5;
+  border-radius: 50%;
+  filter: blur(100px);
+}

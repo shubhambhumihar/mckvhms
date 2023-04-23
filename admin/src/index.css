@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  border: 3.2px solid #0000;
+  border-radius: 50%;
+  border-color: #9b9feb #0000;
+  animation: spinner-e04l1k 1.2s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 1.6px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #6aef9b #0000;
+  animation: inherit;
+  animation-duration: 0.6s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 6.4px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgb(180, 86, 243);
+  padding: 2rem;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+.logo h1::first-letter {
+  font-size: 2.1rem;
+  color: orange;
+}
+.ant-layout-sider {
+  background: #9f84e2 !important;
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
+}
+.ant-layout-header p {
+  line-height: 0.9rem;
+}
+.ant-layout-sider-collapsed {
+  background: #9f84e2 !important;
+  flex: 0 0 90px !important;
+  max-width: 90px !important;
+  min-width: 90px !important;
+  width: 90px !important;
+}
+.ant-layout {
+  min-height: 100vh;
+}
+.ant-menu-dark {
+  color: whitesmoke;
+  background: transparent !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #ba94d1 !important;
+}
+.ant-menu-item-icon {
+  color: whitesmoke !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+}
+.ant-menu-sub.ant-menu-inline {
+  background: rgb(102, 100, 99) !important;
+}
+
+.ant-layout-header div .badge {
+  top: 6px !important;
+  right: -6px !important;
+}
+
+main {
+  overflow-y: scroll;
+  height: 85vh;
+  background-color: transparent !important;
+}
+main::-webkit-scrollbar {
+  width: 0px;
+}
+
+.green {
+  color: rgb(119, 241, 182);
+}
+
+.red {
+  color: rgb(251, 187, 187);
+}
+
+.quill {
+  background-color: rgb(203, 178, 221) !important;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.s {
+  padding: 1rem;
+}
+
+.s input {
+  /* width: 50%; */
+}
+.ant-upload-hint {
+  color: rgb(39, 224, 178) !important;
+}
+.ant-upload-text {
+  color: orange !important;
+}
+.ant-upload-drag-icon {
+  color: rosybrown !important;
+}
+
+.anticon svg {
+  color: teal;
+}
+
+.ant-spin-dot-item {
+  background-color: #d61355 !important;
+}
+
+.ant-btn-primary {
+  background-color: #ba94d1 !important;
+}
+/* .ant-btn {
+  background-color: #ef6c54 !important;
+} */
