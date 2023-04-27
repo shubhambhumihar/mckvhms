@@ -27,7 +27,7 @@ exports.createRoom = asyncHandler(async (req, res) => {
 exports.getAllRoom = asyncHandler(async (req, res) => {
   try {
     const count = await Room.countDocuments({});
-    const rooms = await Room.find().populate("occupants");
+    const rooms = await Room.find().populate(["occupants", "hostel_id"]);
     res.status(200).json({ success: true, rooms, count });
   } catch (error) {
     throw new Error(error.message);
@@ -43,6 +43,21 @@ exports.getSingleRoom = asyncHandler(async (req, res) => {
       throw new Error(`Room ${id} not found`);
     } else {
       res.status(200).json({ success: true, room });
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+exports.getBedsOfRoom = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    validateMongoId(id);
+    const room = await Room.findById(id).populate("beds");
+    const beds = room.beds;
+    if (!room) {
+      throw new Error(`Room ${id} not found`);
+    } else {
+      res.status(200).json({ success: true, beds });
     }
   } catch (error) {
     throw new Error(error.message);

@@ -1,56 +1,149 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Room from "../components/Room";
 // import { rooms } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRooms } from "../features/room/roomSlice";
+import { AiOutlineWifi } from "react-icons/ai";
+import { FcServices } from "react-icons/fc";
+import { MdOutlineCleaningServices } from "react-icons/md";
+import { GiElectric } from "react-icons/gi";
+import {
+  getRoomsOfHostel,
+  getSingleHostel,
+} from "../features/hostel/hostelSlice";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+
 // import { getAllRooms } from "../../features/room/roomSlice";
 
 const HostelRooms = () => {
+  const location = useLocation();
+  const getHostelId = location.pathname.split("/")[2];
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllRooms());
-  }, [dispatch]);
+    dispatch(getRoomsOfHostel(getHostelId));
+    dispatch(getSingleHostel(getHostelId));
+  }, [getHostelId]);
 
-  const roomState = useSelector((state) => state.room.rooms.rooms);
-  console.log(roomState);
+  const { roomsOfHostel, singleHostel, isLoading } = useSelector(
+    (state) => state.hostel
+  );
 
-  const { isLoading, isError, isSuccess } = useSelector((state) => state.room);
+  // const { isLoading, isError, isSuccess } = useSelector((state) => state.room);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
       <Link
-        to="/"
-        className="relative top-7 left-10 bg-red border cursor-pointer border-orange-600 w-[200px] flex justify-center rounded-3xl px-30 py-2"
+        to="/rooms"
+        className="shadow-sm m-10 p-10 shadow-green-500  inline-block bg-[#065f46] px-4 py-1 text-white rounded-2xl"
       >
-        <p>Back to home</p>
+        <AiOutlineArrowLeft />
       </Link>
-      <h1 className="text-center text-4xl text-orange-500 py-9">Our Rooms</h1>
-      {/* <div className="relative"> */}
 
-      {/* </div> */}
       {isLoading ? (
         <div className="flex justify-center pt-5 mt-7">
           <div className="spinner"></div>
         </div>
-      ) : roomState?.length > 0 ? (
-        roomState?.map((room) => <Room key={room._id} room={room} />)
       ) : (
-        <div className="flex flex-col items-center">
-          <h1 className="text-white font-bold text-3xl pt-6">
-            No Rooms to Show
-          </h1>
-          <lottie-player
-            src="https://assets6.lottiefiles.com/private_files/lf30_3X1oGR.json"
-            background="transparent"
-            speed="1"
-            style={{ width: "300px", height: "300px" }}
-            loop
-            autoplay
-          ></lottie-player>
+        <div className="max-w-screen-2xl    w-[100%] mx-auto h-fit ">
+          <div className=" flex flex-col items-center">
+            <h1 className="text-2xl font-bold text-purple-600 underline text-center">
+              Welcome to {singleHostel?.hostel?.hostel_name}{" "}
+            </h1>
+            <div className="my-4">
+              <div className="flex gap-3 mb-2">
+                <div className="h-[15px] w-[15px] flex justify-center items-center rounded-full bg-green-500">
+                  <p className="text-center"></p>
+                </div>
+                <p className="text-xs">available</p>
+              </div>
+              <div className="flex gap-3">
+                <div className="h-[15px] w-[15px] flex justify-center items-center rounded-full bg-rose-600">
+                  <p className="text-center"></p>
+                </div>
+                <p className="text-xs">Booked</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="my-10 p-10 gap-5  grid grid-cols-3 ">
+            {roomsOfHostel?.rooms?.length > 0 ? (
+              <div className="flex col-span-2 p-6 flex-wrap gap-5  ">
+                {roomsOfHostel?.rooms?.map((room, index) => {
+                  const isFullyBooked =
+                    room?.occupants?.length === room?.capacity;
+
+                  const linkStyle = {
+                    background: isFullyBooked ? "#ef4444" : "#22c55e",
+                    // Add any other CSS styles you want to apply dynamically
+                  };
+                  return (
+                    <Link
+                      className=" amentiesf  h-[60px] w-[60px] flex justify-center items-center rounded-full"
+                      to={`/room/${room._id}`}
+                      key={index}
+                      style={linkStyle}
+                    >
+                      <p className="text-center">{room?.roomNumber}</p>
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="flex flex-col col-span-2 p-6  mr-auto ">
+                <h1 className="text-white font-bold text-3xl pt-6">
+                  No Room to Show
+                </h1>
+                <lottie-player
+                  src="https://assets6.lottiefiles.com/private_files/lf30_3X1oGR.json"
+                  background="transparent"
+                  speed="1"
+                  style={{ width: "300px", height: "300px" }}
+                  loop
+                  autoplay
+                ></lottie-player>
+              </div>
+            )}
+
+            <div className="flex roomInfo p-5 rounded-lg  flex-col gap-5 items-center justify-center ">
+              <div className=" mx-w-[100%] w-[100%]">
+                <img
+                  className="w-full amentiesfimg "
+                  src="https://cdn.pixabay.com/photo/2023/03/19/07/34/car-7862030_640.jpg"
+                  alt=""
+                />
+              </div>
+
+              <section id="amenties" className="   m-auto py-10 ">
+                <h1 className="text-xl text-green-700 font-bold py-0  w-[10vw] border-b-4 border-orange-700">
+                  AMENTIES
+                </h1>
+                <div className="grid   lg:grid-cols-2 my-8 content-center justify-center  border">
+                  <div className="border py-2 px-12  flex flex-col items-center gap-2">
+                    <AiOutlineWifi className="text-purple-800 text-2xl" />
+                    <p className="text-xs">FREE WIFI</p>
+                  </div>
+                  <div className="border py-2 px-12  flex flex-col items-center gap-2">
+                    <FcServices className="text-orange-700 text-2xl" />
+                    <p className="text-xs">Room Service</p>
+                  </div>
+                  <div className="border py-2 px-12 flex flex-col items-center gap-2">
+                    <MdOutlineCleaningServices className="text-blue-700 text-2xl" />
+                    <p className="text-xs">Cleaning </p>
+                  </div>
+                  <div className="border py-2 px-12 flex flex-col items-center gap-2">
+                    <GiElectric className="text-yellow-700 text-2xl" />
+                    <p className="text-xs">Electricity </p>
+                  </div>
+                </div>
+                <button className="button-86">Room Demo</button>
+              </section>
+            </div>
+          </div>
         </div>
       )}
     </>

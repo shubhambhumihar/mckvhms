@@ -23,7 +23,7 @@ const roomSchema = new mongoose.Schema({
   },
   images: [],
   beds: [{ type: mongoose.Schema.Types.ObjectId, ref: "Bed" }],
-  occupants: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }],
+  occupants: [{ type: mongoose.Schema.Types.ObjectId, ref: "Stdnt" }],
 
   bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: "Booking" }],
 });

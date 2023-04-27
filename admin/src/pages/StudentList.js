@@ -155,6 +155,11 @@ const StudentList = () => {
       ...getColumnSearchProps("email"),
     },
     {
+      title: "Student ID",
+      dataIndex: "student_id",
+      ...getColumnSearchProps("student_id"),
+    },
+    {
       title: "Gender",
       dataIndex: "gender",
     },
@@ -202,6 +207,7 @@ const StudentList = () => {
   const studentState = useSelector((state) => state.student.students.students);
   const { isLoading } = useSelector((state) => state.student);
 
+  console.log(studentState);
   const data1 = [];
   for (let i = 0; i < studentState?.length; i++) {
     // console.log(roomState[i]?.student?.name);
@@ -209,6 +215,7 @@ const StudentList = () => {
       key: i + 1,
       name: studentState[i].name,
       email: studentState[i]?.email,
+      student_id: studentState[i]?.student_id,
       gender: studentState[i].gender,
       course: studentState[i].course,
       batch: studentState[i].batch,

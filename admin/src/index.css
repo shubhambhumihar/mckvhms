@@ -17,10 +17,25 @@
   transition: color 0.3s;
 }
 
-.trigger:hover {
+/* .trigger:hover {
   color: #1890ff;
+} */
+.grad {
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  background: rgb(86, 6, 126);
+  background: linear-gradient(
+    90deg,
+    rgba(86, 6, 126, 1) 0%,
+    rgba(18, 16, 20, 1) 15%,
+    rgba(60, 39, 91, 1) 51%
+  );
 }
-
+.avatar {
+  left: 48%;
+  right: 40%;
+  transform: translate(-50%, -50%);
+}
 .spinner {
   width: 40px;
   height: 40px;
@@ -49,6 +64,27 @@
 
 .spinner::after {
   margin: 6.4px;
+}
+
+.hostelBac {
+  background-image: url("https://img.freepik.com/free-photo/abstract-background-with-ink_1112-820.jpg?w=826&t=st=1682330275~exp=1682330875~hmac=3106bd2a32dc33e38b423a4ce1c54ff296a07fc52390d946dcf7fc2a5f7f83c2");
+  background-size: cover;
+  background-position: center;
+  height: 40vh;
+}
+
+h1.glow {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-image: linear-gradient(
+    60deg,
+    rgb(247, 244, 244),
+    rgb(249, 251, 250),
+    rgb(240, 225, 230)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* animation: glowing 2s ease-in-out infinite; */
 }
 
 @keyframes spinner-e04l1k {
@@ -89,6 +125,7 @@
 }
 .ant-layout {
   min-height: 100vh;
+  /* background-color: rgb(25, 9, 9); */
 }
 .ant-menu-dark {
   color: whitesmoke;
@@ -166,3 +203,22 @@ main::-webkit-scrollbar {
 /* .ant-btn {
   background-color: #ef6c54 !important;
 } */
+
+.cnt {
+  transition: all 500ms ease-out;
+}
+
+.cnt:hover {
+  color: orangered;
+}
+
+.separator {
+  height: 4px;
+  width: 100px;
+  background-image: linear-gradient(to bottom, #ffffff, #000000);
+  text-align: center;
+  margin: 0 auto;
+  margin: 40px;
+  display: flex;
+  justify-content: center;
+}

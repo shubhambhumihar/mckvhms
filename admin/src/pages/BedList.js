@@ -171,7 +171,7 @@ const BedList = () => {
     },
 
     {
-      title: "Occupied",
+      title: "Is Available",
       dataIndex: "availability",
       key: "availability",
       render: (text) => String(text),
@@ -216,7 +216,7 @@ const BedList = () => {
       key: i + 1,
       number: bedState[i].bed_number,
       name: bedState[i]?.student?.name,
-      availability: bedState[i]?.isOccupied,
+      availability: bedState[i]?.isAvailable,
 
       action: (
         <div className="flex gap-1">

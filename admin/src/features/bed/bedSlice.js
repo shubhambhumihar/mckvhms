@@ -35,6 +35,26 @@ export const deleteABed = createAsyncThunk(
     }
   }
 );
+export const getSingleBedofRoom = createAsyncThunk(
+  "bed/getABed",
+  async (id, thunkAPI) => {
+    try {
+      return await bedService.getSingleBed(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const getStudentOfABed = createAsyncThunk(
+  "bed/getStudent",
+  async (id, thunkAPI) => {
+    try {
+      return await bedService.getStudentOfSingleBed(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const resetState = createAction("Reset_all_state");
 const initialState = {
@@ -44,6 +64,8 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   message: "",
+  student: "",
+  singleBed: "",
   deletedBed: "",
 };
 
@@ -78,6 +100,36 @@ export const bedSlice = createSlice({
         state.createdBed = action.payload;
       })
       .addCase(createBeds.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
+      .addCase(getSingleBedofRoom.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getSingleBedofRoom.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.singleBed = action.payload;
+      })
+      .addCase(getSingleBedofRoom.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
+      .addCase(getStudentOfABed.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getStudentOfABed.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.student = action.payload;
+      })
+      .addCase(getStudentOfABed.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;

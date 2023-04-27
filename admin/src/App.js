@@ -22,6 +22,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllHostels } from "./features/hostels/hostelSlice";
 import AddStudentId from "./pages/AddStudentId";
 import StudentIdList from "./pages/StudentIdList";
+import Hostels from "./components/hostels/Hostels";
+import HostelDetail from "./components/hostels/HostelDetail";
+import RoomDetail from "./components/rooms/RoomDetail";
+import BedDetail from "./components/beds/BedDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +58,10 @@ function App() {
           <Route path="hostel" element={<AddHostel />} />
           <Route path="hostel/:id" element={<AddHostel />} />
           <Route path="hostel-list" element={<HostelList />} />
+          <Route path="hostels" element={<Hostels />} />
+          <Route path="hostel/:id/details" element={<HostelDetail />} />
+          <Route path="hostel/room/:id" element={<RoomDetail />} />
+          <Route path="hostel/room/bed/:id" element={<BedDetail />} />
         </Route>
         <Route path="*" element={<FourtofourPage />} />
       </Routes>

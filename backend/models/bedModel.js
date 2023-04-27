@@ -18,7 +18,8 @@ const bedSchema = new mongoose.Schema({
   // hostel: { type: mongoose.Schema.Types.ObjectId, ref: "Hostel" },
   student: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Student",
+    ref: "Stdnt",
+    default: null,
   },
 });
 

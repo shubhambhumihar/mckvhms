@@ -14,10 +14,354 @@
   --inputColor: rgba(40, 52, 62, 0.02);
 }
 
+.roomInfo {
+  box-shadow: 5px 4px 37px -5px rgba(92, 89, 99, 1);
+}
+.rep {
+  background: repeating-linear-gradient(45deg, black, transparent 100px);
+}
+.hImg {
+  box-shadow: 0px 0px 5px lightgrey;
+}
+.ch {
+  transition: all 600ms ease-in;
+  cursor: pointer;
+}
+.ch:hover {
+  transform: scale(1.08);
+}
+.ch:nth-child(2) {
+  background: linear-gradient(45deg, black, orange, transparent 100px);
+}
+.ch:nth-child(1) {
+  background: linear-gradient(45deg, black, orange, transparent 100px);
+}
+.ch:nth-child(4) {
+  background: linear-gradient(45deg, black, orange, transparent 100px);
+}
+.ch:nth-child(3) {
+  /* background: red; */
+  background: linear-gradient(45deg, black, orange, transparent 100px);
+}
+
+.clamp-text {
+  margin-top: 2rem;
+  max-width: 20rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: justify;
+
+  line-height: 1.2em;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  position: relative;
+  /* width: 350px; */
+  height: 190px;
+  /* background-color: rgb(60, 60, 60); */
+  border-radius: 20px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+  transition: all 800ms ease-in-out;
+}
+.card:hover {
+  height: 450px;
+}
+.card .e {
+  display: none;
+}
+.card:hover .e {
+  display: block;
+}
+/* .card .data,
+.card .actionBtn {
+  display: none;
+} */
+/* .card:hover {
+  height: 400px;
+} */
+
+/* .card:hover .data,
+.card:hover .actionBtn {
+  display: block;
+} */
+/* .imgCard {
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+} */
+/* .content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details {
+  padding: 40px;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+} */
+
+.details h1 {
+}
+
+/* CSS */
+.button-86 {
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-86::after,
+.button-86::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all 0.4s;
+}
+
+.button-86::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button-86::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button-86:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button-86:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button-86:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+/* CSS */
+.button-82-pushable {
+  position: relative;
+  border: none;
+  background: rgb(33, 33, 33);
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: rgb(29, 29, 30);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(257, 80%, 54%) 0%,
+    hsl(0, 0%, 7%) 8%,
+    hsl(0, 94%, 25%) 92%,
+    hsl(270, 3%, 11%) 100%
+  );
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 6px 27px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+  background: hsla(0, 1%, 42%, 0.174);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 0.8rem;
+    padding: 12px 42px;
+  }
+}
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* CSS */
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  font-size: 14px;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
 .authForm {
   /* background-color: var(--cardColor); */
   border-radius: 1rem;
   padding: 1rem;
+}
+
+.amentiesf {
+  border-radius: 30% 70% 70% 30% / 30% 0% 100% 70%;
+}
+.amentiesfimg {
+  border-radius: 25% 75% 43% 57% / 54% 0% 100% 46%;
+}
+.amentiesfdiv {
+  border-radius: 1% 99% 100% 0% / 39% 48% 52% 61%;
 }
 
 .authForm > div {
@@ -100,4 +444,70 @@
   background: #9294f5;
   border-radius: 50%;
   filter: blur(100px);
+}
+
+.aboutBorder {
+  border-radius: 30% 70% 70% 30% / 30% 46% 54% 70%;
+}
+
+.checkbox-wrapper-54 input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+}
+
+.checkbox-wrapper-54 *,
+.checkbox-wrapper-54 ::after,
+.checkbox-wrapper-54 ::before {
+  box-sizing: border-box;
+}
+
+/* The switch - the box around the slider */
+.checkbox-wrapper-54 .switch {
+  --width-of-switch: 3.5em;
+  --height-of-switch: 1.4em;
+  /* size of sliding icon -- sun and moon */
+  --size-of-icon: 1.4em;
+  /* it is like a inline-padding of switch */
+  --slider-offset: 0.3em;
+  position: relative;
+  width: var(--width-of-switch);
+  height: var(--height-of-switch);
+  display: inline-block;
+}
+
+/* The slider */
+.checkbox-wrapper-54 .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f4f4f5;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.checkbox-wrapper-54 .slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-of-icon, 1em);
+  width: var(--size-of-icon, 1em);
+  border-radius: 20px;
+  left: var(--slider-offset, 0.3em);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.4s;
+}
+
+.checkbox-wrapper-54 input:checked + .slider {
+  background-color: #303136;
+}
+
+.checkbox-wrapper-54 input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+  background: #303136;
+  /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }

@@ -126,7 +126,7 @@ const AddHostel = () => {
 
     // console.log(img);
     formik.values.images = img;
-    console.log(formik.values.images);
+    // console.log(formik.values.images);
   }, [imgState]);
 
   useEffect(() => {

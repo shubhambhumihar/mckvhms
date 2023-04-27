@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllRooms } from "../features/room/roomSlice";
 import { getAllBeds } from "../features/bed/bedSlice";
 import { getAllHostels } from "../features/hostels/hostelSlice";
+import { Link } from "react-router-dom";
+import { getAllStudents } from "../features/student/studentSlice";
 
 const data = [
   { type: "Total Complaints", value: 201 },
@@ -25,7 +27,9 @@ const Dashboard = () => {
   const hostelState = useSelector((state) => state.hostel);
   const roomState = useSelector((state) => state.room);
   const bedState = useSelector((state) => state.bed);
+  const studentState = useSelector((state) => state.student);
   const { count } = hostelState.hostels;
+  const countOfStudents = studentState.students.count;
   const countRoom = roomState.rooms.count;
   const countBed = bedState.beds.count;
 
@@ -35,11 +39,8 @@ const Dashboard = () => {
     dispatch(getAllRooms());
     dispatch(getAllBeds());
     dispatch(getAllHostels());
+    dispatch(getAllStudents());
   }, []);
-
-  // useEffect(() => {
-
-  // }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -73,7 +74,12 @@ const Dashboard = () => {
           <div className="">
             <BsFillBuildingsFill className="text-teal-600 text-[2rem]" />
           </div>
-          <div className="flex flex-1 flex-col gap-2  items-center justify-center">
+
+          <Link
+            style={{ color: "inherit", textDecoration: "inherit" }}
+            to="/admin/hostels"
+            className="flex flex-1 flex-col gap-2  items-center justify-center"
+          >
             <h2
               className="text-[1.2rem] text-blue-400  font-bold text-center"
               style={{ lineHeight: "1" }}
@@ -84,7 +90,7 @@ const Dashboard = () => {
               {" "}
               <CountUp delay={1} end={count} />
             </p>
-          </div>
+          </Link>
         </div>
         <div className="flex bg-white p-5 border rounded-xl flex-grow justify-between items-center shadow-lg shadow-green-300">
           <div className="">
@@ -133,7 +139,7 @@ const Dashboard = () => {
             </h2>
             <p className="text-[1.4rem] font-bold text-green-400 ">
               {" "}
-              <CountUp delay={3} end={2000} />
+              <CountUp delay={3} end={countOfStudents} />
             </p>
           </div>
         </div>

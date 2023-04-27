@@ -157,11 +157,7 @@ const RoomList = () => {
       dataIndex: "number",
       sorter: (a, b) => a.number - b.number,
     },
-    {
-      title: "Title ",
-      dataIndex: "title",
-      sorter: (a, b) => a.name?.length - b.name?.length,
-    },
+
     {
       title: "Number of beds",
       dataIndex: "number_of_beds",
@@ -172,6 +168,17 @@ const RoomList = () => {
       dataIndex: "capacity",
       sorter: (a, b) => a.capacity - b.capacity,
     },
+    {
+      title: "Hostel Name",
+      dataIndex: "hostelName",
+      sorter: (a, b) => a.capacity - b.capacity,
+    },
+    {
+      title: "Total Students",
+      dataIndex: "totalStudents",
+      sorter: (a, b) => a.capacity - b.capacity,
+    },
+
     {
       title: "Is Booked",
       dataIndex: "booked",
@@ -194,6 +201,7 @@ const RoomList = () => {
   }, [dispatch]);
 
   const roomState = useSelector((state) => state.room.rooms.rooms);
+  // console.log(roomState);
   const { isLoading, isError, isSuccess, deletedRoom } = useSelector(
     (state) => state.room
   );
@@ -213,11 +221,13 @@ const RoomList = () => {
     // console.log(roomState[i]?.student?.name);
     data1.push({
       key: i + 1,
-      number: roomState[i].roomNumber,
-      title: roomState[i]?.title,
-      number_of_beds: roomState[i].numberOfBeds,
-      capacity: roomState[i].capacity,
+      number: roomState[i]?.roomNumber,
+
+      number_of_beds: roomState[i]?.numberOfBeds,
+      capacity: roomState[i]?.capacity,
       booked: roomState[i]?.isBooked,
+      hostelName: roomState[i]?.hostel_id.hostel_name,
+      totalStudents: roomState[i]?.occupants?.length,
 
       action: (
         <div className="flex gap-1">

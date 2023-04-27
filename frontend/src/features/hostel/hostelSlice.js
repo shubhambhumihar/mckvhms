@@ -17,9 +17,20 @@ export const getAllHostels = createAsyncThunk(
 export const getSingleHostel = createAsyncThunk(
   "hostel/getAHostel",
   async (id, thunkAPI) => {
-    console.log(id);
+    // console.log(id);
     try {
       return await hostelService.getSingleHostel(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const getRoomsOfHostel = createAsyncThunk(
+  "hostel/getRoomsOfHostel",
+  async (id, thunkAPI) => {
+    // console.log(id);
+    try {
+      return await hostelService.getRoomsOfHostel(id);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -33,6 +44,7 @@ const hostelState = {
   isSuccess: false,
   message: "",
   singleHostel: "",
+  roomsOfHostel: "",
 };
 
 export const hostelSlice = createSlice({
@@ -70,6 +82,21 @@ export const hostelSlice = createSlice({
         state.singleHostel = action.payload;
       })
       .addCase(getSingleHostel.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
+      .addCase(getRoomsOfHostel.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRoomsOfHostel.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.roomsOfHostel = action.payload;
+      })
+      .addCase(getRoomsOfHostel.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;

@@ -61,7 +61,7 @@ const Profile = () => {
   });
   return (
     <div className="relative w-full  my-5   mx-auto">
-      <div className="grid lg:grid-cols-2 h-100  place-items-center my-auto ">
+      <div className="grid lg:grid-cols-2 h-[80vh]  place-items-center my-auto ">
         <div className="profileLeft  w-[100%] mx-auto flex items-center justify-center">
           <lottie-player
             src="https://assets6.lottiefiles.com/packages/lf20_hvzjb7o5.json"
@@ -72,19 +72,19 @@ const Profile = () => {
             autoplay
           ></lottie-player>
         </div>
-        <div className="profileright  w-[100%] flex items-center justify-center h-[100%]">
-          <div className="rounded-xl w-[350px] sh p-7 flex flex-col items-center gap-3 justify-center">
+        <div className=" profileright  w-[100%] flex items-center justify-center h-[100%]">
+          <div className="card rounded-xl w-[350px] sh p-7 flex flex-col items-center gap-3 justify-center">
             <div className=" w-[100%]   flex justify-end">
               <AiOutlineHolder className="text-orange-400" />
             </div>
 
-            <div className="border w-[150px] h-[150px] border-purple-500 rounded-full flex justify-center items-center mb-2 ">
+            <div className="border w-[150px] mt-[-100px] h-[150px] border-purple-500 rounded-full flex justify-center items-center mb-2 ">
               <img
-                className="rounded-full h-[100%] w-[100%]"
+                className="rounded-full h-[100%] w-[100%] object-cover"
                 src={
                   picturePath
                     ? process.env.REACT_APP_PUBLIC_FOLDER + picturePath
-                    : ""
+                    : "https://cdn.pixabay.com/photo/2022/09/30/12/56/cat-7489398_640.jpg"
                 }
                 alt=""
               />
@@ -94,15 +94,15 @@ const Profile = () => {
               <h1 className="text-2xl font-bold text-center">
                 {userState?.user?.user?.name}
               </h1>
-              <h2 className="text-center text-gray-400">
+              <h2 className="e text-center text-gray-400">
                 {userState?.user?.user?.email}
               </h2>
-              <h2 className="text-slate-500 font-extralight text-sm mt-1 text-center">
+              <h2 className="e text-slate-500 font-extralight text-sm mt-1 text-center">
                 {userState?.user?.user?.mobile}
               </h2>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-4 e">
               {/* <Link to="/update-profile"> */}{" "}
               <button
                 onClick={showDrawer}

@@ -176,14 +176,19 @@ const HostelList = () => {
       dataIndex: "phone",
     },
     {
+      title: "Total Rooms",
+      dataIndex: "totalRooms",
+    },
+    {
+      title: "Total Beds",
+      dataIndex: "totalBeds",
+    },
+    {
       title: "Availability",
       dataIndex: "availability",
       render: (text) => String(text),
     },
-    {
-      title: "Created At",
-      dataIndex: "createdAt",
-    },
+
     {
       title: "Action",
       dataIndex: "action",
@@ -208,7 +213,7 @@ const HostelList = () => {
     deletedHostel,
   } = useSelector((state) => state.hostel);
 
-  // console.log(hostelState);
+  console.log(hostelState);
 
   const data1 = [];
   for (let i = 0; i < hostelState?.length; i++) {
@@ -218,8 +223,9 @@ const HostelList = () => {
       hostel_type: hostelState[i].hostel_type,
       capacity: hostelState[i].capacity,
       phone: hostelState[i].phone,
-      createdAt: hostelState[i].createdAt,
       availability: hostelState[i].availability,
+      totalRooms: hostelState[i]?.rooms?.length,
+      totalBeds: hostelState[i]?.beds?.length,
 
       action: (
         <div className="flex gap-1">

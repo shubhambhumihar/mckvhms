@@ -40,7 +40,7 @@ const App = () => {
 
   const token = localStorage.getItem("tkn");
 
-  console.log(token);
+  // console.log(token);
 
   // console.log(token);
 

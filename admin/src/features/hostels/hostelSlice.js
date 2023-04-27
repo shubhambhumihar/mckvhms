@@ -11,6 +11,7 @@ export const getAllHostels = createAsyncThunk(
     }
   }
 );
+
 export const createHostels = createAsyncThunk(
   "hostel/createHostel",
   async (hostelData, thunkAPI) => {
@@ -21,6 +22,7 @@ export const createHostels = createAsyncThunk(
     }
   }
 );
+
 export const updateAHostel = createAsyncThunk(
   "hostel/updateHostel",
   async (hostel, thunkAPI) => {
@@ -32,6 +34,7 @@ export const updateAHostel = createAsyncThunk(
     }
   }
 );
+
 export const getAHostel = createAsyncThunk(
   "hostel/getHostel",
   async (id, thunkAPI) => {
@@ -42,6 +45,28 @@ export const getAHostel = createAsyncThunk(
     }
   }
 );
+
+export const getRoomsByHostel = createAsyncThunk(
+  "hostel/getRoomsByHostel",
+  async (id, thunkAPI) => {
+    try {
+      return await hostelService.getRoomsByHostelId(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const getBedsByHostel = createAsyncThunk(
+  "hostel/getBedsByHostel",
+  async (id, thunkAPI) => {
+    try {
+      return await hostelService.getBedByHostelId(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const deleteAHostel = createAsyncThunk(
   "hostel/deleteHostel",
   async (id, thunkAPI) => {
@@ -61,6 +86,8 @@ const initialState = {
   isError: false,
   isLoading: false,
   isSuccess: false,
+  singleHostel: "",
+
   message: "",
   hostelName: "",
   hostelType: "",
@@ -72,6 +99,8 @@ const initialState = {
   phone: "",
   updatedHostel: "",
   deletedHostel: "",
+  roomsOfHostel: "",
+  bedsOfHostel: "",
 };
 
 export const hostelSlice = createSlice({
@@ -117,6 +146,7 @@ export const hostelSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
+        state.singleHostel = action.payload;
         state.hostelName = action.payload.hostel.hostel_name;
         state.hostelType = action.payload.hostel.hostel_type;
         state.description = action.payload.hostel.desc;
@@ -127,6 +157,36 @@ export const hostelSlice = createSlice({
         state.hostelImages = action.payload.hostel.images;
       })
       .addCase(getAHostel.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
+      .addCase(getRoomsByHostel.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRoomsByHostel.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.roomsOfHostel = action.payload;
+      })
+      .addCase(getRoomsByHostel.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
+      .addCase(getBedsByHostel.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBedsByHostel.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.bedsOfHostel = action.payload;
+      })
+      .addCase(getBedsByHostel.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;

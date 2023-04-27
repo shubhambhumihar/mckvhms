@@ -32,7 +32,7 @@ const Post = ({ data }) => {
     setIsModalOpen(false);
   };
   const pageUrl = window.location.href;
-  console.log(pageUrl);
+  // console.log(pageUrl);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user.user);
 
@@ -42,7 +42,7 @@ const Post = ({ data }) => {
 
   const [likes, setLikes] = useState(data.likes.length);
 
-  console.log(liked);
+  // console.log(liked);
 
   const handleLike = () => {
     setLiked((prev) => !prev);

@@ -35,9 +35,9 @@ const HostelDetail = () => {
   }, [getHostelId]);
 
   const { isLoading, singleHostel } = useSelector((state) => state.hostel);
-  console.log(singleHostel);
+  // console.log(singleHostel);
   const hostelData = singleHostel.hostel;
-  console.log(singleHostel?.hostel?.images.length);
+  // console.log(singleHostel?.hostel?.images.length);
 
   return (
     <>

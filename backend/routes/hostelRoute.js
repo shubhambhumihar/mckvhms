@@ -6,6 +6,7 @@ const {
   updateHostel,
   deleteHostel,
   getRoomsOfHostel,
+  getBedOfHostel,
 } = require("../controllers/hostelCntr");
 // const { uploadHostelImages } = require("../controllers/uploadController");
 
@@ -28,6 +29,7 @@ router.route("/create").post(isAuthenticated, isAdmin, createHostel);
 
 router.route("/").get(getAllHostel);
 router.route("/room/:id").get(getRoomsOfHostel);
+router.route("/bed/:id").get(getBedOfHostel);
 router.route("/:id").get(getSingleHostel);
 router.route("/:id").put(isAuthenticated, isAdmin, updateHostel);
 router.route("/:id").delete(isAuthenticated, isAdmin, deleteHostel);

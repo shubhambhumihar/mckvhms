@@ -65,9 +65,9 @@ const Nav = () => {
   ];
 
   const userState = useSelector((state) => state.auth);
-  console.log(userState);
+  // console.log(userState);
   const user = useSelector((state) => state.auth?.user?.user);
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
@@ -182,7 +182,7 @@ const Nav = () => {
                   <Link to="/auth">
                     <button>Sign Up</button>
                   </Link>
-                  <Link to="/auth">
+                  <Link to="/login">
                     <button>Log In</button>
                   </Link>
                   <img
@@ -197,7 +197,12 @@ const Nav = () => {
           </div>
         </nav>
         <div className=" absolute top-20 right-8">
-          <Switch defaultChecked onChange={onChange} />
+          <div class="checkbox-wrapper-54">
+            <label class="switch">
+              <input onChange={onChange} type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
       </header>
     </>

@@ -13,6 +13,8 @@ exports.createBed = asyncHandler(async (req, res) => {
     // console.log(room.beds.length);
     // console.log(room.capacity);
     // cap=4
+
+    // !NEED TO CORRECT
     if (room.beds.length <= room.capacity - 1) {
       const newBed = await Bed.create(req.body);
       try {
@@ -54,6 +56,38 @@ exports.getSingleBed = asyncHandler(async (req, res) => {
       throw new Error(`Bed ${id} not found`);
     } else {
       res.status(200).json({ success: true, bed });
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+
+exports.getStudentOfSingleBed = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    validateMongoId(id);
+    const bed = await Bed.findById(id).populate({
+      path: "student",
+      populate: [
+        {
+          path: "hostel_id",
+          model: "Hostel",
+        },
+        {
+          path: "bed_id",
+          model: "Bed",
+        },
+        {
+          path: "room_id",
+          model: "Room",
+        },
+      ],
+    });
+    const student = bed.student;
+    if (!bed) {
+      throw new Error(`Bed ${id} not found`);
+    } else {
+      res.status(200).json({ success: true, student });
     }
   } catch (error) {
     throw new Error(error.message);

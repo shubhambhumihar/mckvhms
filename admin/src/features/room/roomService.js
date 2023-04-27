@@ -35,6 +35,10 @@ const getRoom = async (id) => {
   const res = await axios.get(`${base_url}room/${id}`, config);
   return res.data;
 };
+const getBedOfRoom = async (id) => {
+  const res = await axios.get(`${base_url}room/bed/${id}`, config);
+  return res.data;
+};
 const deleteRoom = async (id) => {
   const res = await axios.delete(`${base_url}room/${id}`, config);
   return res.data;
@@ -43,6 +47,7 @@ const deleteRoom = async (id) => {
 const roomService = {
   getAllRooms,
   createRoom,
+  getBedOfRoom,
   // updateHostel,
   updateRoom,
   getRoom,

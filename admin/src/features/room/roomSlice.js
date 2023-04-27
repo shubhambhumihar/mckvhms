@@ -46,6 +46,16 @@ export const getARoom = createAsyncThunk(
     }
   }
 );
+export const getBedsOfRoom = createAsyncThunk(
+  "room/getBeds",
+  async (id, thunkAPI) => {
+    try {
+      return await roomService.getBedOfRoom(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 export const deleteARoom = createAsyncThunk(
   "room/deleteRoom",
   async (id, thunkAPI) => {
@@ -66,7 +76,8 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   message: "",
-  // getARoom: "",
+  getSingleRoom: "",
+  bedsOfRoom: "",
   title: "",
   roomNumber: "",
   numberOfBeds: "",
@@ -121,7 +132,7 @@ export const roomSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        // state.getARoom = action.payload;
+        state.getSingleRoom = action.payload;
         state.title = action.payload.room.title;
         state.roomNumber = action.payload.room.roomNumber;
         state.numberOfBeds = action.payload.room.numberOfBeds;
@@ -133,6 +144,21 @@ export const roomSlice = createSlice({
         state.roomImages = action.payload.room.images;
       })
       .addCase(getARoom.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
+      .addCase(getBedsOfRoom.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBedsOfRoom.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.bedsOfRoom = action.payload;
+      })
+      .addCase(getBedsOfRoom.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;

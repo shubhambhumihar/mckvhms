@@ -33,11 +33,8 @@ const Hostels = () => {
       <div className="max-w-screen-2xl ">
         <div className="hostel">
           <div className="hostelTop ">
-            <Link
-              to="/"
-              className="relative top-7 left-0 bg-red border cursor-pointer border-orange-600  w-[150px] flex justify-center rounded-3xl lg:px-30 lg:py-2"
-            >
-              <h6>Back to home</h6>
+            <Link to="/" className="relative top-7 left-3  cursor-pointer  ">
+              <button className="button-85">Back to home</button>
             </Link>
             <div className="flex flex-col items-center">
               <h1 className="pt-10 lg:text-[3rem]">

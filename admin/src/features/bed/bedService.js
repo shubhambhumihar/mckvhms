@@ -12,6 +12,14 @@ const createBed = async (data) => {
   return res.data;
 };
 
+const getSingleBed = async (id) => {
+  const res = await axios.get(`${base_url}bed/${id}`, config);
+  return res.data;
+};
+const getStudentOfSingleBed = async (id) => {
+  const res = await axios.get(`${base_url}bed/${id}/student`, config);
+  return res.data;
+};
 const deleteBed = async (id) => {
   const res = await axios.delete(`${base_url}bed/${id}`, config);
   return res.data;
@@ -20,6 +28,8 @@ const deleteBed = async (id) => {
 const bedService = {
   getBeds,
   createBed,
+  getSingleBed,
+  getStudentOfSingleBed,
   deleteBed,
 };
 

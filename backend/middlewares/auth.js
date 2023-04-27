@@ -7,6 +7,7 @@ exports.isAuthenticated = asyncHandler(async (req, res, next) => {
   let token;
   if (req.headers.authorization.startsWith("Bearer")) {
     token = req.headers.authorization.split(" ")[1];
+    console.log(token);
   } else {
     throw new Error(
       "Not authorised! please login to acesss the resources! no token"

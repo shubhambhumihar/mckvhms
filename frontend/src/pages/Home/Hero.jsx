@@ -4,6 +4,7 @@ import { styles } from "../../styles";
 // import { ComputersCanvas } from "../../components/canvas";
 import Typed from "react-typed";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   // const headText =;
@@ -48,9 +49,12 @@ const Hero = () => {
           </a>
 
           <div className="flex items-center py-5 gap-1 cursor-pointer ">
-            <button className="text-lg underline btn-light underline-offset-4 text-purple-700 font-bold">
+            <Link
+              to="/hostels"
+              className="text-lg underline btn-light underline-offset-4 text-purple-700 font-bold"
+            >
               Visit Hostels
-            </button>
+            </Link>
             <span>
               <AiOutlineArrowRight className=" ic text-orange-400 text-xl" />
             </span>

@@ -28,7 +28,9 @@ exports.getSingleHostel = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     validateMongoId(id);
-    const hostel = await Hostel.findById(id);
+
+    // !not working populate
+    const hostel = await Hostel.findById(id).populate(["rooms", "beds"]);
     if (!hostel) {
       throw new Error(`Hostel ${id} not found`);
     } else {
@@ -87,14 +89,28 @@ exports.deleteHostel = asyncHandler(async (req, res) => {
 exports.getRoomsOfHostel = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const hostel = await Hostel.findById(id).populate("rooms");
-    const rooms = hostel.rooms;
+    // const hostel = await Hostel.findById(id).populate("rooms");
+    // const rooms = hostel.rooms;
+
+    const rooms = await Room.find({ hostel_id: id }).populate("hostel_id");
     // console.log(hostel);
     // if (!hostel) {
     //   throw new Error(`Hostel ${id} not found`);
     // } else {
     res.status(200).json({ success: true, rooms });
     // }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+// !get all beds of hostel
+exports.getBedOfHostel = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const hostel = await Hostel.findById(id).populate("beds");
+    const beds = hostel.beds;
+
+    res.status(200).json({ success: true, beds });
   } catch (error) {
     throw new Error(error.message);
   }

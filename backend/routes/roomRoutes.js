@@ -6,6 +6,7 @@ const {
   updateRoom,
   deleteRoom,
   bookRoom,
+  getBedsOfRoom,
 } = require("../controllers/roomCntrlr");
 // const { uploadRoomImages } = require("../controllers/uploadController");
 
@@ -26,6 +27,7 @@ router.route("/create").post(isAuthenticated, isAdmin, createRoom);
 
 router.route("/").get(getAllRoom);
 router.route("/:id").get(getSingleRoom);
+router.route("/bed/:id").get(getBedsOfRoom);
 router.route("/book-room").post(bookRoom);
 router.route("/:id").put(isAuthenticated, isAdmin, updateRoom);
 router.route("/:id").delete(isAuthenticated, isAdmin, deleteRoom);

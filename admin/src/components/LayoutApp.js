@@ -152,6 +152,19 @@ const LayoutApp = () => {
                   label: "Hostel List",
                 },
                 {
+                  key: "hostels",
+                  icon: (
+                    <MdProductionQuantityLimits
+                      style={{
+                        color: "#655DBB",
+                        fontWeight: "bold",
+                        fontSize: "1.2rem",
+                      }}
+                    />
+                  ),
+                  label: "Hostels",
+                },
+                {
                   key: "bed",
                   icon: (
                     <MdProductionQuantityLimits

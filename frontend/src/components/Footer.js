@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const foo = require("../assets/home.png");
 const Footer = () => {
   return (
-    <div className="max-w-screen-2xl py-7 mt-30   t footer">
+    <div className="max-w-screen-2xl py-7 mt-60   t footer">
       <div className="waves">
         <div className="wave" id="wave1"></div>
         <div className="wave" id="wave2"></div>

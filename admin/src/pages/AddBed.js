@@ -92,7 +92,7 @@ const AddBed = () => {
                     (hostel) => hostel._id === value
                   ).rooms;
 
-                  console.log(room);
+                  // console.log(room);
                   setRooms(room);
                 }}
                 options={hostelState?.map((hostel) => {
@@ -119,7 +119,7 @@ const AddBed = () => {
                 placeholder="Which Room"
                 onChange={(value) => formik.setFieldValue("room_id", value)}
                 options={rooms.map((room, id) => {
-                  console.log(room);
+                  // console.log(room);
                   return {
                     value: room._id,
                     label: room.roomNumber,
