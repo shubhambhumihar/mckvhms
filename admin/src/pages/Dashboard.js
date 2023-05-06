@@ -6,6 +6,7 @@ import { BsFillBuildingsFill } from "react-icons/bs";
 import { TbBuildingBank } from "react-icons/tb";
 import { GiBunkBeds } from "react-icons/gi";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { BiBed } from "react-icons/bi";
 import { RingProgress } from "@ant-design/plots";
 import { Bar } from "@ant-design/plots";
 import CountUp from "react-countup";
@@ -52,7 +53,7 @@ const Dashboard = () => {
     width: 150,
     autoFit: false,
     // percent: ,
-    color: ["#5B8FF9", "#FFB4B4"],
+    color: ["#fc6767", "#804dee"],
   };
 
   return (
@@ -70,7 +71,7 @@ const Dashboard = () => {
       </h1>
 
       <div className="flex justify-between items-center gap-3">
-        <div className="flex bg-white p-5 border rounded-xl flex-grow justify-between items-center shadow-lg shadow-green-300">
+        <div className="flex black-gradient p-5 border rounded-xl flex-grow justify-between items-center shadow-md shadow-gray-600">
           <div className="">
             <BsFillBuildingsFill className="text-teal-600 text-[2rem]" />
           </div>
@@ -78,10 +79,10 @@ const Dashboard = () => {
           <Link
             style={{ color: "inherit", textDecoration: "inherit" }}
             to="/admin/hostels"
-            className="flex flex-1 flex-col gap-2  items-center justify-center"
+            className="flex flex-1 flex-col gap-2   items-center justify-center"
           >
             <h2
-              className="text-[1.2rem] text-blue-400  font-bold text-center"
+              className="text-[1.2rem] text-[#fc6767]  font-bold text-center"
               style={{ lineHeight: "1" }}
             >
               Total Hostels
@@ -92,52 +93,52 @@ const Dashboard = () => {
             </p>
           </Link>
         </div>
-        <div className="flex bg-white p-5 border rounded-xl flex-grow justify-between items-center shadow-lg shadow-green-300">
+        <div className="flex blue-text-gradient p-5 border rounded-xl flex-grow justify-between items-center shadow-md shadow-purple-400">
           <div className="">
-            <TbBuildingBank className="text-yellow-600 text-[2rem]" />
+            <TbBuildingBank className="text-[#f9f6f6] text-[2rem]" />
           </div>
           <div className="flex flex-1 flex-col gap-2  items-center justify-center">
             <h2
-              className="text-[1.2rem] text-orange-400  font-bold text-center"
+              className="text-[1.2rem] text-white  font-bold text-center"
               style={{ lineHeight: "1" }}
             >
               Total Rooms
             </h2>
-            <p className="text-[1.2rem] font-bold text-green-400 ">
+            <p className="text-[1.4rem] font-bold text-gray-600 ">
               {" "}
               <CountUp end={countRoom} />
             </p>
           </div>
         </div>
-        <div className="flex bg-white p-5 border rounded-xl flex-grow justify-between items-center shadow-lg shadow-green-300">
+        <div className="flex pink-text-gradient p-5 border rounded-xl flex-grow justify-between items-center shadow-md shadow-red-300">
           <div className="">
-            <GiBunkBeds className="text-violet-600 text-[2rem]" />
+            <BiBed className="text-[#ecebeb] font-bold text-[2rem]" />
           </div>
           <div className="flex flex-1 flex-col gap-2  items-center justify-center">
             <h2
-              className="text-[1.2rem] text-rose-400  font-bold text-center"
+              className="text-[1.2rem] text-slate-800  font-bold text-center"
               style={{ lineHeight: "1" }}
             >
               Total Beds
             </h2>
-            <p className="text-[1.4rem] font-bold text-green-400 ">
+            <p className="text-[1.4rem] font-bold text-[#eee] ">
               {" "}
               <CountUp delay={2} end={countBed} />
             </p>
           </div>
         </div>
-        <div className="flex bg-white p-5 border rounded-xl flex-grow justify-between items-center shadow-lg shadow-green-300">
+        <div className="flex green-text-gradient p-5 border rounded-xl flex-grow justify-between items-center shadow-md shadow-green-300">
           <div className="">
-            <AiOutlineUsergroupAdd className="text-fuchsia-600 text-[2rem]" />
+            <AiOutlineUsergroupAdd className="text-[#ddd] text-[2rem]" />
           </div>
           <div className="flex flex-1 flex-col gap-2  items-center justify-center">
             <h2
-              className="text-[1.2rem] text-teal-400  font-bold text-center"
+              className="text-[1.2rem] text-[#eee]  font-bold text-center"
               style={{ lineHeight: "1" }}
             >
               Total Students
             </h2>
-            <p className="text-[1.4rem] font-bold text-green-400 ">
+            <p className="text-[1.4rem] font-bold text-white ">
               {" "}
               <CountUp delay={3} end={countOfStudents} />
             </p>
@@ -145,18 +146,19 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="m-4 p-5 shadow-xl shadow-red-200">
-        <h3 className="  mb-4 text-teal-500 text-justify p-5 font-semibold text-2xl">
+      <div className="m-4 my-10 p-5 pb-10 shadow-xl rounded-2xl black-gradient shadow-red-200">
+        <h3 className="  mb-4 text-[#ddd] text-justify p-5 font-semibold text-2xl">
           Occupacy
         </h3>
         <div className="flex justify-around items-center flex-wrap">
           {hostels?.map((hostel) => (
             <div>
-              <h1 className="text-center text-rose-400 mb-2">
+              <h1 className="text-center text-white mb-2">
                 {hostel.hostel_name}{" "}
               </h1>
 
               <RingProgress
+                strokeColor="#00ff00"
                 percent={(countRoom * 3) / hostel.capacity}
                 {...config}
               />
@@ -165,8 +167,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="m-4 p-5 shadow-xl shadow-red-200">
-        <h3 className="mb-4 text-teal-500 text-justify p-5 font-semibold text-2xl">
+      <div className="m-4 p-5 shadow-xl black-gradient rounded-2xl  shadow-red-200">
+        <h3 className="mb-4 text-[#eee] text-justify p-5 font-semibold text-2xl">
           Total Complaints
         </h3>
         <div>
@@ -177,7 +179,7 @@ const Dashboard = () => {
             yField="value"
             label={{
               position: "middle",
-              style: { fill: "#413543" },
+              style: { fill: "#eee" },
             }}
           />
         </div>

@@ -1,15 +1,31 @@
 import axios from "axios";
 import { base_url, config } from "../../utils/axiosConfig";
 
-const createAPost = async (postData) => {
+// const createAPost = async (postData) => {
+//   const res = await axios.post(`${base_url}post/`, postData, config);
+
+//   // if (res.data) {
+//   return "hi";
+//   // }
+// };
+
+const createNewPost = async (postData) => {
+  console.log(postData);
   const res = await axios.post(`${base_url}post/`, postData, config);
 
   if (res.data) {
     return res.data;
   }
 };
-const getAllPost = async (postData) => {
+const getAllPost = async () => {
   const res = await axios.get(`${base_url}post/`);
+
+  if (res.data) {
+    return res.data;
+  }
+};
+const deletePost = async (id) => {
+  const res = await axios.delete(`${base_url}post/${id}`, config);
 
   if (res.data) {
     return res.data;
@@ -25,8 +41,9 @@ const likeDislikeAPost = async (postId) => {
 };
 
 const postService = {
-  createAPost,
+  createNewPost,
   getAllPost,
+  deletePost,
   likeDislikeAPost,
 };
 

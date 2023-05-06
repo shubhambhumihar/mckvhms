@@ -20,8 +20,8 @@ const Rooms = () => {
 
   const roomState = useSelector((state) => state.room.rooms.rooms);
   const hostelState = useSelector((state) => state.hostel?.hostel?.hostels);
-  console.log(roomState);
-  console.log(hostelState);
+  // console.log(roomState);
+  // console.log(hostelState);
 
   const { isLoading, isError, isSuccess } = useSelector((state) => state.room);
 

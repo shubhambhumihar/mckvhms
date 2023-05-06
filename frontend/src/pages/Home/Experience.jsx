@@ -17,7 +17,7 @@ const ExperienceCard = ({ experience }) => {
     <VerticalTimelineElement
       contentStyle={{
         background: "#1d1836",
-        color: "purple",
+        color: "white",
       }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
       date={experience.date}
@@ -66,7 +66,7 @@ const Experience = () => {
           What is the Rule
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
-          Common Rules.
+          Common <span className="text-[#654E92]">Rules.</span>
         </h2>
       </motion.div>
 

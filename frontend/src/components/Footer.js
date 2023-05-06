@@ -48,10 +48,17 @@ const Footer = () => {
               <li className="text-md text-[#454545] border-b-2  border-gray-600 mb-3">
                 USEFUL LINKS
               </li>
-              <li className="text-white text-sm my-1 font-normal">ABOUT US</li>
-              <li className="text-white text-sm  my-1 font-normal">
-                CONTACT US
-              </li>
+              <Link to="/about">
+                <li className="text-white text-sm my-1 font-normal">
+                  ABOUT US
+                </li>
+              </Link>
+              <Link to="/contact">
+                <li className="text-white text-sm my-1 font-normal">
+                  CONTACT US
+                </li>
+              </Link>
+
               <li className="text-white text-sm  my-1 font-normal">ECE</li>
               <li className="text-white text-sm font-normal">ME</li>
             </ul>

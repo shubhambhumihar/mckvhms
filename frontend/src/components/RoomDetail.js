@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-// import { Carousel } from "antd";
+import React, { useEffect, useState } from "react";
 import { Image } from "antd";
-// import Slider from "react-slick";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import RoomInfo from "./RoomInfo";
@@ -10,6 +8,9 @@ import { logo } from "../assets";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleRoom } from "../features/room/roomSlice";
+import BedBookModel from "./BedBookModel";
+import { getStudentBedRequests } from "../features/bedBooking/bedBookingSlice";
+import StudentLoginModal from "./StudentLoginModal";
 
 const contentStyle = {
   height: "53vh",
@@ -22,9 +23,42 @@ const contentStyle = {
 };
 
 const RoomDetail = () => {
+  // const [status, setStatus] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const showloginModal = () => {
+    setIsLoginModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+    setIsLoginModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setIsLoginModalOpen(false);
+  };
+  const studentBedBooking = useSelector(
+    (state) => state?.bedBooking?.studentBedBooking
+  );
+
+  const status = studentBedBooking[0]?.status;
+  // console.log(status);
+
+  // console.log(studentBedBooking);
+  const user = useSelector((state) => state?.auth?.user?.user);
+  useEffect(() => {
+    if (user?.isStudent) {
+      dispatch(getStudentBedRequests());
+    }
+  }, [user]);
 
   const getRoomId = location.pathname.split("/")[2];
   useEffect(() => {
@@ -32,12 +66,12 @@ const RoomDetail = () => {
   }, [getRoomId]);
 
   const { isLoading, singleRoom } = useSelector((state) => state.room);
-  console.log(singleRoom);
+  // console.log(singleRoom);
   const roomData = singleRoom.room;
 
   return (
     <>
-      <div className="max-w-screen-2xl">
+      <div className="max-w-screen-3xl mx-auto">
         <div className="flex h-[15vh] items-center justify-around p-[2rem]">
           <Link
             to="/"
@@ -71,8 +105,8 @@ const RoomDetail = () => {
             className="max-w-full h-[50vh] "
             showThumbs={false}
           >
-            {singleRoom?.room?.images?.map((imgs) => (
-              <div className="h-[50vh]">
+            {singleRoom?.room?.images?.map((imgs, index) => (
+              <div key={index} className="h-[50vh]">
                 <img src={imgs.url} alt="" />
               </div>
             ))}
@@ -82,8 +116,8 @@ const RoomDetail = () => {
           <RoomInfo singleRoom={singleRoom} />
         </div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 mx-[3rem]">
-          {singleRoom?.room?.images?.map((imgs) => (
-            <div className="border-red-600 h-full">
+          {singleRoom?.room?.images?.map((imgs, index) => (
+            <div key={index} className="border-red-600 h-full">
               <Image
                 width={"100%"}
                 // height={"550px"}
@@ -102,14 +136,51 @@ const RoomDetail = () => {
             showThumbs={false}
             style={contentStyle}
           >
-            {singleRoom?.room?.images?.map((imgs) => (
-              <div style={contentStyle}>
+            {singleRoom?.room?.images?.map((imgs, index) => (
+              <div key={index} style={contentStyle}>
                 <img style={contentStyle} src={imgs.url} alt="" />
               </div>
             ))}
           </Carousel>
         </div>
+
+        {user?.isStudent ? (
+          <div className="flex ml-10 items-align my-8 mt-[3rem]">
+            {status ? (
+              <button className="py-3 inline-block px-20 bg-yellow-600 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl">
+                Your bed request is in {status} state
+              </button>
+            ) : (
+              <button
+                onClick={showModal}
+                className="py-3 inline-block px-20 bg-orange-800 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl"
+              >
+                Book a bed in this Room
+              </button>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={showloginModal}
+            className="py-3 my-7 ml-10 inline-block px-20 bg-orange-800 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl"
+          >
+            Login as student
+          </button>
+        )}
       </div>
+      <BedBookModel
+        isModalOpen={isModalOpen}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        status={status}
+        // setStatus={setStatus}
+      />
+
+      <StudentLoginModal
+        isModalOpen={isLoginModalOpen}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+      />
     </>
   );
 };

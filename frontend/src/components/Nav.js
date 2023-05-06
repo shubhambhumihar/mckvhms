@@ -73,7 +73,7 @@ const Nav = () => {
     <>
       {/* sticky top-0 */}
       <header
-        className={`w-full flex items-center  sticky top-0 left-0    z-20 bg-primary  shadow-md shadow-violet-700 `}
+        className={`w-full flex items-center  sticky top-0 left-0    z-20 bg-primary  shadow-sm shadow-violet-600 `}
       >
         <nav className=" flex py-2 justify-between items-center w-full  md:px-10 px-7 ">
           {/* first child logo */}
@@ -156,7 +156,7 @@ const Nav = () => {
                               color: "#f56a00",
                             }}
                           >
-                            {userState?.user?.user.name.substring(0, 1)}
+                            {userState?.user?.user?.name?.substring(0, 1)}
                           </Avatar>
                         )}
                       </div>

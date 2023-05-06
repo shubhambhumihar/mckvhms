@@ -3,8 +3,8 @@ import authService from "./authService";
 
 import { toast } from "react-toastify";
 
-const getUserFromLocalStorage = localStorage.getItem("user-frontend")
-  ? JSON.parse(localStorage.getItem("user-frontend"))
+const getUserFromLocalStorage = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
   : null;
 // create action
 // console.log(getUserFromLocalStorage);
@@ -29,10 +29,20 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+export const loginAsStudent = createAsyncThunk(
+  "login/student",
+  async (user, thunkAPI) => {
+    try {
+      return await authService.loginasStudent(user);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 export const updateUserProfile = createAsyncThunk(
   "auth/update-profile",
   async (user, thunkAPI) => {
-    // console.log(user);
+    console.log(user);
     try {
       return await authService.updateProfile(user);
     } catch (error) {
@@ -55,7 +65,8 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   message: "",
-  // updatedUser: "",
+  updatedUser: "",
+  loginStudent: "",
 };
 
 export const authSlice = createSlice({
@@ -76,9 +87,9 @@ export const authSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.user = action.payload;
-
+        console.log(action.payload);
         if (state.isSuccess === true) {
-          localStorage.setItem("tkn", action.payload.token);
+          localStorage.setItem("tkn", JSON.stringify(action.payload.token));
           toast.success("User Created Successfully");
         }
       })
@@ -102,7 +113,7 @@ export const authSlice = createSlice({
         state.user = action.payload;
 
         if (state.isSuccess === true) {
-          localStorage.setItem("tkn", action.payload.token);
+          localStorage.setItem("tkn", JSON.stringify(action.payload.token));
           // localStorage.setItem("user-frontend", state.user);
           // localStorage.setItem("user-frontend", action.payload.user);
           toast.success("User Logged in Successfully");
@@ -118,6 +129,29 @@ export const authSlice = createSlice({
           toast.error(action.error.message);
         }
       })
+      .addCase(loginAsStudent.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(loginAsStudent.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.loginStudent = action.payload;
+
+        if (state.isSuccess === true) {
+          toast.success("User Logged in Successfully");
+        }
+      })
+      .addCase(loginAsStudent.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+
+        if (state.isError === true) {
+          toast.error(action.error.message);
+        }
+      })
       .addCase(updateUserProfile.pending, (state) => {
         state.isLoading = true;
       })
@@ -125,19 +159,26 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.user = action.payload;
 
         if (state.isSuccess === true) {
+          state.user = action.payload;
           // Get the user data from local storage
-          const userData = JSON.parse(localStorage.getItem("user-frontend"));
+          const userData = JSON.parse(localStorage.getItem("user"));
 
-          // Update the user data
+          console.log(userData);
+
+          // // Update the user data
           userData.user.name = action.payload.user.name;
           userData.user.email = action.payload.user.email;
           userData.user.mobile = action.payload.user.mobile;
 
-          // Store the updated user data in local storage
-          localStorage.setItem("user-frontend", JSON.stringify(userData));
+          // // Store the updated user data in local storage
+          // Convert the updated user object back to a string
+          const updatedUserString = JSON.stringify(userData);
+          // Update the localStorage item with the updated user object string
+          localStorage.setItem("user", updatedUserString);
+
+          localStorage.setItem("tkn", JSON.stringify(action.payload.token));
 
           toast.success("User Updated Successfully");
         }
@@ -147,7 +188,7 @@ export const authSlice = createSlice({
         state.isSuccess = false;
         state.isError = true;
         state.message = action.error;
-        state.updatedUser = null;
+        state.user = null;
         if (state.isError === true) {
           toast.error(action.error.message);
         }
@@ -160,8 +201,8 @@ export const authSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.user = null;
-        localStorage.removeItem("user-frontend");
-        localStorage.removeItem("tkn");
+        // localStorage.removeItem("user-frontend");
+        // localStorage.removeItem("tkn");
 
         if (state.isSuccess === true) {
           toast.success("Logout Successfully");

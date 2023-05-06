@@ -200,7 +200,7 @@ const RoomList = () => {
     dispatch(getAllRooms());
   }, [dispatch]);
 
-  const roomState = useSelector((state) => state.room.rooms.rooms);
+  const roomState = useSelector((state) => state.room?.rooms?.rooms);
   // console.log(roomState);
   const { isLoading, isError, isSuccess, deletedRoom } = useSelector(
     (state) => state.room
@@ -226,7 +226,7 @@ const RoomList = () => {
       number_of_beds: roomState[i]?.numberOfBeds,
       capacity: roomState[i]?.capacity,
       booked: roomState[i]?.isBooked,
-      hostelName: roomState[i]?.hostel_id.hostel_name,
+      hostelName: roomState[i]?.hostel_id?.hostel_name,
       totalStudents: roomState[i]?.occupants?.length,
 
       action: (

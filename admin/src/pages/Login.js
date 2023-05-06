@@ -42,7 +42,7 @@ const Login = () => {
       // toast("Wow so easy!");
       navigate("admin");
     } else {
-      navigate("");
+      navigate("/");
     }
     // console.log(user);
   }, [user, isLoading, isError, isSuccess, navigate]);

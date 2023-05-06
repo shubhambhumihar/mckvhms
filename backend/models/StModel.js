@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const studentsSchema = new mongoose.Schema({
   name: {
@@ -9,6 +10,10 @@ const studentsSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
   },
   gender: {
     type: String,
@@ -30,7 +35,7 @@ const studentsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  contactNumber: {
+  mobile: {
     type: String,
     required: true,
   },
@@ -46,6 +51,11 @@ const studentsSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+  },
+
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
   room_id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -76,5 +86,19 @@ const studentsSchema = new mongoose.Schema({
     default: true,
   },
 });
+
+// Before saving a new student, hash the password
+studentsSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+studentsSchema.methods.comparePassword = async function (Enteredpassword) {
+  return await bcrypt.compare(Enteredpassword, this.password);
+};
 
 module.exports = mongoose.model("Stdnt", studentsSchema);

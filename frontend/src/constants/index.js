@@ -14,7 +14,6 @@ import {
   mongodb,
   git,
   figma,
-  docker,
   meta,
   starbucks,
   tesla,
@@ -22,8 +21,11 @@ import {
   carrent,
   jobit,
   tripguide,
-  threejs,
 } from "../assets";
+import { GiTargetArrows } from "react-icons/gi";
+import { FaSketch, FaTransgenderAlt } from "react-icons/fa";
+import { AiOutlineSafety, AiOutlineContacts } from "react-icons/ai";
+
 import img1 from "../assets/1566639.jpg";
 
 export const rooms = [
@@ -205,6 +207,10 @@ export const navLinks = [
     title: "Home",
   },
   {
+    id: "about",
+    title: "About",
+  },
+  {
     id: "hostels",
     title: "Hostels",
   },
@@ -221,10 +227,6 @@ export const navLinks = [
   {
     id: "contact",
     title: "Contact",
-  },
-  {
-    id: "about",
-    title: "About",
   },
 ];
 
@@ -305,7 +307,7 @@ const technologies = [
 const experiences = [
   {
     title: "Safety and security",
-    company_name: "Starbucks",
+    // company_name: "Starbucks",
     icon: starbucks,
     iconBg: "#383E56",
     date: "Rule1",
@@ -315,7 +317,7 @@ const experiences = [
   },
   {
     title: "Noise restrictions",
-    company_name: "Tesla",
+    // company_name: "Tesla",
     icon: tesla,
     iconBg: "#E6DEDD",
     date: "Rule2",
@@ -325,7 +327,7 @@ const experiences = [
   },
   {
     title: "Guest policy",
-    company_name: "Shopify",
+    // company_name: "Shopify",
     icon: shopify,
     iconBg: "#383E56",
     date: "Rule3",
@@ -335,7 +337,7 @@ const experiences = [
   },
   {
     title: "Cleanliness",
-    company_name: "Meta",
+    // company_name: "Meta",
     icon: meta,
     iconBg: "#E6DEDD",
     date: "Rule4",
@@ -345,7 +347,7 @@ const experiences = [
   },
   {
     title: "Respect for others",
-    company_name: "Meta",
+    // company_name: "Meta",
     icon: meta,
     iconBg: "#E6DEDD",
     date: "Rule5",
@@ -355,7 +357,7 @@ const experiences = [
   },
   {
     title: "Discipline",
-    company_name: "Meta",
+    // company_name: "Meta",
     icon: meta,
     iconBg: "#E6DEDD",
     date: "Rule6",
@@ -389,6 +391,40 @@ const testimonials = [
     designation: "CTO",
     company: "456 Enterprises",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
+  },
+];
+
+const aboutUs = [
+  {
+    icon: <GiTargetArrows />,
+    heading: "Our Mission",
+    desc: "The mission of hostel management is to create a safe, comfortable, and supportive living environment for residents. This includes providing basic necessities such as clean water, food, shelter, and security. Hostel management also strives to foster a sense of community among residents, encouraging them to form social connections and engage in activities together.",
+  },
+  {
+    icon: <FaSketch />,
+    heading: "Our Values",
+    desc: "HMS values responsibility in maintaining the hostel facilities and ensuring the safety and security of residents. This includes regular maintenance, repairs, and upgrades to the facilities, as well as implementing safety protocols and emergency procedures.",
+  },
+  {
+    icon: <FaTransgenderAlt />,
+    heading: "Facilities",
+    desc: "Different amenities available to guests, such as wifi, television, air conditioning, and heating. Mention any additional amenities, such as complimentary breakfast, access to a gym, or laundry facilities.",
+  },
+  {
+    icon: <AiOutlineSafety />,
+    heading: "Safety and security",
+    desc: "secure entrances, CCTV cameras, or on-site security personnel. Mention any emergency procedures, such as fire evacuation plans or first aid kits.",
+  },
+  {
+    icon: <AiOutlineSafety />,
+    heading: "Safety and security",
+    desc: "secure entrances, CCTV cameras, or on-site security personnel. Mention any emergency procedures, such as fire evacuation plans or first aid kits.",
+  },
+  {
+    icon: <AiOutlineContacts />,
+    heading: "Contact Info",
+    desc: "rechms@gmail.com",
+    desc1: "9989767812",
   },
 ];
 
@@ -458,4 +494,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, experiences, testimonials, projects, aboutUs };

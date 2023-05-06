@@ -1,28 +1,25 @@
 import { useState } from "react";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
+import { useDispatch, useSelector } from "react-redux";
 const links = [
   { name: "Food Info", href: "#food" },
   { name: "Maintainance", href: "#maintain" },
   { name: "Our values", href: "#" },
   { name: "Meet our Team", href: "#team" },
 ];
-const stats = [
-  { name: "Total Rooms", value: "12" },
-  { name: "Total Students", value: "300" },
-  { name: "Total staffs", value: "40" },
-  { name: "Total mess", value: "2" },
-];
 
-export default function HostelInfo() {
+export default function HostelInfo({ totalRooms }) {
   const [countOn, setCounterOn] = useState(false);
+  const stats = [
+    { name: "Total Rooms", value: totalRooms },
+    { name: "Total Students", value: "300" },
+    { name: "Total staffs", value: "40" },
+    { name: "Total mess", value: "2" },
+  ];
+
   return (
     <div className="relative isolate overflow-hidden bg-fixed info  bg-gray-900 py-24 sm:py-32">
-      {/* <img
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
-        alt=""
-        className="absolute inset-0 -z-10 h-full w-full object-cover bg-fixed object-right md:object-center"
-      /> */}
       <svg
         viewBox="0 0 1097 845"
         aria-hidden="true"
@@ -73,8 +70,8 @@ export default function HostelInfo() {
       </svg>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-bold tracking-tight  text-white sm:text-6xl">
-            Grow with us
+          <h2 className="text-4xl font-bold tracking-tight  sm:text-6xl">
+            Grow <span className="text-[#654E92]">with us</span>
           </h2>
           <h6 className="mt-6 text-lg leading-8 text-gray-300">
             Efficient and Comfortable Living: Our Hostel Management Solutions

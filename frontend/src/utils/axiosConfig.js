@@ -1,13 +1,15 @@
 export const base_url = "http://localhost:5000/api/v1/";
 
-const getTokenfromLocalStorage = localStorage.getItem("user-frontend")
-  ? JSON.parse(localStorage.getItem("user-frontend"))
+const getTokenfromLocalStorage = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
   : null;
 
-// console.log(getTokenfromLocalStorage.tkn);
+// console.log(getTokenfromLocalStorage);
 
 export const config = {
   headers: {
+    // "Content-Type": "multipart/form-data",
+    // "Content-Type": "application/json",
     Authorization: `Bearer ${
       getTokenfromLocalStorage !== null ? getTokenfromLocalStorage.token : ""
     }`,

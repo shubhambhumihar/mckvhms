@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import GeneraInput from "../components/GeneraInput";
-import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
 import { Select, Space } from "antd";
 import { useFormik } from "formik";
@@ -40,26 +40,35 @@ const AddStaff = () => {
     staffGender,
     staffDepartment,
     staffContactNumber,
-    staffImg,
+
     updatedStaff,
   } = staffState;
 
-  // console.log(
-  //   staffName,
-  //   staffEmail,
-  //   staffGender,
-  //   staffDepartment,
-  //   staffContactNumber,
-  //   staffImg
-  // );
-
-  // console.log(img);
   let staffSchema = Yup.object().shape({
-    name: Yup.string().required("Staff name is Required..."),
-    email: Yup.string().required("Staff Email is Required..."),
-    gender: Yup.string().required("Staff Gender is Required..."),
-    department: Yup.string().required("Staff Department is Required..."),
-    contactNumber: Yup.number().required("Contact number is Required..."),
+    name: Yup.string()
+      .matches(
+        /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+        "Invalid staff name"
+      )
+      .required("Staff name is Required..."),
+    email: Yup.string()
+      .email("Please Enter a valid Email")
+      .required("Staff Email is Required..."),
+    gender: Yup.string()
+      .matches(
+        /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+        "Invalid staff gender"
+      )
+      .required("Staff Gender is Required..."),
+    department: Yup.string()
+      .matches(
+        /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+        "Invalid Department name"
+      )
+      .required("Staff Department is Required..."),
+    contactNumber: Yup.string()
+      .matches(/^[0-9]{10}$/, "Invalid mobile number")
+      .required("Contact number is Required..."),
   });
 
   const formik = useFormik({
@@ -140,44 +149,73 @@ const AddStaff = () => {
       <div>
         <form onSubmit={formik.handleSubmit}>
           <div className="flex">
-            <GeneraInput
-              type="text"
-              label="Name"
-              name="name"
-              val={formik.values.name}
-              onCh={formik.handleChange("name")}
-              onBl={formik.handleBlur("name")}
-              placeholder="Enter Name of Staff.."
-            />
-            <GeneraInput
-              type="text"
-              label="Email"
-              name="email"
-              val={formik.values.email}
-              onCh={formik.handleChange("email")}
-              onBl={formik.handleBlur("email")}
-              placeholder="Enter Email of Staff.."
-            />
+            <div className="flex flex-col w-full">
+              <GeneraInput
+                type="text"
+                label="Name"
+                name="name"
+                val={formik.values.name}
+                onCh={formik.handleChange("name")}
+                onBl={formik.handleBlur("name")}
+                placeholder="Enter Name of Staff.."
+              />
+              <div className="text-red-500 mb-0 p-0 text-sm">
+                {formik.touched.name && formik.errors.name ? (
+                  <div>{formik.errors.name}</div>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="flex flex-col w-full">
+              <GeneraInput
+                type="text"
+                label="Email"
+                name="email"
+                val={formik.values.email}
+                onCh={formik.handleChange("email")}
+                onBl={formik.handleBlur("email")}
+                placeholder="Enter Email of Staff.."
+              />
+              <div className="text-red-500 mb-0 p-0 text-sm">
+                {formik.touched.email && formik.errors.email ? (
+                  <div>{formik.errors.email}</div>
+                ) : null}
+              </div>
+            </div>
           </div>
           <div className="flex">
-            <GeneraInput
-              type="number"
-              label="Number"
-              name="contactNumber"
-              val={formik.values.contactNumber}
-              onCh={formik.handleChange("contactNumber")}
-              onBl={formik.handleBlur("contactNumber")}
-              placeholder="Enter Number of Staff.."
-            />
-            <GeneraInput
-              type="text"
-              label="Department"
-              name="department"
-              val={formik.values.department}
-              onCh={formik.handleChange("department")}
-              onBl={formik.handleBlur("department")}
-              placeholder="Enter Department of Staff.."
-            />
+            <div className="flex flex-col w-full">
+              <GeneraInput
+                type="number"
+                label="Number"
+                name="contactNumber"
+                val={formik.values.contactNumber}
+                onCh={formik.handleChange("contactNumber")}
+                onBl={formik.handleBlur("contactNumber")}
+                placeholder="Enter Number of Staff.."
+              />
+              <div className="text-red-500 mb-0 p-0 text-sm">
+                {formik.touched.contactNumber && formik.errors.contactNumber ? (
+                  <div>{formik.errors.contactNumber}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="flex flex-col w-full">
+              <GeneraInput
+                type="text"
+                label="Department"
+                name="department"
+                val={formik.values.department}
+                onCh={formik.handleChange("department")}
+                onBl={formik.handleBlur("department")}
+                placeholder="Enter Department of Staff.."
+              />
+              <div className="text-red-500 mb-0 p-0 text-sm">
+                {formik.touched.department && formik.errors.department ? (
+                  <div>{formik.errors.department}</div>
+                ) : null}
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-start ml-4">

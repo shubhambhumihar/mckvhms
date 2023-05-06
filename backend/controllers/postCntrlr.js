@@ -1,12 +1,39 @@
+const { isAdmin } = require("../middlewares/auth");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
+const nodemailer = require("nodemailer");
 
 exports.createNewPost = asyncHandler(async (req, res) => {
   try {
     // const { title, desc } = req.body;
 
     const newPost = await Post.create(req.body);
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "rechms1234@gmail.com", // replace with your email address
+        pass: "tgcgjdvkeexnmcvp", // replace with your email password or app password
+      },
+    });
+
+    const mailOptions = {
+      from: "rechms1234@gmail.com", // replace with your email address
+      to: "sk4957199@gmail.com", // replace with the admin's email address
+      subject: "Post Created!",
+      html: `
+        <p>User ID: ${newPost.userId}</p>
+        <p>Description: ${newPost.desc}</p>
+      `,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("Email sent successfully: " + info.response);
+      }
+    });
     res.status(201).json({ success: true, newPost });
   } catch (error) {
     throw new Error(error.message);
@@ -45,12 +72,16 @@ exports.updatePost = asyncHandler(async (req, res) => {
 exports.deletePost = asyncHandler(async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+    console.log(req.user);
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });
     }
-    if (post.userId.toString() !== req.user._id.toString()) {
+    if (
+      req.user.role !== "admin" &&
+      post.userId.toString() !== req.user._id.toString()
+    ) {
       return res.status(401).json({
-        msg: "User not authorized! You cant update someone's else post",
+        msg: "User not authorized! You cant delete someone's else post",
       });
     }
 

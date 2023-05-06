@@ -5,16 +5,18 @@ const { default: mongoose } = require("mongoose");
 const userRouter = require("./routes/userRoute");
 const hostelRouter = require("./routes/hostelRoute");
 const roomRouter = require("./routes/roomRoutes");
-// const studnetRouter = require("./routes/studentRoute");
 const staffRouter = require("./routes/staffRoute");
 const stdRouter = require("./routes/stdRoutes");
 const bedRouter = require("./routes/bedRoute");
+const bedRequestRouter = require("./routes/bedRequestRoute");
+const contactRouter = require("./routes/contactRoute");
 const uploadRouter = require("./routes/uploadRoutes");
 const studentIdRouter = require("./routes/studentIdRoutes");
-// const uploadImageRouter = require("./routes/uploadImgRoute");
+const enquiryRouter = require("./routes/enquiryRoutes");
+
 const postRouter = require("./routes/postRoute");
 const uploadSingleRouter = require("./routes/uploadSingleImgRoute");
-// const uploadRouter = require("./routes/uploadRoute");
+
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cloudinary = require("cloudinary");
@@ -33,6 +35,8 @@ const app = express();
 const filename = path.resolve(__filename);
 const dirname = path.dirname(filename);
 
+// console.log(dirname);
+
 dotenv.config();
 
 mongoose.set("strictQuery", false);
@@ -45,8 +49,6 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
-// app.use(express.static("public"));
-// app.use("/images", express.static("images"));
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 app.use("/api/v1/user", userRouter);
@@ -56,6 +58,9 @@ app.use("/api/v1/room", roomRouter);
 app.use("/api/v1/staff", staffRouter);
 app.use("/api/v1/student", stdRouter);
 app.use("/api/v1/bed", bedRouter);
+app.use("/api/v1/enquiry", enquiryRouter);
+app.use("/api/v1/bed-request", bedRequestRouter);
+app.use("/api/v1/contact", contactRouter);
 app.use("/api/v1/upload", uploadRouter);
 // app.use("/api/v1/uploadImage", uploadImageRouter);
 app.use("/api/v1/post", postRouter);

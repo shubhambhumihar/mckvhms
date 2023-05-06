@@ -5,7 +5,7 @@ const register = async (userData) => {
   const res = await axios.post(`${base_url}user/register`, userData);
 
   if (res.data) {
-    localStorage.setItem("user-frontend", JSON.stringify(res.data));
+    localStorage.setItem("user", JSON.stringify(res.data));
     // console.log(res.data.user);
     // localStorage.setItem("ton", JSON.stringify(res.data.token));
     return res.data;
@@ -16,14 +16,25 @@ const login = async (userData) => {
   const res = await axios.post(`${base_url}user/login`, userData);
 
   if (res.data) {
-    localStorage.setItem("user-frontend", JSON.stringify(res.data));
+    localStorage.setItem("user", JSON.stringify(res.data));
     // console.log(res.data.user);
     //   localStorage.setItem("token", JSON.stringify(res.data.token));
     return res.data;
   }
 };
+const loginasStudent = async (userData) => {
+  const res = await axios.post(
+    `${base_url}student/loginAsStudent`,
+    userData,
+    config
+  );
+
+  if (res.data) {
+    return res.data;
+  }
+};
 const updateProfile = async (userData) => {
-  // console.log(userData);
+  console.log(userData);
   const res = await axios.put(
     `${base_url}user/update-user`,
     {
@@ -31,11 +42,15 @@ const updateProfile = async (userData) => {
       mobile: userData.mobile,
 
       email: userData.email,
+      // userData,
     },
     config
   );
 
-  return res.data;
+  if (res.data) {
+    // localStorage.setItem("user", JSON.stringify(res.data));
+    return res.data;
+  }
 };
 const logout = async () => {
   // console.log(userData);
@@ -44,13 +59,19 @@ const logout = async () => {
 
     config
   );
+  if (res.data) {
+    // Remove the user data from localStorage
+    localStorage.removeItem("user");
+    localStorage.removeItem("tkn");
 
-  return res.data;
+    return res.data;
+  }
 };
 
 const authService = {
   register,
   login,
+  loginasStudent,
   updateProfile,
   logout,
 };

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/authSlice";
 import hostelReducer from "./features/hostels/hostelSlice";
 import bedReducer from "./features/bed/bedSlice";
+import bedBookingReducer from "./features/bedBooking/bedBookingRequestSlice";
 import staffReducer from "./features/staff/staffSlice";
 import roomReducer from "./features/room/roomSlice";
 import blogReducer from "./features/staff/staffSlice";
@@ -17,6 +18,7 @@ export const store = configureStore({
     auth: authReducer,
     hostel: hostelReducer,
     bed: bedReducer,
+    bedBooking: bedBookingReducer,
     staff: staffReducer,
     room: roomReducer,
     blog: blogReducer,

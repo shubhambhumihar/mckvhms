@@ -22,6 +22,14 @@
   /* background-color: #121212; */
   /* color: #dddddd; */
 }
+/* .hun {
+  width: 50px;
+  height: 50px;
+} */
+.hun img {
+  width: 300px;
+  height: 100%;
+}
 
 .light-theme .hero-light {
   /* background-color: white; */
@@ -107,31 +115,36 @@ span.ant-switch-inner {
 .black-gradient {
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    to right,
-    #434343,
+    to left,
+    #090909,
     #000000
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #434343,
+    #2a2a2a,
     #000000
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .violet-gradient {
   background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: linear-gradient(-90deg, #483376 0%, rgba(60, 51, 80, 0) 100%);
   background: -webkit-linear-gradient(
     -90deg,
-    #804dee 0%,
+    #483376 0%,
     rgba(60, 51, 80, 0) 100%
   );
 }
 
+.about::nth-child(1) {
+  background: red !important;
+}
+
 .green-pink-gradient {
-  background: "#00cea8";
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  color: "#00cea8";
+  color: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  color: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  background-clip: text;
 }
 
 .orange-text-gradient {
@@ -148,6 +161,13 @@ span.ant-switch-inner {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.about-card {
+  transition: all 600ms ease-in-out;
+  cursor: pointer;
+}
+.about-card:hover {
+  transform: scale(1.03);
 }
 
 .green-text-gradient {
@@ -179,8 +199,8 @@ span.ant-switch-inner {
     #2f80ed,
     #56ccf2
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
 }
 
 .pink-text-gradient {
@@ -195,9 +215,90 @@ span.ant-switch-inner {
     #ec008c,
     #fc6767
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
 }
+
+/* .custom-file-upload {
+  border: 1px solid #e01c1c;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.custom-file-upload:hover {
+  background-color: #9d0e0e;
+} */
+.custom-file-upload {
+  position: relative;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  margin-top: 5px;
+  border: 2px solid white;
+  background: rgba(69, 215, 122, 0.21);
+  border-radius: 20px;
+}
+
+.custom-input-file input[type="file"] {
+  /* position: absolute;
+  left: 0;
+  top: 0; */
+  /* opacity: 0; */
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+input#file-upload-button {
+  background: red !important;
+}
+.custom-input-file label {
+  /* display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; */
+  /* background-color: #1890ff; */
+  /* border-radius: 4px;
+  cursor: pointer;
+  z-index: 1; */
+}
+input::file-selector-button {
+  font-weight: bold;
+  color: rgb(236, 237, 238);
+  padding: 0.5em;
+
+  border-radius: 3px;
+}
+
+/* Set the upload button text color to white */
+input[type="file"]::-webkit-file-upload-button {
+  color: white;
+}
+
+/* Style the upload button */
+input[type="file"]::file-selector-button {
+  background-color: #81f3b8;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style the upload button when it is hovered over */
+input[type="file"]::file-selector-button:hover {
+  background-color: #40a9ff;
+}
+
+/* input[type="file"] {
+  display: none;
+} */
 
 .aboutBorder {
   border-top-right-radius: 300px;
@@ -207,8 +308,40 @@ span.ant-switch-inner {
   background: linear-gradient(60deg, #eef6f5, #2f80ed, #56ccf2, #11998e);
   transition: all 500ms ease-in;
 }
+.ant-upload-list-item:hover .ant-upload-list-item-info {
+  background-color: transparent;
+}
+.ant-upload-select:hover .ant-upload-select-picture-card {
+  background-color: transparent;
+}
+
+.adjust_button_hover_drawer.ant-btn:hover {
+  border-color: white !important;
+}
+.ant-upload-list-item:hover .ant-upload-list-item-progress {
+  background-color: transparent;
+}
 .aboutBorder:hover {
   box-shadow: rgba(243, 104, 104, 0.35) 0px 5px 15px;
+}
+.mySelect .ant-select-selector {
+  border-color: transparent !important;
+  border: none !important;
+  background-color: #ddd !important;
+  border-radius: 10px !important;
+  height: 8vh !important;
+  padding: 8px 31px !important;
+  font-size: 14px;
+  color: gray !important;
+  /* line-height: 20; */
+  outline: none !important;
+  background: transparent !important;
+}
+.ant-select:focus {
+  outline: none !important;
+}
+.ant-select:not(:focus-visible) {
+  outline: none !important;
 }
 
 /* canvas- styles */
@@ -360,16 +493,29 @@ span.ant-switch-inner {
   /* background-color: red; */
 }
 .hostelMid {
-  margin: 1rem 0;
+  margin: 0.3rem 0;
 }
 .hostelMid h3::first-letter {
   color: #e25a16;
   font-weight: bold;
   font-size: 1.2rem;
 }
+.ant-list-item-meta {
+  background: linear-gradient(45deg, black, transparent);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgb(66, 64, 64);
+}
 
 .clip {
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+.ant-list-item-meta-title > a {
+  color: mediumpurple !important;
+}
+.ant-list-item-meta-description {
+  color: white !important;
 }
 
 .button:disabled {

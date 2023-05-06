@@ -2,26 +2,34 @@ import React, { useEffect, useState } from "react";
 import { logo } from "../../assets";
 import { useFormik, setFieldValue } from "formik";
 import * as Yup from "yup";
+import zxcvbn from "zxcvbn";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../features/auth/authSlice";
 
-// import {
-//   uploadImage,
-//   uploadImg,
-// } from "../../features/uploadImgBlog/uploadImgSlice";
 import Dropzone from "react-dropzone";
 import { HiOutlineUpload } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
-// import { uploadImage } from "../../features/uploadImg/uploadImgSlice";
 
 let userSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
+  name: Yup.string()
+    .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid name")
+    .required("Name is required"),
   email: Yup.string()
     .email("Please Enter a valid Email")
     .required("Email is Required"),
-  mobile: Yup.string().required("Phone number is required!"),
-  password: Yup.string().required("Password is required!"),
+  mobile: Yup.string()
+    .matches(/^[0-9]{10}$/, "Invalid mobile number")
+    .required("Mobile number is required"),
+  password: Yup.string()
+    .test(
+      "password-strength",
+      "Password is weak, please make a stronger one",
+      function (value) {
+        return zxcvbn(value).score >= 3;
+      }
+    )
+    .required("Password is required!"),
 });
 
 const Auth = () => {
@@ -56,6 +64,8 @@ const Auth = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+
+  // const passwordStrength = zxcvbn(password);
 
   useEffect(() => {
     if (user && isSuccess) {

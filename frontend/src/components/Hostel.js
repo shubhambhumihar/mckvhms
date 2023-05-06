@@ -6,7 +6,7 @@ const Hostel = ({ hostel }) => {
   return (
     <>
       <Link to={`/hostel/${hostel._id}`}>
-        <div className="max-w-screen-2xl  my-6 border-gray-600 border sm:flex justify-center  w-[90%] mx-auto shadow-sm shadow-purple-700 rounded-lg">
+        <div className="max-w-screen-3xl bg-[#0f0929]  my-6 border-gray-600 border sm:flex justify-center  w-[90%] mx-auto shadow-sm shadow-purple-700 rounded-lg">
           <div className="flex-1  p-3">
             <img
               className="w-[500px] h-[300px] rounded-lg hImg"
@@ -16,9 +16,11 @@ const Hostel = ({ hostel }) => {
             <div className="p-4">
               <p className="py-5">{hostel?.capacity} </p>
               <button className="button-82-pushable">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">Explore</span>
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text animate__animated animate__rollIn ">
+                  Explore
+                </span>
               </button>
             </div>
           </div>

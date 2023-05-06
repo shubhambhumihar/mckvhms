@@ -7,6 +7,7 @@ const {
   getSingleStudent,
   updateStudent,
   deleteStudent,
+  loginAsStudent,
 } = require("../controllers/stCntrlr");
 
 const router = express.Router();
@@ -14,6 +15,8 @@ const router = express.Router();
 router.route("/").post(isAuthenticated, isAdmin, createStd);
 
 router.route("/").get(isAuthenticated, getAllStudents);
+
+router.route("/loginAsStudent").post(isAuthenticated, loginAsStudent);
 
 router.route("/:id").get(isAuthenticated, isAdmin, getSingleStudent);
 

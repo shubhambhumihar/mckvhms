@@ -19,7 +19,7 @@ const AddBed = () => {
     (state) => state.bed
   );
   // console.log(bedState);
-  const hostelState = useSelector((state) => state.hostel.hostels.hostels);
+  const hostelState = useSelector((state) => state.hostel?.hostels?.hostels);
   console.log(hostelState);
 
   useEffect(() => {
@@ -31,7 +31,11 @@ const AddBed = () => {
   // })
 
   let bedSchema = Yup.object().shape({
-    bed_number: Yup.number().required("Bed number is Required..."),
+    bed_number: Yup.number()
+      .typeError("Invalid Bed number")
+      .positive("Bed number must be positive")
+      .integer("Bed number must be an integer")
+      .required("Bed number is Required..."),
   });
   const formik = useFormik({
     initialValues: {
@@ -118,7 +122,7 @@ const AddBed = () => {
                 name="room"
                 placeholder="Which Room"
                 onChange={(value) => formik.setFieldValue("room_id", value)}
-                options={rooms.map((room, id) => {
+                options={rooms?.map((room, id) => {
                   // console.log(room);
                   return {
                     value: room._id,

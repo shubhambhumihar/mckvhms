@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
+// const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema(
   {
@@ -38,6 +38,13 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       default: "user",
+    },
+    isStudent: {
+      type: Boolean,
+      default: false,
+    },
+    student_id: {
+      type: String,
     },
     occupation: String,
     location: String,

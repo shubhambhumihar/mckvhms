@@ -236,7 +236,6 @@ const HostelList = () => {
             <CiEdit />
           </Link>
           <button
-            to="/"
             className="text-red-500 text-lg bg-transparent  "
             onClick={() => showModal(hostelState[i]._id)}
           >

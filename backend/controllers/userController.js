@@ -157,10 +157,14 @@ exports.updateUser = asyncHandler(async (req, res) => {
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
 
-    const user = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $set: req.body },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     res.status(200).json({ success: true, user });
   } catch (error) {

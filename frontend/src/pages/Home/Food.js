@@ -3,12 +3,11 @@ import { CaretRightOutlined } from "@ant-design/icons";
 import { Collapse, theme } from "antd";
 
 const { Panel } = Collapse;
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
 
+const text7 = `
+Sandwich 🥪
+RICE , DAL , SABJI , SALAD 
+CHICKEN / VEG  BIRYANI`;
 const Food = () => {
   const { token } = theme.useToken();
 
@@ -105,25 +104,112 @@ const Food = () => {
             style={{ background: "#1212121" }}
           >
             <Panel header="Sunday Plan" key="1" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">IDLI</p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">
+                  RICE , FISH OR RICE MIX VEG , AALU BHUJIA , SALAD .
+                </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">ROTI , AALU SOYABEEN</p>
+              </div>
             </Panel>
             <Panel header="Monday Plan" key="2" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">IDLI</p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">
+                  RICE , DAL , BHUJIA ,SABJI , CHUTNEY , SALAD
+                </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">
+                  CHAPATI , CHICKEN CHILLI / PANEER CHILLI`
+                </p>
+              </div>
             </Panel>
             <Panel header="Tuesday Plan" key="3" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">KACHORI , AALU MATAR </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">RICE,DAL, SABJI,BHUJIA, PAPAD,SALAD</p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">JEERA RICE, TADKA , CHAPATI, BHUJIA`</p>
+              </div>
             </Panel>
             <Panel header="Wednesday Plan" key="4" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">PARATHA , ALU CHANA </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">RICE , DAL , BHUJIA , SABJI , SALAD </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">KHEER PURI AALUDAM`;</p>
+              </div>
             </Panel>
             <Panel header="Thursday Plan" key="5" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">SATU PURI , SABJI </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">
+                  RICE , DAL ,SABJI ,PYAAZ PAKORA , CHUTNEY{" "}
+                </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">CHAPATI , EGG CURRY / MANCHURIAN`;</p>
+              </div>
             </Panel>
             <Panel header="Friday Plan" key="6" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">AALU PARATHA , SABJI </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">
+                  RICE , DAL , CHOKHA , SABJI , PAPAD ,SALAD
+                </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">CHAPATI , MIX-VEG`;</p>
+              </div>
             </Panel>
             <Panel header="Saturday Plan" key="7" style={panelStyle}>
-              <p>{text}</p>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Breakfast</p>
+                <p className="text-xs">Sandwich 🥪 </p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg ">Lunch</p>
+                <p className="text-xs">RICE , DAL , SABJI , SALAD</p>
+              </div>
+              <div className="bg-[#d5c9c9] p-5 my-6 rounded-xl">
+                <p className="text-black font-bold text-lg">Dinner</p>
+                <p className="text-xs">CHICKEN / VEG BIRYANI`;</p>
+              </div>
             </Panel>
           </Collapse>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { AiOutlineWifi } from "react-icons/ai";
@@ -8,9 +8,46 @@ import { GiElectric } from "react-icons/gi";
 import { Avatar, List } from "antd";
 import { rules } from "../constants";
 import img from "../assets/user-8.jpg";
+import BedBookModel from "./BedBookModel";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getStudentBedRequests,
+  getTotalBedRequests,
+} from "../features/bedBooking/bedBookingSlice";
+import StudentLoginModal from "./StudentLoginModal";
 
 const RoomInfo = ({ singleRoom }) => {
-  console.log(singleRoom);
+  // console.log(singleRoom);
+  const dispatch = useDispatch();
+  // const [status, setStatus] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const user = useSelector((state) => state?.auth?.user?.user);
+  console.log(user);
+  const studentBedBooking = useSelector(
+    (state) => state?.bedBooking?.studentBedBooking
+  );
+
+  const status = studentBedBooking[0]?.status;
+  console.log(status);
+
+  console.log(studentBedBooking);
+
+  useEffect(() => {
+    if (user?.isStudent) {
+      dispatch(getStudentBedRequests());
+    }
+  }, [user]);
+
   return (
     <div>
       <div>
@@ -33,17 +70,50 @@ const RoomInfo = ({ singleRoom }) => {
         </div>
 
         <section id="overview" className="w-[90vw] mx-auto  py-10 ">
-          <h1 className="text-3xl text-green-700 font-bold py-0 mx-20 w-[20vw] border-b-4 border-orange-700">
-            ABOUT ROOM
-          </h1>
+          <div className="flex justify-between items-center">
+            <h1 className="text-3xl text-green-700 font-bold py-0 mx-20 w-[20vw] border-b-4 border-orange-700">
+              ABOUT ROOM
+            </h1>
+            {user?.isStudent ? (
+              <div className="flex ml-10 items-align my-8 mt-[3rem]">
+                {status ? (
+                  <button className="py-3 inline-block px-20 bg-yellow-600 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl">
+                    Your bed request is in {status} state
+                  </button>
+                ) : (
+                  <button
+                    onClick={showModal}
+                    className="py-3 inline-block px-20 bg-orange-800 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl"
+                  >
+                    Book a bed in this Room
+                  </button>
+                )}
+              </div>
+            ) : (
+              <StudentLoginModal />
+            )}
+          </div>
+
           <div className="grid lg:grid-cols-2 justify-center  mx-auto gap-5 items-center ">
-            <div>
+            <div className="flex flex-col items-center">
+              <h3 className="flex justify-center items-center">
+                <span>Room No-</span>
+                <span className="text-purple-700 text-xl ml-2 italic">
+                  {singleRoom?.room?.roomNumber}
+                </span>{" "}
+              </h3>
               <p
                 dangerouslySetInnerHTML={{
                   __html: singleRoom?.room?.description,
                 }}
-                className="text-justify text-sm text-gray-500 my-5 px-20"
+                className="text-justify text-sm text-gray-300 my-5 "
               ></p>
+              <h3 className="flex justify-center  items-center">
+                <span>Price-</span>
+                <span className="text-purple-700 text-xl ml-2 italic">
+                  RS/{singleRoom?.room?.price}
+                </span>{" "}
+              </h3>
             </div>
 
             <div className=" flex justify-center">
@@ -111,7 +181,7 @@ const RoomInfo = ({ singleRoom }) => {
             leave the hostel immediately.
           </p>
           <div
-            className="bg-gray-300 p-10 rounded-xl text-white
+            className="bg-[#1a0c36] p-10 rounded-xl text-white
           "
           >
             <List
@@ -198,6 +268,13 @@ const RoomInfo = ({ singleRoom }) => {
           </div>
         </section>
       </div>
+      <BedBookModel
+        isModalOpen={isModalOpen}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        status={status}
+        // setStatus={setStatus}
+      />
     </div>
   );
 };

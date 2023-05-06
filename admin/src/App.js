@@ -26,6 +26,7 @@ import Hostels from "./components/hostels/Hostels";
 import HostelDetail from "./components/hostels/HostelDetail";
 import RoomDetail from "./components/rooms/RoomDetail";
 import BedDetail from "./components/beds/BedDetail";
+import BedRequest from "./components/beds/BedRequest";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,10 +49,12 @@ function App() {
           <Route path="room-list" element={<RoomList />} />
           <Route path="bed" element={<AddBed />} />
           <Route path="bed-list" element={<BedList />} />
+          <Route path="bed-request" element={<BedRequest />} />
           <Route path="staff" element={<AddStaff />} />
           <Route path="staff/:id" element={<AddStaff />} />
           <Route path="staff-list" element={<StaffList />} />
           <Route path="student" element={<AddStudent />} />
+          <Route path="student/:id" element={<AddStudent />} />
           <Route path="student-list" element={<StudentList />} />
           <Route path="student_id" element={<AddStudentId />} />
           <Route path="student_id_list" element={<StudentIdList />} />

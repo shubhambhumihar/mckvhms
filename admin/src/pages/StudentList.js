@@ -9,13 +9,29 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 import { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
-
+import { toast } from "react-toastify";
 import { Select, Space } from "antd";
 
 import { Spin } from "antd";
-import { getAllStudents } from "../features/student/studentSlice";
+import {
+  deleteStudent,
+  getAllStudents,
+  resetState,
+} from "../features/student/studentSlice";
+import CustomModal from "../components/CustomModal";
 
 const StudentList = () => {
+  const [open, setOpen] = useState(false);
+  const [studentId, setStudentId] = useState("");
+  const showModal = (e) => {
+    setOpen(true);
+    // console.log(e);
+    setStudentId(e);
+    // console.log(hostelId);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
@@ -177,6 +193,19 @@ const StudentList = () => {
       dataIndex: "batch",
     },
     {
+      title: "Hostel",
+      dataIndex: "hostel",
+    },
+    {
+      title: "Room",
+      dataIndex: "room",
+    },
+    {
+      title: "Bed",
+      dataIndex: "bed",
+    },
+
+    {
       title: "Mobile number",
       dataIndex: "contact",
     },
@@ -205,7 +234,9 @@ const StudentList = () => {
   }, [dispatch]);
 
   const studentState = useSelector((state) => state.student.students.students);
-  const { isLoading } = useSelector((state) => state.student);
+  const { isLoading, isError, isSuccess, deletedStudent } = useSelector(
+    (state) => state.student
+  );
 
   console.log(studentState);
   const data1 = [];
@@ -219,24 +250,51 @@ const StudentList = () => {
       gender: studentState[i].gender,
       course: studentState[i].course,
       batch: studentState[i].batch,
+      hostel: studentState[i]?.hostel_id?.hostel_name,
+      room: studentState[i]?.room_id?.roomNumber,
+      bed: studentState[i]?.bed_id?.bed_number,
       department: studentState[i].department,
       semester: studentState[i]?.semester,
-      contact: studentState[i]?.contactNumber,
+      contact: studentState[i]?.mobile,
       parent_contact: studentState[i]?.parentContactNumber,
       address: studentState[i]?.address,
 
       action: (
         <div className="flex gap-1">
-          <Link to="/" className="text-green-500 text-lg ">
+          <Link
+            to={`/admin/student/${studentState[i]._id}`}
+            className="text-green-500 text-lg "
+          >
             <CiEdit />
           </Link>
-          <Link to="/" className="text-red-500 text-lg ">
+          <button
+            onClick={() => showModal(studentState[i]._id)}
+            className="text-red-500 text-lg "
+          >
             <AiOutlineDelete />{" "}
-          </Link>
+          </button>
         </div>
       ),
     });
   }
+
+  const deletetheStudent = (id) => {
+    dispatch(deleteStudent(id));
+
+    dispatch(resetState());
+
+    setOpen(false);
+
+    setTimeout(() => {
+      dispatch(getAllStudents());
+    }, 800);
+  };
+
+  useEffect(() => {
+    if (isSuccess && deletedStudent) {
+      toast.success("Student Deleted Successfully!");
+    }
+  }, [isSuccess, deletedStudent]);
   return (
     <>
       {isLoading ? (
@@ -252,6 +310,12 @@ const StudentList = () => {
             <div>
               <Table columns={columns} dataSource={data1} />
             </div>
+            <CustomModal
+              title="Hey are u sure u want to delete this Student"
+              hideModal={hideModal}
+              open={open}
+              performAction={() => deletetheStudent(studentId)}
+            />
           </div>
         </div>
       )}

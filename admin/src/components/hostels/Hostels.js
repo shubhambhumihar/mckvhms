@@ -17,7 +17,7 @@ const Hostels = () => {
   const { isLoading, isSuccess } = hostelState;
 
   const hostels = hostelState.hostels.hostels;
-  console.log(hostels?.length);
+  // console.log(hostels?.length);
 
   const getHostels = () => {
     dispatch(getAllHostels());

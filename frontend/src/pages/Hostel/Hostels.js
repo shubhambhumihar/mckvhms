@@ -4,6 +4,10 @@ import Hostel from "../../components/Hostel";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHostels } from "../../features/hostel/hostelSlice";
+import { motion } from "framer-motion";
+
+import { styles } from "../../styles";
+import { fadeIn, textVariant } from "../../utils/motion";
 
 const Hostels = () => {
   const dispatch = useDispatch();
@@ -24,32 +28,42 @@ const Hostels = () => {
 
   const { isLoading, isSuccess } = hostelState;
 
-  const hostels = hostelState.hostel.hostels;
-  console.log(hostels?.length);
+  const hostels = hostelState?.hostel?.hostels;
+  // console.log(hostels?.length);
 
   // console.log(hostelState);
   return (
     <>
-      <div className="max-w-screen-2xl ">
+      <div className="max-w-screen-3xl  mx-auto  ">
         <div className="hostel">
           <div className="hostelTop ">
-            <Link to="/" className="relative top-7 left-3  cursor-pointer  ">
+            <Link
+              to="/"
+              className="relative top-7 left-3 animate__animated animate__jackInTheBox   cursor-pointer  "
+            >
               <button className="button-85">Back to home</button>
-            </Link>
+            </Link>{" "}
             <div className="flex flex-col items-center">
-              <h1 className="pt-10 lg:text-[3rem]">
-                Welcome to{" "}
-                <span className="text-purple-700 font-bold underline mr-2">
-                  REC{" "}
-                </span>
-                Hostel
-              </h1>
-              <h6 className="text-sm border-b-2 border-red-500">
+              <motion.div
+                variants={textVariant()}
+                className="animate__animated animate__bounce"
+              >
+                <p className={styles.sectionSubText}> Welcome to</p>
+                <h2
+                  style={{ color: "#eee" }}
+                  className={styles.sectionHeadText}
+                  variants={fadeIn("", "", 0.1, 1)}
+                >
+                  REC HOSTEL.
+                </h2>
+              </motion.div>
+
+              <h6 className="text-sm border-b-2 border-red-500 ">
                 Where Budget Meets Adventure
               </h6>
-              <div className="hostelMid">
-                <h3 className="">Total 4 hostel</h3>
-                <h6>2 Girls & 2 Boys</h6>
+              <div className="hostelMid my-0">
+                <h3 className="mb-0 p-0 line-height-1">Total 4 hostel</h3>
+                <p className="mb-0 p-0 line-height-1">2 Girls & 2 Boys</p>
               </div>
             </div>
           </div>
@@ -58,7 +72,7 @@ const Hostels = () => {
               <div className="spinner"></div>
             </div>
           ) : hostels?.length > 0 ? (
-            <div className="grid lg:grid-cols-2 gap-2 justify-center mx-auto  mb-[-200px] relative z-40 h">
+            <div className="grid animate__animated animate__flash lg:grid-cols-2 gap-2 justify-center mx-auto  mb-[-200px] relative z-40 h">
               {hostels?.map((hostel) => (
                 <Hostel key={hostel._id} hostel={hostel} />
               ))}

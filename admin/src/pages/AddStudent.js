@@ -11,7 +11,13 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHostels } from "../features/hostels/hostelSlice";
 import { getBedsOfRoom } from "../features/room/roomSlice";
-import { createStudent } from "../features/student/studentSlice";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import {
+  createStudent,
+  getSingleStudent,
+  resetState,
+  updateAStudent,
+} from "../features/student/studentSlice";
 
 const option = [
   {
@@ -34,13 +40,53 @@ const option = [
 
 const AddStudent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [rooms, setRooms] = useState([]);
-  // const [beds, setBeds] = useState([]);
+
+  const [visible, setVisible] = useState(false);
+  const toggleVisibility = () => {
+    setVisible((prevVisible) => !prevVisible);
+  };
+
+  const getStudentId = location.pathname.split("/")[3];
+
+  console.log(getStudentId);
 
   const hostelState = useSelector((state) => state.hostel.hostels.hostels);
   const { bedsOfRoom } = useSelector((state) => state.room);
+  const {
+    isLoading,
+    isSuccess,
+    isError,
+    createdStudent,
+    studentName,
+    studentEmail,
+    studentDepartment,
+    studentGender,
+    studentCourse,
+    studentId,
+    studentRoomId,
+    studentHostelId,
+    studentBedId,
+    studentBatch,
+    studentMobile,
+    studentSemester,
+    studentAddress,
+    studentparentContactNumber,
+    updatedStudent,
+  } = useSelector((state) => state.student);
+  console.log(createdStudent);
   const beds = bedsOfRoom?.beds;
   // console.log(bedsOfRoom.beds);
+
+  useEffect(() => {
+    if (getStudentId !== undefined) {
+      dispatch(getSingleStudent(getStudentId));
+    } else {
+      dispatch(resetState());
+    }
+  }, [getStudentId]);
 
   useEffect(() => {
     dispatch(getAllHostels());
@@ -49,29 +95,58 @@ const AddStudent = () => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      email: "",
-      gender: "",
-      course: "",
-      batch: "",
-      department: "",
-      semester: "",
-      contactNumber: "",
-      parentContactNumber: "",
-      address: "",
-      student_id: "",
+      name: studentName || "",
+      email: studentEmail || "",
+      gender: studentGender || "",
+      course: studentCourse || "",
+      batch: studentBatch || "",
+      department: studentDepartment || "",
+      semester: studentSemester || "",
+      mobile: studentMobile || "",
+      parentContactNumber: studentparentContactNumber || "",
+      address: studentAddress || "",
+      student_id: studentId || "",
+      hostel_id: studentHostelId || "",
+      password: "rec123456789",
     },
     // validationSchema: ,
     onSubmit: (values) => {
-      dispatch(createStudent(values));
+      if (getStudentId !== undefined) {
+        const data = { id: getStudentId, studentdata: values };
+        dispatch(updateAStudent(data));
+        dispatch(resetState());
+      } else {
+        dispatch(createStudent(values));
+        formik.resetForm();
+        setTimeout(() => {
+          // dispatch(resetState());
+          navigate("/admin/student-list");
+        }, 300);
+      }
+
       alert(JSON.stringify(values, null, 2));
     },
   });
 
+  useEffect(() => {
+    if (isSuccess && createdStudent) {
+      toast.success("Student Added Successfully!");
+    }
+
+    if (isSuccess && updatedStudent) {
+      toast.success("Student Updated Successfully!");
+      navigate("/admin/student-list");
+    }
+
+    if (isError) {
+      toast.error("Something gone wrong!");
+    }
+  }, [isSuccess, isError, createdStudent, updatedStudent]);
+
   return (
     <div>
       <h3 className="text-3xl text-orange-400 mb-5 font-semibold">
-        Add Student
+        {getStudentId !== undefined ? "Edit Student" : "Add Student"}
       </h3>
       <div>
         <form onSubmit={formik.handleSubmit}>
@@ -130,10 +205,10 @@ const AddStudent = () => {
               type="number"
               label="Contact Number "
               placeholder="Enter Contact of Student"
-              name="contactNumber"
-              val={formik.values.contactNumber}
-              onCh={formik.handleChange("contactNumber")}
-              onBl={formik.handleBlur("contactNumber")}
+              name="mobile"
+              val={formik.values.mobile}
+              onCh={formik.handleChange("mobile")}
+              onBl={formik.handleBlur("mobile")}
             />
           </div>
 
@@ -167,6 +242,7 @@ const AddStudent = () => {
               onCh={formik.handleChange("student_id")}
               onBl={formik.handleBlur("student_id")}
             />
+
             <GeneraInput
               type="text"
               label="Department  "
@@ -176,6 +252,41 @@ const AddStudent = () => {
               onCh={formik.handleChange("department")}
               onBl={formik.handleBlur("department")}
             />
+          </div>
+
+          <div className=" ml-5  w-1/2 flex flex-col">
+            <label
+              className="text-[1rem] text-purple-400 font-semibold inline-block mt-3"
+              htmlFor="passowrd"
+            >
+              Password
+            </label>
+            <div className="relative">
+              <input
+                className=" w-full p-[10px] "
+                type={visible ? "text" : "password"}
+                label="Password"
+                placeholder="Enter student Password"
+                name="password"
+                defaultValue="rec123456789"
+                value={formik.values.password}
+                onChange={formik.handleChange("password")}
+                onBlur={formik.handleBlur("password")}
+              />
+              <div className="absolute right-3 top-2">
+                {visible ? (
+                  <EyeInvisibleOutlined
+                    className="text-xl text-purple-600"
+                    onClick={toggleVisibility}
+                  />
+                ) : (
+                  <EyeOutlined
+                    className="text-xl text-purple-600"
+                    onClick={toggleVisibility}
+                  />
+                )}
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-start ml-4">
@@ -289,7 +400,7 @@ const AddStudent = () => {
             type="submit"
             className="px-[22px] py-[6px] mt-4 bg-blend-overlay bg-red-400 mx-auto block  text-green shadow-lg shadow-orange-500 rounded-[20px]"
           >
-            Add Student
+            {getStudentId !== undefined ? "Edit Student" : "Add Student"}
           </button>
         </form>
       </div>

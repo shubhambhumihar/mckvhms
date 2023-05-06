@@ -43,6 +43,18 @@ const Profile = () => {
   // }, []);
   // const user = useSelector((state) => state.auth);
   // console.log(user);
+
+  let userSchema = Yup.object().shape({
+    name: Yup.string()
+      .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid name")
+      .required("Name is required"),
+    email: Yup.string()
+      .email("Please Enter a valid Email")
+      .required("Email is Required"),
+    mobile: Yup.string()
+      .matches(/^[0-9]{10}$/, "Invalid mobile number")
+      .required("Mobile number is required"),
+  });
   const formik = useFormik({
     // enableReinitialize: true,
     //  enableReinitialize: true,
@@ -52,7 +64,7 @@ const Profile = () => {
       mobile: "",
     },
 
-    // validationSchema: hostelSchema,
+    validationSchema: userSchema,
     onSubmit: (values) => {
       dispatch(updateUserProfile(values));
       // console.log(values);
@@ -162,6 +174,12 @@ const Profile = () => {
                   onBlur={formik.handleBlur("name")}
                   placeholder="Please enter your name"
                 />
+
+                <div className="text-red-500 mb-0 p-0 text-sm ">
+                  {formik.touched.name && formik.errors.name ? (
+                    <div className="text-left">{formik.errors.name}</div>
+                  ) : null}
+                </div>
               </Col>
             </Row>
             <Row gutter={16}>
@@ -175,6 +193,11 @@ const Profile = () => {
                   onBlur={formik.handleBlur("email")}
                   placeholder="Please enter your Email"
                 />
+                <div className="text-red-500 mb-0 p-0 text-sm">
+                  {formik.touched.email && formik.errors.email ? (
+                    <div>{formik.errors.email}</div>
+                  ) : null}
+                </div>
               </Col>
             </Row>
             <Row gutter={16}>
@@ -188,6 +211,11 @@ const Profile = () => {
                   onBlur={formik.handleBlur("mobile")}
                   placeholder="Please enter your Phone Number"
                 />
+                <div className="text-red-500 mb-0 p-0 text-sm">
+                  {formik.touched.mobile && formik.errors.mobile ? (
+                    <div>{formik.errors.mobile}</div>
+                  ) : null}
+                </div>
               </Col>
             </Row>
             <button

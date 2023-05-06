@@ -11,6 +11,18 @@ export const getAllEnquiries = createAsyncThunk(
     }
   }
 );
+export const updateEnquiry = createAsyncThunk(
+  "enquiry/updateEnquiry",
+  async (data, thunkAPI) => {
+    console.log(data.value);
+    console.log(data.id);
+    try {
+      return await enquiryService.updateEnquiry(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const initialState = {
   enquiries: [],

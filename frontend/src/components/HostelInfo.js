@@ -128,7 +128,7 @@ const HostelInfo = ({ hostelData }) => {
             leave the hostel immediately.
           </p>
           <div
-            className="bg-gray-300 p-10 rounded-xl text-white
+            className="bg-[#0f0929]  p-10 rounded-xl text-white
           "
           >
             <List
@@ -156,7 +156,7 @@ const HostelInfo = ({ hostelData }) => {
             OUR STAFFS
           </h1>
           <div className="grid md:grid-cols-2 items-center my-6 gap-4 justify-center  mx-auto lg:grid-cols-4">
-            <div className="flex flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
+            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
               <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
                 <img
                   className="rounded-full w-[50px] h-[50px]"
@@ -188,7 +188,7 @@ const HostelInfo = ({ hostelData }) => {
                 <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
               </div>
             </div>
-            <div className="flex flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
+            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
               <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
                 <img
                   className="rounded-full w-[50px] h-[50px]"
@@ -226,7 +226,7 @@ const HostelInfo = ({ hostelData }) => {
                 <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
               </div>
             </div>
-            <div className="flex flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
+            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
               <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
                 <img
                   className="rounded-full w-[50px] h-[50px]"
@@ -258,7 +258,7 @@ const HostelInfo = ({ hostelData }) => {
                 <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
               </div>
             </div>
-            <div className="flex flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
+            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
               <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
                 <img
                   className="rounded-full w-[50px] h-[50px]"

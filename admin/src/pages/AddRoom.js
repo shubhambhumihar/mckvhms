@@ -29,7 +29,7 @@ const AddRoom = () => {
   // console.log(getRoomId);
 
   const imgStateforloading = useSelector((state) => state.upload);
-  const hostelState = useSelector((state) => state.hostel.hostels.hostels);
+  const hostelState = useSelector((state) => state.hostel?.hostels?.hostels);
   const roomState = useSelector((state) => state.room);
   const {
     isSuccess,
@@ -52,13 +52,37 @@ const AddRoom = () => {
   }, [dispatch]);
 
   let roomSchema = Yup.object().shape({
-    title: Yup.string().required("Please enter room title..."),
-    price: Yup.string().required("Please enter room Price..."),
-    description: Yup.string().required("Please enter room Description..."),
+    title: Yup.string()
+      .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid name")
+      .required("Please enter room title..."),
+    price: Yup.number()
+      .typeError("Invalid Capacity")
+      .positive("Price must be positive")
+      .integer("Price must be an integer")
+      .required("Please enter room Price..."),
 
-    capacity: Yup.number().required("Capacity is Required..."),
-    roomNumber: Yup.number().required("Number of rooms is Required..."),
-    numberOfBeds: Yup.number().required("Phone Number is Required..."),
+    description: Yup.string()
+      // .matches(
+      //   /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+      //   "Invalid Description"
+      // )
+      .required("Please enter room Description..."),
+
+    capacity: Yup.number()
+      .typeError("Invalid Capacity")
+      .positive("Capacity must be positive")
+      .integer("Capacity must be an integer")
+      .required("Capacity is Required..."),
+    roomNumber: Yup.number()
+      .typeError("Invalid Rooms Number")
+      .positive("Room Number must be positive")
+      .integer("Rooms Number must be an integer")
+      .required("Room Number is Required..."),
+    numberOfBeds: Yup.number()
+      .typeError("Invalid Number Of beds")
+      .positive("Number Of bed must be positive")
+      .integer("Number Of bed must be an integer")
+      .required("Number Of bed is Required..."),
   });
 
   useEffect(() => {
@@ -121,18 +145,6 @@ const AddRoom = () => {
     formik.values.images = img;
     console.log(formik.values.images);
   }, [imgState]);
-
-  // imgState?.forEach((i) => {
-  //   img.push({
-  //     public_id: i.public_id,
-  //     url: i.url,
-  //   });
-  // });
-  // console.log(img);
-
-  // useEffect(() => {
-  //   formik.values.images = img;
-  // }, [formik.values, img]);
 
   useEffect(() => {
     if (isSuccess && createdRoom) {

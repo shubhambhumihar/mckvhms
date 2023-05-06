@@ -11,18 +11,31 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useNavigate, Link } from "react-router-dom";
-import { AiOutlineDashboard, AiOutlineQuestionCircle } from "react-icons/ai";
+import {
+  AiOutlineDashboard,
+  AiOutlineQuestionCircle,
+  AiOutlineInfoCircle,
+  AiOutlineUserAdd,
+  AiOutlineUsergroupAdd,
+} from "react-icons/ai";
 import { FcCustomerSupport, FcAddImage, FcLibrary } from "react-icons/fc";
+import { MdOutlineBedroomChild } from "react-icons/md";
+import { TbMoodBoy } from "react-icons/tb";
 import {
   MdProductionQuantityLimits,
   MdOutlineCreateNewFolder,
 } from "react-icons/md";
+import { FaRegObjectUngroup } from "react-icons/fa";
 
-import { MdOutlineBrandingWatermark, MdCategory } from "react-icons/md";
-import { BiCategory, BiColor } from "react-icons/bi";
+import { MdOutlineBrandingWatermark, MdCategory, MdBoy } from "react-icons/md";
+import { HiOutlineRectangleGroup } from "react-icons/hi";
+import { GrCatalogOption } from "react-icons/gr";
+import { BsListNested, BsFillHouseDoorFill, BsListCheck } from "react-icons/bs";
+import { BiCategory, BiColor, BiBed } from "react-icons/bi";
 import { ImBlog } from "react-icons/im";
 import { FaList } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
+// import { BiBed } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { DownOutlined } from "@ant-design/icons";
@@ -84,37 +97,9 @@ const LayoutApp = () => {
             },
 
             {
-              key: "rooms",
-              icon: <ImBlog />,
-              label: "Rooms",
-              children: [
-                {
-                  key: "room",
-                  icon: <MdOutlineCreateNewFolder />,
-                  label: "Add Room",
-                },
-                {
-                  key: "room-list",
-                  icon: <FaList />,
-                  label: "Room List",
-                },
-                {
-                  key: "delete-room",
-                  icon: <FcAddImage />,
-                  label: "Delete Room",
-                },
-                {
-                  key: "update-room",
-                  icon: <FcAddImage />,
-                  label: "Update Room",
-                },
-              ],
-            },
-
-            {
               key: "catalog",
               icon: (
-                <FcLibrary
+                <FaRegObjectUngroup
                   style={{
                     color: "white",
                     fontWeight: "bold",
@@ -141,7 +126,7 @@ const LayoutApp = () => {
                 {
                   key: "hostel-list",
                   icon: (
-                    <MdProductionQuantityLimits
+                    <BsListNested
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -154,7 +139,7 @@ const LayoutApp = () => {
                 {
                   key: "hostels",
                   icon: (
-                    <MdProductionQuantityLimits
+                    <BsFillHouseDoorFill
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -167,7 +152,7 @@ const LayoutApp = () => {
                 {
                   key: "bed",
                   icon: (
-                    <MdProductionQuantityLimits
+                    <BiBed
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -180,7 +165,7 @@ const LayoutApp = () => {
                 {
                   key: "bed-list",
                   icon: (
-                    <MdProductionQuantityLimits
+                    <BsListCheck
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -193,7 +178,7 @@ const LayoutApp = () => {
                 {
                   key: "staff",
                   icon: (
-                    <MdOutlineBrandingWatermark
+                    <MdBoy
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -206,7 +191,7 @@ const LayoutApp = () => {
                 {
                   key: "staff-list",
                   icon: (
-                    <MdOutlineBrandingWatermark
+                    <TbMoodBoy
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -219,7 +204,7 @@ const LayoutApp = () => {
                 {
                   key: "notice",
                   icon: (
-                    <BiCategory
+                    <AiOutlineInfoCircle
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -232,7 +217,7 @@ const LayoutApp = () => {
                 {
                   key: "notice-list",
                   icon: (
-                    <BiCategory
+                    <AiOutlineInfoCircle
                       style={{
                         color: "#655DBB",
                         fontWeight: "bold",
@@ -246,31 +231,62 @@ const LayoutApp = () => {
             },
 
             {
+              key: "rooms",
+              icon: <MdOutlineBedroomChild />,
+              label: "Rooms",
+              children: [
+                {
+                  key: "room",
+                  icon: <MdOutlineCreateNewFolder />,
+                  label: "Add Room",
+                },
+                {
+                  key: "room-list",
+                  icon: <FaList />,
+                  label: "Room List",
+                },
+              ],
+            },
+
+            {
               key: "students",
-              icon: <ImBlog />,
+              icon: <MdBoy />,
               label: "Students",
               children: [
                 {
                   key: "student",
-                  icon: <MdOutlineCreateNewFolder />,
+                  icon: <AiOutlineUserAdd />,
                   label: "Add Student",
                 },
                 {
                   key: "student-list",
-                  icon: <FaList />,
+                  icon: <AiOutlineUsergroupAdd />,
                   label: "Student List",
                 },
                 {
                   key: "student_id",
-                  icon: <FcAddImage />,
+                  icon: <MdBoy />,
                   label: "Add Student Id",
                 },
                 {
                   key: "student_id_list",
-                  icon: <FcAddImage />,
+                  icon: <MdBoy />,
                   label: " Student Id List",
                 },
               ],
+            },
+            {
+              key: "bed-request",
+              icon: (
+                <BiBed
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                  }}
+                />
+              ),
+              label: "Bed Request",
             },
             {
               key: "enquiry",

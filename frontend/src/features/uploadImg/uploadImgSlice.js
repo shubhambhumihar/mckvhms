@@ -6,6 +6,7 @@ import uploadService from "./uploadImgService";
 export const uploadImg = createAsyncThunk(
   "image/upload",
   async (data, thunkAPI) => {
+    console.log(data);
     try {
       return await uploadService.uploadImg(data);
     } catch (error) {

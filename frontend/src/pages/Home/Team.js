@@ -5,61 +5,41 @@ const t3 = require("../../assets/team3.png");
 const t4 = require("../../assets/team-5.jpg");
 const Team = () => {
   return (
-    <div className="max-w-screen-2xl py-7 my-20 t" id="team">
+    <div
+      className="max-w-screen-3xl black-gradient mx-auto py-7 my-20 t"
+      id="team"
+    >
       <h1 className="text-center text-xl md:text-4xl font-bold py-6">
-        Meet Our Team
+        <span className="text-[#654E92] text-5xl">Meet</span> Our Team
       </h1>
-      <div className="mx-auto grid md:grid-cols-2 lg:grid-cols-4 justify-center place-items-center  gap-2">
-        <div className="border border-emerald-500 rounded-2xl p-4 shadow-lg shadow-violet-500 hover:scale-105 duration-500 ">
-          <img
-            src={t1}
-            alt=""
-            className="rounded-full w-[200px] object-cover"
-          />
-
-          <div className="py-3 text-center ">
-            <h1 className="text-xl md:text-2xl text-gray-400">Shubham Singh</h1>
-            <p className="text-violet-400">Full Stack Developer</p>
-          </div>
-        </div>
-        <div className="border p-4 rounded-2xl  shadow-lg shadow-green-600 border-violet-500 hover:scale-105 duration-500">
+      <div className="mx-auto  flex justify-center my-6  gap-7">
+        <div className="border  blue-text-gradient  w-1/3 flex justify-center  p-4 rounded-2xl  shadow-sm shadow-green-600 border-violet-500 gap-5 hover:scale-105 duration-500">
           <img
             src={t2}
             alt=""
-            className="rounded-full w-[200px] object-cover"
+            className="rounded-full w-[100px] object-cover"
           />
 
-          <div className="py-3 text-center">
-            <h1 className="text-xl md:text-2xl text-gray-400">
-              Jyoti kumari chouhan
-            </h1>
-            <p className="text-violet-400">Frontend Developer</p>
+          <div className="py-3 text-left">
+            <h1 className="text-xl md:text-2xl text-white">Jyoti kumari</h1>
+            <p className="text-white">Branch - ECE</p>
+            <p className="text-white">Session - 2019-23</p>
           </div>
         </div>
-        <div className="border p-4 shadow-lg rounded-2xl shadow-slate-50 border-orange-500 hover:scale-105 duration-500">
-          <img
-            src={t3}
-            alt=""
-            className="rounded-full w-[200px] object-cover"
-          />
 
-          <div className="py-3 text-center">
-            <h1 className="text-xl md:text-2xl text-gray-400">
-              Dhirendra Sharma
-            </h1>
-            <p className="text-violet-400">Ui/Ux Developer</p>
-          </div>
-        </div>
-        <div className="border p-4 shadow-lg shadow-orange-400 rounded-2xl hover:scale-105 duration-500 ">
+        <div className="border pink-text-gradient  w-1/3 flex justify-center gap-5 p-4 shadow-sm shadow-orange-400 rounded-2xl hover:scale-105 duration-500 ">
           <img
             src={t4}
             alt=""
-            className="rounded-full w-[200px] object-cover"
+            className="rounded-full w-[100px] object-cover"
           />
 
-          <div className="py-3 text-center">
-            <h1 className="text-xl md:text-2xl text-gray-400">Ishita </h1>
-            <p className="text-violet-400">Backend Developer</p>
+          <div className="py-3 text-left">
+            <h1 className="text-xl md:text-2xl text-white">
+              Ishita Raj Sharma{" "}
+            </h1>
+            <p className="text-white">Branch - ECE</p>
+            <p className="text-white">Session - 2019-23</p>
           </div>
         </div>
       </div>

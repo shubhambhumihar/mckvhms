@@ -7,6 +7,9 @@ import staffReducer from "./features/staff/staffSlice";
 // import uploadSingleImgReducer from "./features/uploadImgBlog/uploadImgSlice";
 import postReducer from "./features/post/postSlice";
 import uploadImgReducer from "./features/uploadImg/uploadImgSlice";
+import bedRequestReducer from "./features/bedBooking/bedBookingSlice";
+import contactReducer from "./features/contact/contactSlice";
+import complainReducer from "./features/complaint/complainSlice";
 
 //! create the store
 export const store = configureStore({
@@ -15,8 +18,10 @@ export const store = configureStore({
     hostel: hostelReducer,
     room: roomReducer,
     staff: staffReducer,
-
     post: postReducer,
+    bedBooking: bedRequestReducer,
+    contact: contactReducer,
+    complain: complainReducer,
     uploadImg: uploadImgReducer,
   },
 });

@@ -39,21 +39,34 @@ const About = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText} >Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p className={styles.sectionSubText}>Introduction</p>
+        <h2 style={{ color: "#654E92" }} className={styles.sectionHeadText}>
+          Overview.
+        </h2>
       </motion.div>
-
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
-      >
-        "Looking for a hostel that can cater to all your needs? You've come to
-        the right place! Our hostel management team is dedicated to providing a
-        seamless living experience for students. Discover a new level of hostel
-        living with our management services. We are committed to ensuring that
-        our students feel secure, comfortable, and supported throughout their
-        stay."
-      </motion.p>
+      <motion.div className="flex items-start">
+        <motion.p
+          variants={fadeIn("", "", 0.1, 1)}
+          className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        >
+          Looking for a hostel that can cater to all your needs? You've come to
+          the right place! Our hostel management team is dedicated to providing
+          a seamless living experience for students. Discover a new level of
+          hostel living with our management services. We are committed to
+          ensuring that our students feel secure, comfortable, and supported
+          throughout their stay.
+        </motion.p>
+        <motion.div>
+          <lottie-player
+            src="https://assets10.lottiefiles.com/packages/lf20_ofa3xwo7.json"
+            background="transparent"
+            speed="0.5"
+            style={{ width: "300px", height: "300px" }}
+            loop
+            autoplay
+          ></lottie-player>
+        </motion.div>
+      </motion.div>
 
       <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (

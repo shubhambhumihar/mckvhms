@@ -31,12 +31,31 @@ const AddHostel = () => {
   // console.log(getHostelId);
 
   let hostelSchema = Yup.object().shape({
-    hostel_name: Yup.string().required("Hostel name is Required..."),
-    hostel_type: Yup.string().required("Hostel type is Required..."),
-    desc: Yup.string().required("Description is Required..."),
-    capacity: Yup.number().required("Capacity is Required..."),
-    number_of_rooms: Yup.number().required("Number of rooms is Required..."),
-    phone: Yup.number().required("Phone Number is Required..."),
+    hostel_name: Yup.string()
+      .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid name")
+      .required("Hostel name is Required..."),
+    hostel_type: Yup.string()
+      .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid type")
+      .required("Hostel type is Required..."),
+    desc: Yup.string()
+      .matches(
+        /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+        "Invalid Decription"
+      )
+      .required("Description is Required..."),
+    capacity: Yup.number()
+      .typeError("Invalid Capacity")
+      .positive("Capacity must be positive")
+      .integer("Capacity must be an integer")
+      .required("Capacity is Required..."),
+    number_of_rooms: Yup.number()
+      .typeError("Invalid Number of Rooms")
+      .positive("Number of Rooms must be positive")
+      .integer(" Number of Rooms must be an integer")
+      .required("Number of rooms is Required..."),
+    phone: Yup.string()
+      .matches(/^[0-9]{10}$/, "Invalid mobile number")
+      .required("Phone Number is Required..."),
   });
 
   const hostelState = useSelector((state) => state.hostel);
