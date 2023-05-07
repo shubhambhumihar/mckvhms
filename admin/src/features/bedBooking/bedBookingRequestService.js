@@ -14,10 +14,19 @@ const updateBedBooking = async (data) => {
   );
   return res.data;
 };
+const deleteBedBooking = async (id) => {
+  const res = await axios.delete(
+    `${base_url}bed-request/${id}`,
+
+    config
+  );
+  return res.data;
+};
 
 const bedBookingRequestService = {
   getAllBedBookings,
   updateBedBooking,
+  deleteBedBooking,
 };
 
 export default bedBookingRequestService;

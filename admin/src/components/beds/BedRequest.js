@@ -19,17 +19,18 @@ import { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import CustomModal from "../CustomModal";
 import {
+  deleteABedRequest,
   getTotalBedRequests,
   updateBedRequest,
 } from "../../features/bedBooking/bedBookingRequestSlice";
 
 const BedRequest = () => {
   const [open, setOpen] = useState(false);
-  const [hostelId, setHostelId] = useState("");
+  const [bedRequestId, setBedRequestId] = useState("");
   const showModal = (e) => {
     setOpen(true);
     // console.log(e);
-    setHostelId(e);
+    setBedRequestId(e);
     // console.log(hostelId);
   };
   const hideModal = () => {
@@ -199,7 +200,7 @@ const BedRequest = () => {
       dataIndex: "finalStatus",
     },
     {
-      title: "Action",
+      title: "Delete",
       dataIndex: "action",
     },
   ];
@@ -214,30 +215,19 @@ const BedRequest = () => {
 
   useEffect(() => {
     // Render component based on selectedOption value
-    console.log("called");
+
     dispatch(getTotalBedRequests());
   }, [selectedOption]);
-  const { isLoading } = useSelector((state) => state.bedBooking);
+  const { isLoading, isSuccess, deletedBedRequest } = useSelector(
+    (state) => state.bedBooking
+  );
   const bedBookingState = useSelector(
     (state) => state.bedBooking?.bedRequest?.totalBedRequests
   );
 
-  console.log(bedBookingState);
-  //   const {
-  //     isLoading,
-  //     isSuccess,
-
-  //     deletedHostel,
-  //   } = useSelector((state) => state.hostel);
-
-  //   console.log(hostelState);
-  // useEffect(()=>{
-  // handleChange()
-  // },[id])
+  // console.log(bedBookingState);
 
   const handleChange = (value, id) => {
-    // console.log(`selected ${value}`);
-    // console.log(id);
     setSelectedOption(value);
     const data = { value, id };
     dispatch(updateBedRequest(data));
@@ -258,16 +248,10 @@ const BedRequest = () => {
 
       action: (
         <>
-          <div className="flex gap-1">
-            <Link
-              // to={`/admin/hostel/${hostelState[i]._id}`}
-              className="text-green-500 text-lg "
-            >
-              <CiEdit />
-            </Link>
+          <div className="flex gap-1 justify-center">
             <button
               className="text-red-500 text-lg bg-transparent  "
-              // onClick={() => showModal(hostelState[i]._id)}
+              onClick={() => showModal(bedBookingState[i]._id)}
             >
               <AiOutlineDelete />{" "}
             </button>
@@ -317,21 +301,21 @@ const BedRequest = () => {
     });
   }
 
-  const deleteHostel = (id) => {
-    dispatch(deleteAHostel(id));
+  const deleteBedBooking = (id) => {
+    dispatch(deleteABedRequest(id));
 
     setOpen(false);
 
     setTimeout(() => {
-      dispatch(getAllHostels());
+      dispatch(getTotalBedRequests());
     }, 800);
   };
 
-  //   useEffect(() => {
-  //     if (isSuccess && deletedHostel) {
-  //       toast.success("Hostel Deleted Successfully!");
-  //     }
-  //   }, [isSuccess, deletedHostel]);
+  useEffect(() => {
+    if (isSuccess && deletedBedRequest) {
+      toast.success("Bed Request Deleted Successfully!");
+    }
+  }, [isSuccess, deletedBedRequest]);
 
   return (
     <>
@@ -349,10 +333,10 @@ const BedRequest = () => {
               <Table dataSource={data1} columns={columns} />
             </div>
             <CustomModal
-              title="Hey are u sure u want to delete  this hostel"
+              title="Hey! are u sure u want to delete this Bed Request?"
               hideModal={hideModal}
               open={open}
-              performAction={() => deleteHostel(hostelId)}
+              performAction={() => deleteBedBooking(bedRequestId)}
             />
           </div>
         </div>

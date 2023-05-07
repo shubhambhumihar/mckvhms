@@ -157,7 +157,7 @@ exports.deleteRoom = asyncHandler(async (req, res) => {
       $pull: { rooms: room._id },
     });
 
-    await Bed.deleteMany({ _id: { $in: room.beds } }); // delete all associated beds
+    // await Bed.deleteMany({ _id: { $in: room.beds } }); // delete all associated beds
     // await Student.deleteMany({ _id: { $in: room.occupants } }); // delete all associated student
 
     // Send a success response to the client

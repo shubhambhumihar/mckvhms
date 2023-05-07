@@ -23,6 +23,16 @@ export const updateBedRequest = createAsyncThunk(
     }
   }
 );
+export const deleteABedRequest = createAsyncThunk(
+  "bedRequest/deleteBedRequest",
+  async (id, thunkAPI) => {
+    try {
+      return await bedBookingRequestService.deleteBedBooking(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const resetState = createAction("Reset_all_state");
 
@@ -34,6 +44,7 @@ const initialState = {
   isSuccess: false,
   message: "",
   updatedBedRequest: "",
+  deletedBedRequest: "",
 };
 
 export const bedBookingSlice = createSlice({
@@ -72,7 +83,21 @@ export const bedBookingSlice = createSlice({
         state.isError = true;
         state.message = action.error;
       })
-
+      .addCase(deleteABedRequest.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteABedRequest.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.deletedBedRequest = action.payload;
+      })
+      .addCase(deleteABedRequest.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+      })
       .addCase(resetState, () => initialState);
   },
 });

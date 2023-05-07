@@ -7,6 +7,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import LayoutApp from "./components/LayoutApp";
 import Dashboard from "./pages/Dashboard";
 import Enquiry from "./pages/Enquiry";
+import Contact from "./pages/Contact";
 import AddRoom from "./pages/AddRoom";
 import RoomList from "./pages/RoomList";
 import AddBed from "./pages/AddBed";
@@ -18,7 +19,7 @@ import StudentList from "./pages/StudentList";
 import AddHostel from "./pages/AddHostel";
 import HostelList from "./pages/HostelList";
 import FourtofourPage from "./components/FourtofourPage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllHostels } from "./features/hostels/hostelSlice";
 import AddStudentId from "./pages/AddStudentId";
 import StudentIdList from "./pages/StudentIdList";
@@ -27,6 +28,8 @@ import HostelDetail from "./components/hostels/HostelDetail";
 import RoomDetail from "./components/rooms/RoomDetail";
 import BedDetail from "./components/beds/BedDetail";
 import BedRequest from "./components/beds/BedRequest";
+import Search from "./components/search/Search";
+import StudentDetails from "./components/search/StudentDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +47,7 @@ function App() {
         <Route path="/admin" element={<LayoutApp />}>
           <Route index element={<Dashboard />} />
           <Route path="enquiry" element={<Enquiry />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="room" element={<AddRoom />} />
           <Route path="room/:id" element={<AddRoom />} />
           <Route path="room-list" element={<RoomList />} />
@@ -62,6 +66,8 @@ function App() {
           <Route path="hostel/:id" element={<AddHostel />} />
           <Route path="hostel-list" element={<HostelList />} />
           <Route path="hostels" element={<Hostels />} />
+          <Route path="search" element={<Search />} />
+          <Route path="student/:id/details" element={<StudentDetails />} />
           <Route path="hostel/:id/details" element={<HostelDetail />} />
           <Route path="hostel/room/:id" element={<RoomDetail />} />
           <Route path="hostel/room/bed/:id" element={<BedDetail />} />

@@ -9,6 +9,7 @@ import blogReducer from "./features/staff/staffSlice";
 import blogCatReducer from "./features/blogCat/blogCatSlice";
 import studentReducer from "./features/student/studentSlice";
 import enquiryReducer from "./features/enquiry/enquirySlice";
+import contactReducer from "./features/contact/contactSlice";
 import uploadReducer from "./features/upload/uploadSlice";
 import studentIdReducer from "./features/studentId/studentIdSlice";
 // import productCategoryReducer from "./features/productCat/productCatSlice";
@@ -25,6 +26,7 @@ export const store = configureStore({
     blogCategory: blogCatReducer,
     student: studentReducer,
     enquiry: enquiryReducer,
+    contact: contactReducer,
     studentId: studentIdReducer,
     upload: uploadReducer,
 

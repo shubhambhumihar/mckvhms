@@ -11,6 +11,7 @@ const {
   getUserDetail,
   loginAdmin,
   deletemyProfile,
+  logoutAdmin,
 } = require("../controllers/userController");
 
 const { isAuthenticated, isAdmin } = require("../middlewares/auth");
@@ -25,6 +26,7 @@ router.route("/login").post(loginUser);
 router.route("/admin-login").post(loginAdmin);
 
 router.route("/logout").get(logout);
+router.route("/logout-admin").get(logoutAdmin);
 
 router.route("/profile").get(isAuthenticated, getUserDetail);
 router.route("/profile-delete").delete(isAuthenticated, deletemyProfile);
@@ -37,8 +39,6 @@ router
   .route("/:id")
   .get(isAuthenticated, isAdmin, getSingleUser)
   .delete(isAuthenticated, isAdmin, deleteUser);
-
-// router.route("/:id").put(isAuthenticated, isAdmin, updateUserRole);
 
 router.route("/update-user").put(isAuthenticated, updateUser);
 

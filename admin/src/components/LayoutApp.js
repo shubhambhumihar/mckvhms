@@ -40,21 +40,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
+import { logout } from "../features/auth/authSlice";
 
 const { Header, Sider, Content } = Layout;
 
-const items = [
-  {
-    label: <Link to="/profile">MY Profile</Link>,
-    key: "0",
-  },
-  {
-    label: <Link to="/logout">Signout</Link>,
-    key: "1",
-  },
-];
-
 const LayoutApp = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const userState = useSelector((state) => state?.auth);
   const { user } = userState?.user;
   // console.log(user);
@@ -64,7 +56,28 @@ const LayoutApp = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const navigate = useNavigate();
+  const handleClick = () => {
+    dispatch(logout());
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
+
+  const items = [
+    {
+      label: <Link to="/profile">MY Profile</Link>,
+      key: "0",
+    },
+    {
+      label: (
+        <Link to="" onClick={handleClick}>
+          Signout
+        </Link>
+      ),
+      key: "1",
+    },
+  ];
+
   return (
     <Layout onContextMenu={(e) => e.preventDefault()}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -299,7 +312,33 @@ const LayoutApp = () => {
                   }}
                 />
               ),
-              label: "Enquiry",
+              label: "Complaints",
+            },
+            {
+              key: "contact",
+              icon: (
+                <AiOutlineQuestionCircle
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                  }}
+                />
+              ),
+              label: "Contact",
+            },
+            {
+              key: "search",
+              icon: (
+                <AiOutlineQuestionCircle
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                  }}
+                />
+              ),
+              label: "Search for Student ",
             },
           ]}
         />

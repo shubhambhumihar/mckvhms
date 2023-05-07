@@ -8,6 +8,9 @@ const {
   updateStudent,
   deleteStudent,
   loginAsStudent,
+  searchStudent,
+  test,
+  getStudents,
 } = require("../controllers/stCntrlr");
 
 const router = express.Router();
@@ -15,6 +18,7 @@ const router = express.Router();
 router.route("/").post(isAuthenticated, isAdmin, createStd);
 
 router.route("/").get(isAuthenticated, getAllStudents);
+router.route("/search").get(isAuthenticated, isAdmin, getStudents);
 
 router.route("/loginAsStudent").post(isAuthenticated, loginAsStudent);
 

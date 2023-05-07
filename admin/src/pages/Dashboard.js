@@ -30,11 +30,11 @@ const Dashboard = () => {
   const bedState = useSelector((state) => state.bed);
   const studentState = useSelector((state) => state.student);
   const { count } = hostelState.hostels;
-  const countOfStudents = studentState.students.count;
-  const countRoom = roomState.rooms.count;
-  const countBed = bedState.beds.count;
+  const countOfStudents = studentState?.students?.count;
+  const countRoom = roomState?.rooms?.count;
+  const countBed = bedState?.beds?.count;
 
-  const hostels = hostelState.hostels.hostels;
+  const hostels = hostelState?.hostels?.hostels;
   // console.log(hostelState.hostels.hostels);
   useEffect(() => {
     dispatch(getAllRooms());
@@ -151,10 +151,10 @@ const Dashboard = () => {
           Occupacy
         </h3>
         <div className="flex justify-around items-center flex-wrap">
-          {hostels?.map((hostel) => (
-            <div>
+          {hostels?.map((hostel, index) => (
+            <div key={index}>
               <h1 className="text-center text-white mb-2">
-                {hostel.hostel_name}{" "}
+                {hostel?.hostel_name}{" "}
               </h1>
 
               <RingProgress

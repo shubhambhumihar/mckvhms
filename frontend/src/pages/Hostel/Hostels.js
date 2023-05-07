@@ -69,7 +69,10 @@ const Hostels = () => {
           </div>
           {isLoading ? (
             <div className="flex justify-center pt-5 mt-7">
-              <div className="spinner"></div>
+              <div class="loader">
+                <span class="loader-text">loading</span>
+                <span class="load"></span>
+              </div>
             </div>
           ) : hostels?.length > 0 ? (
             <div className="grid animate__animated animate__flash lg:grid-cols-2 gap-2 justify-center mx-auto  mb-[-200px] relative z-40 h">

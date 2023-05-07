@@ -30,6 +30,7 @@ const HostelRooms = () => {
   );
 
   // const { isLoading, isError, isSuccess } = useSelector((state) => state.room);
+  console.log(roomsOfHostel);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,24 +62,38 @@ const HostelRooms = () => {
                 </div>
                 <p className="text-xs">available</p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 mb-2">
                 <div className="h-[15px] w-[15px] flex justify-center items-center rounded-full bg-rose-600">
                   <p className="text-center"></p>
                 </div>
                 <p className="text-xs">Booked</p>
+              </div>
+              <div className="flex gap-3 ">
+                <div className="h-[15px] w-[15px] flex justify-center items-center rounded-full bg-[#C07F00]">
+                  <p className="text-center"></p>
+                </div>
+                <p className="text-xs">Partially Booked</p>
               </div>
             </div>
           </div>
 
           <div className="my-10 p-10 gap-5  grid grid-cols-3 ">
             {roomsOfHostel?.rooms?.length > 0 ? (
-              <div className="flex col-span-2 p-6 flex-wrap gap-5  ">
+              <div className="flex col-span-2 p-6 flex-wrap gap-2  ">
                 {roomsOfHostel?.rooms?.map((room, index) => {
                   const isFullyBooked =
                     room?.occupants?.length === room?.capacity;
 
+                  const isPratiallyBooked =
+                    room?.occupants?.length < room?.capacity &&
+                    room?.occupants?.length > 0;
+
                   const linkStyle = {
-                    background: isFullyBooked ? "#ef4444" : "#22c55e",
+                    background: isFullyBooked
+                      ? "#ef4444"
+                      : isPratiallyBooked
+                      ? "#C07F00"
+                      : "#22c55e",
                     // Add any other CSS styles you want to apply dynamically
                   };
                   return (

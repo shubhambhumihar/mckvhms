@@ -248,6 +248,20 @@ exports.logout = asyncHandler(async (req, res) => {
     console.log(error.message);
   }
 });
+exports.logoutAdmin = asyncHandler(async (req, res) => {
+  try {
+    res.cookie("token", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    });
+
+    res
+      .status(200)
+      .json({ success: true, message: "User logged out successfully" });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 exports.updatePassword = asyncHandler(async (req, res) => {
   try {

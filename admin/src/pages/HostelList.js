@@ -5,7 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Select, Space, Spin } from "antd";
+import { Space, Spin } from "antd";
 import {
   deleteAHostel,
   getAllHostels,
@@ -213,7 +213,7 @@ const HostelList = () => {
     deletedHostel,
   } = useSelector((state) => state.hostel);
 
-  console.log(hostelState);
+  // console.log(hostelState);
 
   const data1 = [];
   for (let i = 0; i < hostelState?.length; i++) {

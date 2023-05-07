@@ -5,14 +5,14 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
+  deleteEnquiry,
   getAllEnquiries,
+  resetState,
   updateEnquiry,
 } from "../features/enquiry/enquirySlice";
 import { Select, Space, Spin } from "antd";
-
-// const handleChange = (value) => {
-//   console.log(`selected ${value}`);
-// };
+import CustomModal from "../components/CustomModal";
+import { toast } from "react-toastify";
 
 const columns = [
   {
@@ -42,26 +42,42 @@ const columns = [
   },
 
   {
-    title: "Action",
+    title: "Delete",
     dataIndex: "action",
   },
 ];
 
 const Enquiry = () => {
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const [enquiryId, setEnquiryId] = useState("");
+
+  const showModal = (e) => {
+    setOpen(true);
+    // console.log(e);
+    setEnquiryId(e);
+    // console.log(hostelId);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
+
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     dispatch(getAllEnquiries());
+    dispatch(resetState());
   }, [dispatch]);
 
   useEffect(() => {
     // Render component based on selectedOption value
-    console.log("called");
+    // console.log("called");
     dispatch(getAllEnquiries());
   }, [selectedOption]);
 
-  const { isLoading } = useSelector((state) => state.enquiry);
+  const { isSuccess, isLoading, deletedEnquiry } = useSelector(
+    (state) => state.enquiry
+  );
   const enquiryState = useSelector(
     (state) => state.enquiry?.enquiries?.enquiries
   );
@@ -88,7 +104,7 @@ const Enquiry = () => {
       status: (
         <Space wrap>
           <Select
-            defaultValue={enquiryState[i].status}
+            defaultValue={enquiryState[i]?.status}
             style={{
               width: 120,
             }}
@@ -112,13 +128,13 @@ const Enquiry = () => {
       ),
 
       action: (
-        <div className="flex gap-1">
-          <Link to="/" className="text-green-500 text-lg ">
-            <CiEdit />
-          </Link>
-          <Link to="/" className="text-red-500 text-lg ">
+        <div className="flex gap-1 justify-center">
+          <button
+            onClick={() => showModal(enquiryState[i]?._id)}
+            className="text-red-500 text-lg "
+          >
             <AiOutlineDelete />{" "}
-          </Link>
+          </button>
         </div>
       ),
       finalStatus: (
@@ -138,6 +154,22 @@ const Enquiry = () => {
       ),
     });
   }
+
+  const deleteaEnquiry = (id) => {
+    dispatch(deleteEnquiry(id));
+
+    setOpen(false);
+
+    setTimeout(() => {
+      dispatch(getAllEnquiries());
+      dispatch(resetState());
+    }, 800);
+  };
+  useEffect(() => {
+    if (isSuccess && deletedEnquiry) {
+      toast.success("Complain Deleted Successfully!");
+    }
+  }, [isSuccess, deletedEnquiry]);
   return (
     <>
       {isLoading ? (
@@ -149,10 +181,16 @@ const Enquiry = () => {
       ) : (
         <div>
           <div className="m-4 title">
-            <h3 className="mb-4">Recent Enquiries</h3>
+            <h3 className="mb-4">Recent Complaints</h3>
             <div>
               <Table columns={columns} dataSource={data1} />
             </div>
+            <CustomModal
+              title="Hey! Are you sure you want to delete this Complain"
+              hideModal={hideModal}
+              open={open}
+              performAction={() => deleteaEnquiry(enquiryId)}
+            />
           </div>
         </div>
       )}

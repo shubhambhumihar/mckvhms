@@ -16,7 +16,7 @@ const Hostels = () => {
 
   const { isLoading, isSuccess } = hostelState;
 
-  const hostels = hostelState.hostels.hostels;
+  const hostels = hostelState?.hostels?.hostels;
   // console.log(hostels?.length);
 
   const getHostels = () => {
@@ -59,7 +59,10 @@ const Hostels = () => {
           </div>
           {isLoading ? (
             <div className="flex justify-center pt-5 mt-7">
-              <div className="spinner"></div>
+              <div class="loader">
+                <span class="loader-text">loading</span>
+                <span class="load"></span>
+              </div>
             </div>
           ) : hostels?.length > 0 ? (
             <div className="grid lg:grid-cols-2 gap-2 justify-center mx-auto  mb-[-200px] relative z-40 h">

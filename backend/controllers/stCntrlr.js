@@ -134,6 +134,25 @@ exports.getAllStudents = asyncHandler(async (req, res) => {
   }
 });
 
+exports.getStudents = asyncHandler(async (req, res) => {
+  const { query } = req.query;
+  console.log(query);
+  try {
+    const students = await Stdnt.find({
+      $or: [
+        { name: { $regex: query, $options: "i" } },
+        { email: { $regex: query, $options: "i" } },
+        { student_id: { $regex: query, $options: "i" } },
+      ],
+    });
+
+    res.status(200).json(students);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 exports.loginAsStudent = asyncHandler(async (req, res) => {
   const { student_id, password } = req.body;
   console.log(req.user);
@@ -182,7 +201,11 @@ exports.getSingleStudent = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     validateMongoId(id);
-    const student = await Stdnt.findById(id);
+    const student = await Stdnt.findById(id).populate([
+      "hostel_id",
+      "room_id",
+      "bed_id",
+    ]);
     if (!student) {
       throw new Error(`Student ${id} not found`);
     } else {
@@ -257,3 +280,47 @@ exports.deleteStudent = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
+exports.searchStudent = asyncHandler(async (req, res) => {
+  // const room_id = req.params.roomId;
+  try {
+    console.log(req.query);
+
+    res
+      .status(200)
+      .json({ success: true, message: "Student deleted successfully" });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+exports.test = asyncHandler(async (req, res) => {
+  // const room_id = req.params.roomId;
+  try {
+    // console.log(req.query);
+
+    res.status(200).json({ success: true, message: "Student  successfully" });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+
+// exports.searchStudent = asyncHandler(async (req, res) => {
+//   // const { query } = req.query;
+//   console.log(req.query);
+
+//   res.status(200).send("hi");
+
+//   // try {
+//   //   const students = await Std.find({
+//   //     $or: [
+//   //       { name: { $regex: query, $options: "i" } },
+//   //       { email: { $regex: query, $options: "i" } },
+//   //       { studentId: { $regex: query, $options: "i" } },
+//   //     ],
+//   //   });
+
+//   //   res.status(200).json(students);
+//   // } catch (err) {
+//   //   console.error(err);
+//   //   res.status(500).json({ message: "Server error" });
+//   // }
+// });

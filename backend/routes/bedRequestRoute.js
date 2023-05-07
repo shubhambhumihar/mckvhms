@@ -6,6 +6,7 @@ const {
   getAllPendingRequests,
   updateStatusOfBedRequest,
   getStudentBedRequest,
+  deleteBedRequest,
 } = require("../controllers/bedRequestCntrl");
 const { isAuthenticated, isAdmin } = require("../middlewares/auth");
 
@@ -44,6 +45,7 @@ router.route("/pending").get(isAuthenticated, getAllPendingRequests);
 router
   .route("/:id/update-status")
   .put(isAuthenticated, updateStatusOfBedRequest);
+router.route("/:id").delete(isAuthenticated, deleteBedRequest);
 
 router.route("/student-bed-request").get(isAuthenticated, getStudentBedRequest);
 

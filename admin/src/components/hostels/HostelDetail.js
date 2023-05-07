@@ -26,6 +26,8 @@ const HostelDetail = () => {
     (state) => state.hostel
   );
 
+  console.log(roomsOfHostel);
+
   useEffect(() => {
     dispatch(getAHostel(getHostelId));
   }, [getHostelId]);
@@ -70,19 +72,34 @@ const HostelDetail = () => {
             <div className="border shadow-lg shadow-green-100 bg-red-300 flex justify-center items-center flex-col px-7 py-3 rounded-3xl text-white font-bold">
               <p>Total Rooms</p>
               {isLoading ? (
-                <p>Loading...</p>
+                <div className="flex justify-center">
+                  <div class="loader">
+                    <span class="loader-text">loading</span>
+                    <span class="load"></span>
+                  </div>
+                </div>
               ) : (
                 <h3>{roomsOfHostel?.rooms?.length}</h3>
               )}
             </div>
             <div className="border bg-purple-600  flex justify-center items-center flex-col px-7 py-3 rounded-3xl text-white font-bold">
               <p>Booked Room</p>
-              {isLoading ? <p>Loading...</p> : <h3>{totalBookedRooms}</h3>}
+              {isLoading ? (
+                <div class="loader">
+                  <span class="loader-text">loading</span>
+                  <span class="load"></span>
+                </div>
+              ) : (
+                <h3>{totalBookedRooms}</h3>
+              )}
             </div>
             <div className="border bg-teal-500  flex justify-center items-center flex-col px-7 py-3 rounded-3xl text-white font-bold">
               <p>Total Beds</p>
               {isLoading ? (
-                <p>Loading...</p>
+                <div class="loader">
+                  <span class="loader-text">loading</span>
+                  <span class="load"></span>
+                </div>
               ) : (
                 <h3>{bedsOfHostel?.beds?.length}</h3>
               )}
@@ -91,7 +108,10 @@ const HostelDetail = () => {
 
           {isLoading ? (
             <div className="flex justify-center my-7">
-              <div className="spinner"></div>
+              <div class="loader">
+                <span class="loader-text">loading</span>
+                <span class="load"></span>
+              </div>
             </div>
           ) : roomsOfHostel?.rooms?.length > 0 ? (
             <>

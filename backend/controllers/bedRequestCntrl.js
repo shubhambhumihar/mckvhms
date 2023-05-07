@@ -101,6 +101,17 @@ exports.updateStatusOfBedRequest = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
+// UPdate the request of bed
+exports.deleteBedRequest = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const bedRequest = await BedRequest.findByIdAndDelete(id);
+    res.status(200).json({ success: true, message: "Deleted successfully" });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
 exports.getStudentBedRequest = asyncHandler(async (req, res) => {
   const studentId = req.user.student_id;
   console.log(studentId);
