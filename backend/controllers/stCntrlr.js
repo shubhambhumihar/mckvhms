@@ -6,6 +6,7 @@ const Stdnt = require("../models/StModel");
 const Room = require("../models/roomModel");
 const Bed = require("../models/bedModel");
 const User = require("../models/userModel");
+const nodemailer = require("nodemailer");
 
 exports.createStd = asyncHandler(async (req, res) => {
   const { name, email, password, mobile, hostel_id, room_id, bed_id } =
@@ -51,6 +52,33 @@ exports.createStd = asyncHandler(async (req, res) => {
     } catch (error) {
       throw new Error(error.message);
     }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "rechms1234@gmail.com", // replace with your email address
+        pass: "tgcgjdvkeexnmcvp", // replace with your email password or app password
+      },
+    });
+
+    const mailOptions = {
+      from: "rechms1234@gmail.com", // replace with your email address
+      to: `${student.email}`, // replace with the admin's email address
+      subject: "Congratulations! Your Student Profile is created by Admin!",
+      html: `
+        <p>Name: ${name}</p>
+        <p>Email: ${email}</p>
+       
+      `,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("Email sent successfully: " + info.response);
+      }
+    });
 
     // Send the success response
     res.status(201).json({ message: "Student added successfully!", student });
@@ -170,24 +198,16 @@ exports.loginAsStudent = asyncHandler(async (req, res) => {
         .status(400)
         .json({ message: "Invalid student ID or password" });
     }
-    // const isMatch = await bcrypt.compare(password, student.password);
-    // if (!isMatch) {
-    //   return res.status(401).json({ message: "Incorrect Credentials " });
-    // }
 
-    // const token = jwt.sign(
-    //   { studentId: student.student_id },
-    //   process.env.JWT_SECRET_KEY
-    // );
     // Update user's isStudent property to true
     const user = await User.findByIdAndUpdate(
       req.user._id,
       { $set: { student_id: student_id, isStudent: true } },
       { new: true, runValidators: true }
     );
-    // console.log(user);
-    // await student.save();
-
+    console.log("user", user);
+    console.log(req.user);
+    // console.log(req.user._id)
     res
       .status(200)
       .json({ success: true, message: "Login as student successfully!", user });

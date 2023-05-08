@@ -5,7 +5,7 @@ const getStaffs = async () => {
   const res = await axios.get(
     `${base_url}staff/`,
 
-    config
+    config()
   );
 
   return res.data;

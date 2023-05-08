@@ -81,7 +81,6 @@ const BedBookModel = ({
       formData.append("allotmentLetter", values.allotmentLetter);
 
       dispatch(createBedRequest(formData));
-      dispatch(getStudentBedRequests());
 
       setStatus("pending");
 
@@ -89,11 +88,11 @@ const BedBookModel = ({
 
       alert(JSON.stringify(values, null, 2));
 
-      setTimeout(() => {
-        dispatch(resetState());
+      // setTimeout(() => {
+      //   dispatch(resetState());
 
-        // navigate("/admin/room-list");
-      }, 1000);
+      //   // navigate("/admin/room-list");
+      // }, 1000);
     },
   });
 

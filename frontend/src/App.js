@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -33,12 +33,20 @@ import Nav from "./components/Nav";
 import { FloatButton } from "antd";
 import TermsCondn from "./components/TermsCondn";
 import HostelRooms from "./components/HostelRooms";
+import { useDispatch } from "react-redux";
+import { getProfileOfMine } from "./features/auth/authSlice";
 // import Fourtofour from "./components/Fourtofour";
 
 const App = () => {
   // const userState = useSelector((state) => state.auth);
 
   const token = localStorage.getItem("tkn");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileOfMine());
+  }, []);
 
   // console.log(token);
 

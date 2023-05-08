@@ -22,11 +22,18 @@ const login = async (userData) => {
     return res.data;
   }
 };
+const getMyProfile = async () => {
+  const res = await axios.get(`${base_url}user/profile`, config());
+
+  if (res.data) {
+    return res.data;
+  }
+};
 const loginasStudent = async (userData) => {
   const res = await axios.post(
     `${base_url}student/loginAsStudent`,
     userData,
-    config
+    config()
   );
 
   if (res.data) {
@@ -34,7 +41,7 @@ const loginasStudent = async (userData) => {
   }
 };
 const updateProfile = async (userData) => {
-  console.log(userData);
+  // console.log(userData);
   const res = await axios.put(
     `${base_url}user/update-user`,
     {
@@ -44,7 +51,7 @@ const updateProfile = async (userData) => {
       email: userData.email,
       // userData,
     },
-    config
+    config()
   );
 
   if (res.data) {
@@ -57,7 +64,7 @@ const logout = async () => {
   const res = await axios.get(
     `${base_url}user/logout`,
 
-    config
+    config()
   );
   if (res.data) {
     // Remove the user data from localStorage
@@ -74,6 +81,7 @@ const authService = {
   loginasStudent,
   updateProfile,
   logout,
+  getMyProfile,
 };
 
 export default authService;

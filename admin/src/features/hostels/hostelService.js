@@ -7,7 +7,7 @@ const getHostels = async () => {
   return res.data;
 };
 const createHostel = async (data) => {
-  const res = await axios.post(`${base_url}hostel/create`, data, config);
+  const res = await axios.post(`${base_url}hostel/create`, data, config());
   return res.data;
 };
 const updateHostel = async (hostelData) => {
@@ -25,27 +25,27 @@ const updateHostel = async (hostelData) => {
       phone: hostelData.hosteldata.phone,
       images: hostelData.hosteldata.images,
     },
-    config
+    config()
   );
   return res.data;
 };
 
 const getHostel = async (id) => {
-  const res = await axios.get(`${base_url}hostel/${id}`, config);
+  const res = await axios.get(`${base_url}hostel/${id}`, config());
   return res.data;
 };
 
 const getRoomsByHostelId = async (id) => {
-  const res = await axios.get(`${base_url}hostel/room/${id}`, config);
+  const res = await axios.get(`${base_url}hostel/room/${id}`, config());
   return res.data;
 };
 const getBedByHostelId = async (id) => {
-  const res = await axios.get(`${base_url}hostel/bed/${id}`, config);
+  const res = await axios.get(`${base_url}hostel/bed/${id}`, config());
   return res.data;
 };
 
 const deleteHostel = async (id) => {
-  const res = await axios.delete(`${base_url}hostel/${id}`, config);
+  const res = await axios.delete(`${base_url}hostel/${id}`, config());
   return res.data;
 };
 

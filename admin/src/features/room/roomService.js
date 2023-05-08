@@ -8,12 +8,12 @@ const getAllRooms = async () => {
 };
 
 const createRoom = async (data) => {
-  const res = await axios.post(`${base_url}room/create`, data, config);
+  const res = await axios.post(`${base_url}room/create`, data, config());
   return res.data;
 };
 
 const updateRoom = async (roomData) => {
-  console.log(roomData);
+  // console.log(roomData);
   // console.log(hostelData.id);
   const res = await axios.put(
     `${base_url}room/${roomData.id}`,
@@ -26,21 +26,21 @@ const updateRoom = async (roomData) => {
       capacity: roomData.roomdata.capacity,
       hostel_id: roomData.roomdata.hostel_id,
     },
-    config
+    config()
   );
   return res.data;
 };
 
 const getRoom = async (id) => {
-  const res = await axios.get(`${base_url}room/${id}`, config);
+  const res = await axios.get(`${base_url}room/${id}`, config());
   return res.data;
 };
 const getBedOfRoom = async (id) => {
-  const res = await axios.get(`${base_url}room/bed/${id}`, config);
+  const res = await axios.get(`${base_url}room/bed/${id}`, config());
   return res.data;
 };
 const deleteRoom = async (id) => {
-  const res = await axios.delete(`${base_url}room/${id}`, config);
+  const res = await axios.delete(`${base_url}room/${id}`, config());
   return res.data;
 };
 

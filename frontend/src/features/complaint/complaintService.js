@@ -2,7 +2,7 @@ import axios from "axios";
 import { base_url, config } from "../../utils/axiosConfig";
 
 const createComplain = async (data) => {
-  const res = await axios.post(`${base_url}enquiry/`, data, config);
+  const res = await axios.post(`${base_url}enquiry/`, data, config());
   return res.data;
 };
 

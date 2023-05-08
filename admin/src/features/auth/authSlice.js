@@ -43,6 +43,16 @@ export const logout = createAsyncThunk(
     }
   }
 );
+export const getProfileOfMine = createAsyncThunk(
+  "auth/getMyprofile",
+  async (thunkAPI) => {
+    try {
+      return await authService.getMyProfile();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -86,6 +96,22 @@ export const authSlice = createSlice({
         if (state.isError === true) {
           toast.error(action.error.message);
         }
+      })
+      .addCase(getProfileOfMine.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getProfileOfMine.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(getProfileOfMine.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.error;
+        state.user = null;
       });
   },
 });

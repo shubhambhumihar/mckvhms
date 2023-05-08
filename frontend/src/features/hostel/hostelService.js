@@ -5,19 +5,19 @@ const getHostels = async () => {
   const res = await axios.get(
     `${base_url}hostel/`,
 
-    config
+    config()
   );
 
   return res.data;
 };
 
 const getSingleHostel = async (id) => {
-  const res = await axios.get(`${base_url}hostel/${id}`, config);
+  const res = await axios.get(`${base_url}hostel/${id}`, config());
 
   return res.data;
 };
 const getRoomsOfHostel = async (id) => {
-  const res = await axios.get(`${base_url}hostel/room/${id}`, config);
+  const res = await axios.get(`${base_url}hostel/room/${id}`, config());
 
   return res.data;
 };

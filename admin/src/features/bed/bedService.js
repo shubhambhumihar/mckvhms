@@ -8,20 +8,20 @@ const getBeds = async () => {
 };
 
 const createBed = async (data) => {
-  const res = await axios.post(`${base_url}bed/create`, data, config);
+  const res = await axios.post(`${base_url}bed/create`, data, config());
   return res.data;
 };
 
 const getSingleBed = async (id) => {
-  const res = await axios.get(`${base_url}bed/${id}`, config);
+  const res = await axios.get(`${base_url}bed/${id}`, config());
   return res.data;
 };
 const getStudentOfSingleBed = async (id) => {
-  const res = await axios.get(`${base_url}bed/${id}/student`, config);
+  const res = await axios.get(`${base_url}bed/${id}/student`, config());
   return res.data;
 };
 const deleteBed = async (id) => {
-  const res = await axios.delete(`${base_url}bed/${id}`, config);
+  const res = await axios.delete(`${base_url}bed/${id}`, config());
   return res.data;
 };
 

@@ -1,10 +1,4 @@
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -17,8 +11,10 @@ import {
   AiOutlineInfoCircle,
   AiOutlineUserAdd,
   AiOutlineUsergroupAdd,
+  AiOutlineSearch,
+  AiOutlineContacts,
 } from "react-icons/ai";
-import { FcCustomerSupport, FcAddImage, FcLibrary } from "react-icons/fc";
+
 import { MdOutlineBedroomChild } from "react-icons/md";
 import { TbMoodBoy } from "react-icons/tb";
 import {
@@ -27,18 +23,18 @@ import {
 } from "react-icons/md";
 import { FaRegObjectUngroup } from "react-icons/fa";
 
-import { MdOutlineBrandingWatermark, MdCategory, MdBoy } from "react-icons/md";
-import { HiOutlineRectangleGroup } from "react-icons/hi";
-import { GrCatalogOption } from "react-icons/gr";
+import { MdBoy } from "react-icons/md";
+
 import { BsListNested, BsFillHouseDoorFill, BsListCheck } from "react-icons/bs";
-import { BiCategory, BiColor, BiBed } from "react-icons/bi";
-import { ImBlog } from "react-icons/im";
+import { BiBed } from "react-icons/bi";
+
 import { FaList } from "react-icons/fa";
+
 import { IoMdNotificationsOutline } from "react-icons/io";
-// import { BiBed } from "react-icons/bi";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import { DownOutlined } from "@ant-design/icons";
+
 import { Dropdown, Space } from "antd";
 import { logout } from "../features/auth/authSlice";
 
@@ -48,7 +44,7 @@ const LayoutApp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userState = useSelector((state) => state?.auth);
-  const { user } = userState?.user;
+  const user = userState?.user?.user;
   // console.log(user);
 
   const [collapsed, setCollapsed] = useState(false);
@@ -317,7 +313,7 @@ const LayoutApp = () => {
             {
               key: "contact",
               icon: (
-                <AiOutlineQuestionCircle
+                <AiOutlineContacts
                   style={{
                     color: "white",
                     fontWeight: "bold",
@@ -330,7 +326,7 @@ const LayoutApp = () => {
             {
               key: "search",
               icon: (
-                <AiOutlineQuestionCircle
+                <AiOutlineSearch
                   style={{
                     color: "white",
                     fontWeight: "bold",
@@ -338,7 +334,7 @@ const LayoutApp = () => {
                   }}
                 />
               ),
-              label: "Search for Student ",
+              label: "Search Students ",
             },
           ]}
         />

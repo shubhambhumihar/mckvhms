@@ -8,13 +8,13 @@ const getStaffs = async () => {
 };
 
 const createStaff = async (data) => {
-  const res = await axios.post(`${base_url}staff/create`, data, config);
+  const res = await axios.post(`${base_url}staff/create`, data, config());
   return res.data;
 };
 
 const updateStaff = async (staffData) => {
-  console.log(staffData);
-  console.log(staffData.id);
+  // console.log(staffData);
+  // console.log(staffData.id);
   const res = await axios.put(
     `${base_url}staff/${staffData.id}`,
     {
@@ -27,17 +27,17 @@ const updateStaff = async (staffData) => {
       // phone: hostelData.hosteldata.phone,
       // images: hostelData.hosteldata.images,
     },
-    config
+    config()
   );
   return res.data;
 };
 
 const getStaff = async (id) => {
-  const res = await axios.get(`${base_url}staff/${id}`, config);
+  const res = await axios.get(`${base_url}staff/${id}`, config());
   return res.data;
 };
 const deleteStaff = async (id) => {
-  const res = await axios.delete(`${base_url}staff/${id}`, config);
+  const res = await axios.delete(`${base_url}staff/${id}`, config());
   return res.data;
 };
 

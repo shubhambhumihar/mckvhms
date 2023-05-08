@@ -31,7 +31,6 @@ const PostShare = () => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   const desc = useRef();
-  // const user = useSelector((state) => state?.auth?.user?.user);
 
   const onImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GeneraInput from "../components/GeneraInput";
-import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
 import { Select, Space } from "antd";
 import { AiOutlineClose } from "react-icons/ai";
@@ -51,15 +51,15 @@ const AddStudent = () => {
 
   const getStudentId = location.pathname.split("/")[3];
 
-  console.log(getStudentId);
+  // console.log(getStudentId);
 
-  const hostelState = useSelector((state) => state.hostel.hostels.hostels);
+  const hostelState = useSelector((state) => state.hostel?.hostels?.hostels);
   const { bedsOfRoom } = useSelector((state) => state.room);
   const {
     isLoading,
     isSuccess,
     isError,
-    createdStudent,
+    // createdStudent,
     studentName,
     studentEmail,
     studentDepartment,
@@ -76,7 +76,8 @@ const AddStudent = () => {
     studentparentContactNumber,
     updatedStudent,
   } = useSelector((state) => state.student);
-  console.log(createdStudent);
+  const st = useSelector((state) => state.student.createdStudent);
+  console.log(st);
   const beds = bedsOfRoom?.beds;
   // console.log(bedsOfRoom.beds);
 
@@ -119,9 +120,9 @@ const AddStudent = () => {
         dispatch(createStudent(values));
         formik.resetForm();
         setTimeout(() => {
-          // dispatch(resetState());
+          dispatch(resetState());
           navigate("/admin/student-list");
-        }, 300);
+        }, 1000);
       }
 
       alert(JSON.stringify(values, null, 2));
@@ -129,19 +130,18 @@ const AddStudent = () => {
   });
 
   useEffect(() => {
-    if (isSuccess && createdStudent) {
+    if (isSuccess && st) {
       toast.success("Student Added Successfully!");
     }
 
     if (isSuccess && updatedStudent) {
       toast.success("Student Updated Successfully!");
-      navigate("/admin/student-list");
     }
 
     if (isError) {
       toast.error("Something gone wrong!");
     }
-  }, [isSuccess, isError, createdStudent, updatedStudent]);
+  }, [isSuccess, isError, st, updatedStudent]);
 
   return (
     <div>

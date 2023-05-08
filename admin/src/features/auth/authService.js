@@ -12,7 +12,7 @@ const login = async (userData) => {
   return res.data;
 };
 const logout = async () => {
-  const res = await axios.get(`${base_url}user/logout-admin`, config);
+  const res = await axios.get(`${base_url}user/logout-admin`, config());
 
   if (res.data) {
     localStorage.removeItem("user");
@@ -20,10 +20,18 @@ const logout = async () => {
     return res.data;
   }
 };
+const getMyProfile = async () => {
+  const res = await axios.get(`${base_url}user/profile`, config());
+
+  if (res.data) {
+    return res.data;
+  }
+};
 
 const authService = {
   login,
   logout,
+  getMyProfile,
 };
 
 export default authService;

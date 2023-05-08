@@ -8,7 +8,7 @@ const getAllRooms = async () => {
 };
 
 const getSingleRoom = async (id) => {
-  const res = await axios.get(`${base_url}room/${id}`, config);
+  const res = await axios.get(`${base_url}room/${id}`, config());
 
   return res.data;
 };

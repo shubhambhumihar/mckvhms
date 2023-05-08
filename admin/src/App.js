@@ -30,13 +30,15 @@ import BedDetail from "./components/beds/BedDetail";
 import BedRequest from "./components/beds/BedRequest";
 import Search from "./components/search/Search";
 import StudentDetails from "./components/search/StudentDetails";
+// import { getProfileOfMine } from "./features/auth/authSlice";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllHostels());
-  }, [dispatch]);
+    // dispatch(getProfileOfMine());
+  }, []);
 
   return (
     <Router>

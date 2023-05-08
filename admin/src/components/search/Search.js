@@ -20,7 +20,7 @@ const Search = () => {
         params: {
           query,
         },
-        ...config,
+        ...config(),
       });
 
       setStudents(res.data);
@@ -31,7 +31,7 @@ const Search = () => {
     }
   };
 
-  console.log(students);
+  // console.log(students);
   //  useEffect(()=>{
 
   //  })
@@ -88,18 +88,20 @@ const Search = () => {
               <Link
                 to={`/admin/student/${student._id}/details`}
                 key={index}
-                className="bg-gray-100 w-1/2 p-5 mx-auto rounded-2xl flex justify-between items-center"
+                className="bg-[#121212] text-white w-[70%] p-5 mx-auto rounded-2xl flex justify-between items-center gap-4"
               >
                 <Avatar
                   className="flex justify-center items-center"
                   size={64}
                   icon={<UserOutlined />}
                 />
-                <div className="">
-                  <h1 className="text-[#121212] font-bold text-2xl">
-                    {student?.name}{" "}
-                  </h1>
-                  <p className="text-xs">{student?.email} </p>
+                <div className=" flex w-[70%] p-1  self-start ">
+                  <div>
+                    <h1 className="text-white font-bold text-2xl">
+                      {student?.name}{" "}
+                    </h1>
+                    <p className="text-xs">{student?.email} </p>
+                  </div>
                 </div>
               </Link>
             );

@@ -3,20 +3,20 @@ import { base_url } from "../../utils/baseUrl";
 import { config } from "../../utils/axiosConfig";
 
 const createStudent = async (data) => {
-  const res = await axios.post(`${base_url}student/`, data, config);
+  const res = await axios.post(`${base_url}student/`, data, config());
   return res.data;
 };
 
 const getAllStudents = async () => {
-  const res = await axios.get(`${base_url}student/`, config);
+  const res = await axios.get(`${base_url}student/`, config());
   return res.data;
 };
 const getAStudent = async (id) => {
-  const res = await axios.get(`${base_url}student/${id}`, config);
+  const res = await axios.get(`${base_url}student/${id}`, config());
   return res.data;
 };
 const updateStudent = async (studentData) => {
-  console.log(studentData);
+  // console.log(studentData);
   const res = await axios.put(
     `${base_url}student/${studentData.id}`,
     {
@@ -35,12 +35,12 @@ const updateStudent = async (studentData) => {
       bed_id: studentData.studentdata?.bed_id,
       hostel_id: studentData.studentdata?.hostel_id,
     },
-    config
+    config()
   );
   return res.data;
 };
 const deleteAStudent = async (id) => {
-  const res = await axios.delete(`${base_url}student/${id}`, config);
+  const res = await axios.delete(`${base_url}student/${id}`, config());
   return res.data;
 };
 
