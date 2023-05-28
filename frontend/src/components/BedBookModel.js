@@ -4,7 +4,7 @@ import { Select, Space } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Upload, message } from "antd";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHostels } from "../features/hostel/hostelSlice";

@@ -8,6 +8,9 @@ import "leaflet/dist/leaflet.css";
 import { createContact, resetState } from "../features/contact/contactSlice";
 
 import Complain from "./Complain";
+const img1 = require("../assets/vishalsir.jfif");
+const img2 = require("../assets/nileshsir.jfif");
+const img3 = require("../assets/sourabh.jfif");
 let contactSchema = Yup.object().shape({
   name: Yup.string()
     .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid name")
@@ -82,22 +85,22 @@ const Contact = () => {
       <div className=" flex flex-col sm:flex-row justify-around items-center">
         <div>
           <h1
-            className="text-[2rem] md:text-[4rem] text-purple-500 font-bold  "
+            className="text-[2rem] md:text-[4rem] md:ml-7 text-purple-500 font-bold  "
             style={{ lineHeight: 0.8 }}
           >
             Find us <br />
             using the MAP{" "}
           </h1>
-          <p className="my-5  text-sm p-10">
+          <p className="md:my-5 my-1 text-sm md:p-10 p-2">
             Address : Chhotki Lari, <br /> Murubanda,
             <br /> Jharkhand 825101
           </p>
         </div>
 
-        <div class="col-md-5 w-1/2  h-[80vh] ">
+        <div class="col-md-5 md:w-1/2 w-[80vw] mx-auto  ">
           <div style={{ width: "960px" }}></div>
 
-          <div className="w-[100%] mt-[50px] md:h-[400px] h-[200px]">
+          <div className="w-[100%] md:mt-[50px] mt-[30px] md:h-[400px] ">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7257806211883!2d85.62739847432023!3d23.578290195363994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f458e93cb14f4f%3A0xb22c7b3b8ffb020f!2sRamgarh%20Engineering%20College!5e0!3m2!1sen!2sin!4v1681891093730!5m2!1sen!2sin"
               width="100%"
@@ -109,7 +112,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="my-1 md:my-11">
+      <div className="my-5 md:my-11">
         <div className="md:flex w-[90vw]  mx-auto lg:flex items-center justify-around">
           <div className=" md:my-10">
             <h3 className="text-[1.7rem] mb-6 text-center text-purple-700  font-semibold">
@@ -207,52 +210,33 @@ const Contact = () => {
         </div>
       </div>
 
-      <h1 className="text-center text-3xl underline underline-offset-4 text-bold text-[#f4f3f5] my-6">
+      <h1 className="text-center md:text-3xl text-xl underline underline-offset-4 text-bold text-[#f4f3f5] my-6">
         Our Management Team
       </h1>
       <div className="flex flex-col justify-around items-center md:flex-row flex-wrap">
         <div className="mx-w-[100%]  md:mx-w-[20%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card ">
-          <img
-            className="w-[150px] rounded-full"
-            src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
-            alt=""
-          />
+          <img className="w-[150px] h-[150px] rounded-full" src={img1} alt="" />
           <div>
-            <h3 className="text-2xl text-slate-500">Nilesh Kumar</h3>
-            <p className="text-sm text-center font-light">Hostel Incharge</p>
+            <h3 className="text-2xl text-slate-500">Mr. Vishal Kumar</h3>
+            <p className="text-sm text-center font-light">
+              Hostel Chief Warden
+            </p>
           </div>
         </div>
         <div className="mx-w-[100%]  md:mx-w-[20%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card ">
-          <img
-            className="w-[150px] rounded-full"
-            src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
-            alt=""
-          />
+          <img className="w-[150px] h-[150px] rounded-full" src={img2} alt="" />
           <div className="flex flex-col items-center">
-            <h3 className="text-2xl text-slate-500">Nilesh Kumar</h3>
+            <h3 className="text-2xl text-slate-500">Mr. Nilesh Kumar</h3>
             <p className="text-sm text-center font-light">Hostel Incharge</p>
           </div>
         </div>
         <div className="mx-w-[100%]  md:mx-w-[20%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card ">
-          <img
-            className="w-[150px] rounded-full"
-            src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
-            alt=""
-          />
+          <img className="w-[150px] h-[150px] rounded-full" src={img3} alt="" />
           <div>
-            <h3 className="text-2xl text-slate-500">Nilesh Kumar</h3>
-            <p className="text-sm text-center font-light">Hostel Incharge</p>
-          </div>
-        </div>
-        <div className="mx-w-[100%]  md:mx-w-[20%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card ">
-          <img
-            className="w-[150px] rounded-full"
-            src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
-            alt=""
-          />
-          <div>
-            <h3 className="text-2xl text-slate-500">Nilesh Kumar</h3>
-            <p className="text-sm text-center font-light">Hostel Incharge</p>
+            <h3 className="text-2xl text-slate-500">Mr.Sourabh Ghosh</h3>
+            <p className="text-sm text-center font-light">
+              Hostel Maintainance
+            </p>
           </div>
         </div>
       </div>

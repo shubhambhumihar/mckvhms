@@ -14,7 +14,7 @@ const Maintain = () => {
   // console.log(staff);
   // console.log(staffImages);
   return (
-    <div className="max-w-screen-2xl my-6" id="maintain">
+    <div className="max-w-screen-3xl mx-auto my-6" id="maintain">
       <div className="mx-auto grid lg:grid-cols-2 justify-center place-items-center  gap-2">
         <div className="p-7 border-r-[1px] h-[50%] border-gray-400">
           <h1 className="text-2xl lg:text-4xl text-[#654E92] font-bold  px-3 text-center border-b-4 border-red-400 max-w-[450px] mx-auto">
@@ -31,13 +31,13 @@ const Maintain = () => {
             Our staffs
           </h4>
           {staff?.staffs?.length > 0 ? (
-            <div className="flex flex-wrap justify-center gap-1">
+            <div className="flex flex-wrap justify-center gap-4">
               {staff?.staffs?.map((staff, index) => (
                 <div key={index}>
                   <img
                     src={staff.images[0]?.url}
                     alt=""
-                    className="rounded-full w-[100px] animate-pulse"
+                    className="rounded-full md:w-[100px] md:h-[100px] w-[80px] h-[80px] animate-pulse"
                   />
                 </div>
               ))}
@@ -49,13 +49,14 @@ const Maintain = () => {
             </div>
           )}
         </div>
-        <div className="flex justify-start align-top">
+        <div className="flex justify-start align-top my-[3rem]">
           <lottie-player
             src="https://assets8.lottiefiles.com/packages/lf20_B2qAl3/data.json"
             background="transparent"
             speed="1"
             style={{ width: "400px", height: "400px" }}
             loop
+            className="w-[100px] sm:w-200"
             autoplay
           ></lottie-player>
         </div>

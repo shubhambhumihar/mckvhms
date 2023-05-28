@@ -1,4 +1,5 @@
-export const base_url = "http://localhost:5000/api/v1/";
+export const base_url = "https://backendhostel.onrender.com/api/v1/";
+// export const base_url = "https://backendrec.onrender.com/api/v1/";
 
 const getTokenfromLocalStorage = () =>
   localStorage.getItem("user")

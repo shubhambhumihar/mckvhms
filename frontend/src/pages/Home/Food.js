@@ -20,7 +20,7 @@ const Food = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl  " id="food">
+    <div className="max-w-screen-3xl mx-auto  " id="food">
       <div className="mx-auto grid lg:grid-cols-2 justify-center place-items-center  gap-2">
         <div className="py-8  grid sm:grid-cols-2 md:grid-cols-2 place-items-center   lg:grid-cols-3 p-7 mx-auto  gap-5">
           <lottie-player

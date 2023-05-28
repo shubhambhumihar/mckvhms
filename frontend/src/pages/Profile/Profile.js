@@ -31,19 +31,6 @@ const Profile = () => {
   const userState = useSelector((state) => state.auth);
   const { picturePath } = useSelector((state) => state.auth?.user?.user);
 
-  // console.log(userState.user.user);
-
-  // const getUserFromLocalStorage = localStorage.getItem("user-frontend")
-  //   ? JSON.parse(localStorage.getItem("user-frontend"))
-  //   : null;
-  // const [user, setUser] = useState({});
-  // console.log(user);
-  // useEffect(() => {
-  //   setUser(getUserFromLocalStorage.user);
-  // }, []);
-  // const user = useSelector((state) => state.auth);
-  // console.log(user);
-
   let userSchema = Yup.object().shape({
     name: Yup.string()
       .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, "Invalid name")
@@ -68,7 +55,7 @@ const Profile = () => {
     onSubmit: (values) => {
       dispatch(updateUserProfile(values));
       // console.log(values);
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
   return (

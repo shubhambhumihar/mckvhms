@@ -32,15 +32,15 @@ const RoomInfo = ({ singleRoom }) => {
   };
 
   const user = useSelector((state) => state?.auth?.user?.user);
-  console.log(user);
+  // console.log(user);
   const studentBedBooking = useSelector(
     (state) => state?.bedBooking?.studentBedBooking
   );
 
   const status = studentBedBooking[0]?.status;
-  console.log(status);
+  // console.log(status);
 
-  console.log(studentBedBooking);
+  // console.log(studentBedBooking);
 
   useEffect(() => {
     if (user?.isStudent) {
@@ -55,29 +55,41 @@ const RoomInfo = ({ singleRoom }) => {
         <AnchorLink href="#stuff">Stuff</AnchorLink> */}
 
         <div className=" border-b-2 flex justify-center items-end  ">
-          <AnchorLink href="#overview" className="border px-8  py-0">
+          <AnchorLink
+            href="#overview"
+            className="border sm:px-8 px-2  sm:text-lg text-xs   py-0"
+          >
             OVERVIEW
           </AnchorLink>
-          <AnchorLink href="#amenties" className="border px-8   py-0">
+          <AnchorLink
+            href="#amenties"
+            className="border sm:px-8 px-2  sm:text-lg text-xs   py-0"
+          >
             AMENTIES
           </AnchorLink>
-          <AnchorLink href="#rules" className="border px-8   py-0">
+          <AnchorLink
+            href="#rules"
+            className="border sm:px-8 px-2 sm:text-lg text-xs   py-0"
+          >
             RULES AND POLICY
           </AnchorLink>
-          <AnchorLink href="#review" className="border px-8   py-0">
+          <AnchorLink
+            href="#review"
+            className="border sm:px-8 px-2  sm:text-lg text-xs   py-0"
+          >
             USER REVIEW
           </AnchorLink>
         </div>
 
         <section id="overview" className="w-[90vw] mx-auto  py-10 ">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl text-green-700 font-bold py-0 mx-20 w-[20vw] border-b-4 border-orange-700">
+          <div className="flex sm:flex-row  flex-col justify-between items-center">
+            <h1 className="sm:text-3xl text-xl text-center  text-green-700 font-bold py-0 sm:mx-20 mx-5 sm:w-[20vw]  border-b-4 border-orange-700">
               ABOUT ROOM
             </h1>
             {user?.isStudent ? (
-              <div className="flex ml-10 items-align my-8 mt-[3rem]">
+              <div className="flex sm:ml-10 items-center  justify-center  ml-0 items-align sm:my-8 my-1 sm:mt-[3rem] mt-[1rem]  mx-auto sm:mb-5 mb-[1rem] ">
                 {status ? (
-                  <button className="py-3 inline-block px-20 bg-yellow-600 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl">
+                  <button className="sm:py-3 py-1 sm:ml-0 ml-4 inline-block sm:px-20 px-8 bg-yellow-600 text-white font-bold italic line-height-[24px] sm:space-x-4 sm:text-lg text-xs rounded-xl">
                     Your bed request is in {status} state
                   </button>
                 ) : (
@@ -130,14 +142,14 @@ const RoomInfo = ({ singleRoom }) => {
 
           <div className="flex justify-center  mx-auto">
             <div className="flex justify-evenly  w-full  mx-auto flex-wrap gap-6">
-              <div className="border bg-red-500 p-6 w-[30%] flex  flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#D76D77] rounded-lg">
+              <div className="border bg-red-500 p-6 sm:w-[30%] w-full flex  flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#D76D77] rounded-lg">
                 <p className="text-xl text-white-100 font-bold">Total Beds</p>
                 <p className="text-sm text-red-300 font-bold">
                   {singleRoom?.room?.beds.length}
                   {/* {hostelData?.number_of_rooms}{" "} */}
                 </p>
               </div>
-              <div className="border bg-red-500 p-6 w-[30%] flex  flex-col items-center bg-gradient-to-b from-[#07a463] to-[#545152] rounded-lg">
+              <div className="border bg-red-500 p-6 sm:w-[30%] w-full flex  flex-col items-center bg-gradient-to-b from-[#07a463] to-[#545152] rounded-lg">
                 <p className="text-xl text-white-100 font-bold">
                   Total Students
                 </p>
@@ -149,8 +161,8 @@ const RoomInfo = ({ singleRoom }) => {
             </div>
           </div>
         </section>
-        <section id="amenties" className="w-[90vw] m-auto py-10 ">
-          <h1 className="text-3xl text-green-700 font-bold py-0  w-[20vw] border-b-4 border-orange-700">
+        <section id="amenties" className="w-[90vw] mx-auto py-10 ">
+          <h1 className="sm:text-3xl text-xl text-green-700 font-bold py-0  w-[20vw] border-b-4 border-orange-700">
             AMENTIES
           </h1>
           <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 my-8 content-center justify-center  border">
@@ -173,10 +185,10 @@ const RoomInfo = ({ singleRoom }) => {
           </div>
         </section>
         <section id="rules" className="w-[90vw] mx-auto text-white py-10 ">
-          <h1 className="text-3xl text-green-700 font-bold py-0 w-[20vw] border-b-4 border-orange-700">
+          <h1 className="sm:text-3xl text-xl text-green-700 font-bold py-0 sm:w-[20vw] w-[60vw] border-b-4 border-orange-700">
             Common Rules
           </h1>
-          <p className="my-[20px]">
+          <p className="sm:my-[20px] my-[10px] sm:text-lg text-sm ">
             Any violation of hostel rules may result in the guest being asked to
             leave the hostel immediately.
           </p>
@@ -196,8 +208,10 @@ const RoomInfo = ({ singleRoom }) => {
                         src={`https://joesch.moe/api/v1/random?key=${index}`}
                       />
                     }
-                    title={<a href="https://ant.design">{item.title}</a>}
-                    description={item.description}
+                    title={<p className="text-yellow-700">{item.title}</p>}
+                    description={
+                      <p className="sm:text-md text-xs">{item.description} </p>
+                    }
                   />
                 </List.Item>
               )}
@@ -205,7 +219,7 @@ const RoomInfo = ({ singleRoom }) => {
           </div>
         </section>
         <section id="review" className="w-[90vw] mx-auto  py-10 ">
-          <h1 className="text-3xl text-green-700 font-bold py-0  w-[20vw] border-b-4 border-orange-700">
+          <h1 className="sm:text-3xl text-xl text-green-700 font-bold py-0  sm:w-[20vw] w-[50vw] border-b-4 border-orange-700">
             REVIEWS
           </h1>
           <div className="grid md:grid-cols-2 items-center my-6 justify-center  mx-auto lg:grid-cols-4">
@@ -215,7 +229,7 @@ const RoomInfo = ({ singleRoom }) => {
                 src={img}
                 alt=""
               />
-              <p className="p-6 text-sm text-justify">
+              <p className="sm:p-6 p-3 sm:text-sm text-xs text-justify">
                 your hospitality of your hotel is good. food is also good.
                 ambiance of the inner rooms & cleanliness is superb. overall
                 everything seems to be good. 👍. overall my stay was good.
@@ -229,7 +243,7 @@ const RoomInfo = ({ singleRoom }) => {
                 src={img}
                 alt=""
               />
-              <p className="p-6 text-sm text-justify">
+              <p className="sm:p-6 p-3 sm:text-sm text-xs text-justify">
                 your hospitality of your hotel is good. food is also good.
                 ambiance of the inner rooms & cleanliness is superb. overall
                 everything seems to be good. 👍. overall my stay was good.
@@ -243,7 +257,7 @@ const RoomInfo = ({ singleRoom }) => {
                 src={img}
                 alt=""
               />
-              <p className="p-6 text-sm text-justify">
+              <p className="sm:p-6 p-3 sm:text-sm text-xs text-justify">
                 your hospitality of your hotel is good. food is also good.
                 ambiance of the inner rooms & cleanliness is superb. overall
                 everything seems to be good. 👍. overall my stay was good.
@@ -257,7 +271,7 @@ const RoomInfo = ({ singleRoom }) => {
                 src={img}
                 alt=""
               />
-              <p className="p-6 text-sm text-justify">
+              <p className="sm:p-6 p-3 sm:text-sm text-xs text-justify">
                 your hospitality of your hotel is good. food is also good.
                 ambiance of the inner rooms & cleanliness is superb. overall
                 everything seems to be good. 👍. overall my stay was good.

@@ -36,14 +36,14 @@ const Hostels = () => {
     <>
       <div className="max-w-screen-3xl  mx-auto  ">
         <div className="hostel">
-          <div className="hostelTop ">
+          <div className="hostelTop md:h-[60vh] h-fit p-7 ">
             <Link
               to="/"
-              className="relative top-7 left-3 animate__animated animate__jackInTheBox   cursor-pointer  "
+              className="relative md:top-7 top-0 left-3 animate__animated animate__jackInTheBox   cursor-pointer  "
             >
               <button className="button-85">Back to home</button>
             </Link>{" "}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col justify-center mt-6 items-center">
               <motion.div
                 variants={textVariant()}
                 className="animate__animated animate__bounce"

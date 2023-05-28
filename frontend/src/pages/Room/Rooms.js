@@ -38,12 +38,15 @@ const Rooms = () => {
       </Link>
       {isLoading ? (
         <div className="flex justify-center pt-5 mt-7">
-          <div className="spinner"></div>
+          <div class="loader">
+            <span class="loader-text">loading</span>
+            <span class="load"></span>
+          </div>
         </div>
       ) : (
-        <div className="max-w-screen-2xl  mb-10  w-[100%] mx-auto h-fit ">
+        <div className="max-w-screen-3xl mx-auto  mb-50  w-[100%]  h-fit ">
           <div className=" flex flex-col items-center">
-            <h1 className="text-3xl font-bold text-purple-600 underline text-center">
+            <h1 className="md:text-3xl text-xl font-bold text-purple-600 underline text-center">
               Welcome to Our Rooms{" "}
             </h1>
             <div className="my-4">
@@ -62,7 +65,7 @@ const Rooms = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 justify-center place-items-center gap-6 my-10">
+          <div className="grid md:grid-cols-2 grid-cols-1 justify-center place-items-center gap-6 my-10 mb-[9rem]">
             {hostelState?.map((hostel, index) => {
               return (
                 <Link

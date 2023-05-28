@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown, Space, Avatar } from "antd";
 import { logout } from "../features/auth/authSlice";
-import { Switch } from "antd";
+// import { Switch } from "antd";
 
 const Nav = () => {
   const [active, setActive] = useState("");
@@ -19,7 +19,7 @@ const Nav = () => {
   const [theme, setTheme] = useState("dark-theme");
 
   const toggleTheme = () => {
-    console.log("clicked");
+    // console.log("clicked");
     if (theme === "dark-theme") {
       setTheme("light-theme");
     } else {
@@ -108,7 +108,7 @@ const Nav = () => {
 
           <ul
             className={`md:flex md:bg-inherit bg-[#393646] md:px-0 md:pb-0 pb-12 absolute md:static  md:min-h-fit min-h-[60vh] md:items-center md:gap-[15px]  md:mr-[0px] gap-8 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-              toggle ? "top-[12vh]" : "top-[-490px]"
+              toggle ? "md:top-[12vh] top-[10vh]" : "top-[-490px]"
             } `}
           >
             {navLinks.map((nav) => (
@@ -178,17 +178,17 @@ const Nav = () => {
                   />
                 </div>
               ) : (
-                <div className="flex items-center gap-6">
+                <div className="flex items-center md:gap-6 gap-1">
                   <Link to="/auth">
-                    <button>Sign Up</button>
+                    <button className="w-[100px] text-xs">Sign Up</button>
                   </Link>
                   <Link to="/login">
-                    <button>Log In</button>
+                    <button className="w-[100px] text-xs">Log In</button>
                   </Link>
                   <img
                     src={toggle ? close : menu}
                     alt="menu"
-                    className="w-[28px] h-[28px] mr-4 object-contain md:hidden"
+                    className="md:w-[28px] md:h-[28px] w-[20px] h-[20px] md:mr-4 md:ml-0 ml-3 object-contain md:hidden"
                     onClick={() => handleClickMenu()}
                   />
                 </div>

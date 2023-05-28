@@ -66,7 +66,7 @@ const RoomDetail = () => {
   }, [getRoomId]);
 
   const { isLoading, singleRoom } = useSelector((state) => state.room);
-  // console.log(singleRoom);
+  console.log(singleRoom);
   const roomData = singleRoom.room;
 
   return (
@@ -83,13 +83,13 @@ const RoomDetail = () => {
               alt="logo"
               className="w-20 h-9 object-contain animate-pulse"
             />
-            <p className="text-white text-[18px] font-bold cursor-pointer flex ">
+            <p className="text-white text-[18px] sm:flex hidden font-bold cursor-pointer  ">
               Ramgarh &nbsp;
               <span className="sm:block hidden"> | Engineering College</span>
             </p>
           </Link>
 
-          <p className="relative text-center py-1   border px-20 cursor-pointer border-orange-600 flex justify-center items-center rounded-xl">
+          <p className="relative text-center sm:py-1 py-0  border sm:px-20 px-4 cursor-pointer border-orange-600 flex justify-center items-center rounded-xl">
             <Link to="/" className=" ">
               {" "}
               Back to home
@@ -97,17 +97,30 @@ const RoomDetail = () => {
           </p>
         </div>
 
-        <div className="h-[50vh]">
+        <div className="sm:h-[50vh] h-fit">
           <Carousel
             infiniteLoop
             autoPlay={true}
             useKeyboardArrows={true}
-            className="max-w-full h-[50vh] "
+            className="max-w-full sm:h-[50vh] h-fit "
             showThumbs={false}
           >
             {singleRoom?.room?.images?.map((imgs, index) => (
-              <div key={index} className="h-[50vh]">
-                <img src={imgs.url} alt="" />
+              <div
+                key={index}
+                className="sm:h-[50vh] h-fit flex justify-center items-center"
+                style={{
+                  background: "linear-gradient(to bottom, #000000, #000000)",
+                }}
+              >
+                <img
+                  style={{
+                    background: "linear-gradient(to bottom, #000000, #000000)",
+                  }}
+                  className="bg-cover bg-center bg-blend-soft-light object-cover"
+                  src={imgs.url}
+                  alt=""
+                />
               </div>
             ))}
           </Carousel>
@@ -145,15 +158,15 @@ const RoomDetail = () => {
         </div>
 
         {user?.isStudent ? (
-          <div className="flex ml-10 items-align my-8 mt-[3rem]">
+          <div className="flex justify-center sm:ml-10 ml-0 items-align my-8 mt-[3rem] mx-auto sm:mb-[10rem] mb-[9rem]">
             {status ? (
-              <button className="py-3 inline-block px-20 bg-yellow-600 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl">
+              <button className="sm:py-3 sm:text-lg text-xs py-2 inline-block sm:px-20 px-10 bg-yellow-600 text-white font-bold italic line-height-[24px] space-x-4 sm:ml-10 ml-0  rounded-xl">
                 Your bed request is in {status} state
               </button>
             ) : (
               <button
                 onClick={showModal}
-                className="py-3 inline-block px-20 bg-orange-800 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl"
+                className="sm:py-3 py-0 inline-block px-20 bg-orange-800 text-white font-bold italic line-height-[24px] space-x-4  rounded-xl"
               >
                 Book a bed in this Room
               </button>

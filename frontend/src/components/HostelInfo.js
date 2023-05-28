@@ -28,32 +28,42 @@ const HostelInfo = ({ hostelData }) => {
     <div className="max-w-[1200px] mx-auto">
       <div>
         <div className="  underline flex justify-center items-end  ">
-          <AnchorLink href="#overview" className=" border amen px-8 anc py-1">
+          <AnchorLink
+            href="#overview"
+            className=" border amen sm:px-8 px-2  sm:text-lg text-xs   py-0"
+          >
             OVERVIEW
           </AnchorLink>
-          <AnchorLink href="#amenties" className=" border amen px-8 anc  py-1">
+          <AnchorLink
+            href="#amenties"
+            className=" border amen sm:px-8 px-2  sm:text-lg text-xs   py-0"
+          >
             AMENTIES
           </AnchorLink>
-          <AnchorLink href="#rules" className=" border amen px-8 anc  py-1">
+          <AnchorLink
+            href="#rules"
+            className=" border amen sm:px-8 px-2  sm:text-lg text-xs   py-0"
+          >
             RULES AND POLICY
           </AnchorLink>
-          <AnchorLink href="#staffs" className=" border amen px-8 anc  py-1">
-            OUR STAFFS
-          </AnchorLink>
-          <AnchorLink href="#review" className=" border amen px-8 anc   py-1">
+
+          <AnchorLink
+            href="#review"
+            className=" border amen  anc sm:px-8 px-2  sm:text-lg text-xs   py-0  "
+          >
             USER REVIEW
           </AnchorLink>
         </div>
 
         <section id="overview" className="w-[100%]  py-10 ">
-          <h1 className="text-3xl shadow-md shadow-rose-500 text-center  text-purple-600  font-bold py-2   p-3 w-[20vw] border-b-4 border-orange-700">
+          <h1 className="sm:text-3xl text-xl text-center  text-green-700 font-bold py-0 sm:mx-20 mx-5 sm:w-[20vw]  border-b-4 border-orange-700">
             ABOUT Hostel
           </h1>
-          <div className="grid lg:grid-cols-2 justify-center my-6  mx-auto gap-5 items-center ">
-            <div>
+          <div className="grid lg:grid-cols-2 justify-center sm:my-6 my-3 mx-auto gap-5 items-center ">
+            <div className="flex justify-center">
               <p
                 dangerouslySetInnerHTML={{ __html: hostelData?.desc }}
-                className="text-justify text-sm text-gray-400 my-5   "
+                className="text-justify text-sm text-gray-100 sm:my-5 my-3   "
               ></p>
             </div>
 
@@ -70,45 +80,56 @@ const HostelInfo = ({ hostelData }) => {
           </div>
 
           <div className="flex justify-evenly flex-wrap gap-6">
-            <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#D76D77] rounded-lg">
-              <p className="text-xl text-white-100 font-bold">Total Rooms</p>
+            <div className="border bg-red-500 p-6 sm:w-[30%] w-1/3 flex  flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#D76D77] rounded-lg">
+              <p className="sm:text-xl text-xs text-white-100 text-center font-bold">
+                Total Rooms
+              </p>
               <p className="text-sm text-red-300 font-bold">
                 {hostelData?.number_of_rooms}{" "}
               </p>
             </div>
-            <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#07a463] to-[#545152] rounded-lg">
-              <p className="text-xl text-white-100 font-bold">Total Capacity</p>
-              <p className="text-sm text-red-300 font-bold">
+            <div className="border bg-red-500 p-6 sm:w-[30%] w-1/3 flex  flex-col items-center bg-gradient-to-b from-[#07a463] to-[#545152] rounded-lg">
+              <p className="sm:text-xl text-xs text-center text-white-100 font-bold">
+                Total Capacity
+              </p>
+              <p className="text-sm text-red-100 font-bold">
                 {hostelData?.capacity}
               </p>
             </div>
-            <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#ffaf7b] to-[#b88093] rounded-lg">
-              <p className="text-xl text-white-100 font-bold">Total Canteen</p>
-              <p className="text-sm text-red-300 font-bold">1</p>
+            <div className="border bg-red-500 p-6 sm:w-[30%] w-1/3 flex flex-col items-center bg-gradient-to-b from-[#ffaf7b] to-[#b88093] rounded-lg">
+              <p className="sm:text-xl text-xs text-center text-white-100 font-bold">
+                Total Canteen
+              </p>
+              <p className="text-lg text-red-100 font-bold">1</p>
             </div>
             <div className="border p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#ef3b36] to-[#D76D77] rounded-lg">
-              <p className="text-xl text-white-100 font-bold">Total Mess</p>
-              <p className="text-sm text-red-300 font-bold">4</p>
+              <p className="sm:text-xl text-xs text-center text-white-100 font-bold">
+                Total Mess
+              </p>
+              <p className="text-sm text-center text-red-300 font-bold">4</p>
             </div>
-            <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#2fe3c2] rounded-lg">
-              <p className="text-xl text-white-100 font-bold">Total Staffs</p>
+            <div className="border bg-red-500 p-6 sm:w-[30%] w-1/3 flex flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#2fe3c2] rounded-lg">
+              <p className="sm:text-xl text-xs text-center text-white-100 font-bold">
+                Total Staffs
+              </p>
               <p className="text-sm text-red-300 font-bold">200</p>
             </div>
           </div>
         </section>
         <section id="amenties" className="w-[90vw] m-auto py-10 ">
-          <h1 className="text-3xl  shadow-md shadow-rose-500 text-center  text-purple-600 font-bold py-2  w-[20vw] border-b-4 border-orange-700">
+          <h1 className="sm:text-3xl text-xl text-center  text-green-700 font-bold py-0 sm:mx-20 mx-5 sm:w-[20vw]  border-b-4 border-orange-700 ">
             AMENTIES
           </h1>
-          <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 my-8 content-center justify-center  border">
+          <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 my-8 content-center justify-center  sm:border">
             <div className="border anc py-4 px-20  flex flex-col items-center gap-2">
               <AiOutlineWifi className="animate-pulse text-purple-800 text-2xl" />
               <p>FREE WIFI</p>
             </div>
-            <div className="border py-4 px-20 anc placeholder:flex flex-col items-center gap-2">
-              <FcServices className="text-orange-700 text-2xl" />
+            <div className="border anc py-4 px-20  flex flex-col items-center gap-2">
+              <FcServices className="animate-pulse text-orange-700 text-2xl" />
               <p>Room Service</p>
             </div>
+
             <div className="border py-4 px-20 anc flex flex-col items-center gap-2">
               <MdOutlineCleaningServices className="text-blue-700 text-2xl" />
               <p>Cleaning </p>
@@ -120,10 +141,10 @@ const HostelInfo = ({ hostelData }) => {
           </div>
         </section>
         <section id="rules" className="w-[90vw] mx-auto text-white py-10 ">
-          <h1 className="text-3xl shadow-md shadow-rose-500 text-center  text-purple-600  font-bold py-2 w-[20vw] border-b-4 border-orange-700">
+          <h1 className="sm:text-3xl text-xl text-center  text-green-700 font-bold py-0 sm:mx-20 mx-5 sm:w-[20vw]  border-b-4 border-orange-700 ">
             Common Rules
           </h1>
-          <p className="my-[20px]">
+          <p className="my-[20px] sm:text-lg text-sm">
             Any violation of hostel rules may result in the guest being asked to
             leave the hostel immediately.
           </p>
@@ -143,157 +164,19 @@ const HostelInfo = ({ hostelData }) => {
                         src={`https://joesch.moe/api/v1/random?key=${index}`}
                       />
                     }
-                    title={<a href="https://ant.design">{item.title}</a>}
-                    description={item.description}
+                    title={<p className="text-yellow-700">{item.title}</p>}
+                    description={
+                      <p className="sm:text-md text-xs">{item.description} </p>
+                    }
                   />
                 </List.Item>
               )}
             />
           </div>
         </section>
-        <section id="staffs" className="w-[90vw] mx-auto  py-10 ">
-          <h1 className="text-3xl text-center  shadow-md shadow-rose-500  text-purple-600 font-bold py-2  w-[20vw] border-b-4 border-orange-700">
-            OUR STAFFS
-          </h1>
-          <div className="grid md:grid-cols-2 items-center my-6 gap-4 justify-center  mx-auto lg:grid-cols-4">
-            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
-              <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
-                <img
-                  className="rounded-full w-[50px] h-[50px]"
-                  src={img}
-                  alt=""
-                />
-              </div>
 
-              <div className="bg-[#F6F1E9] w-full text-black p-5 flex flex-col text-justify ">
-                <h1 className="text-center text-slate-800 font-bold">
-                  Kundan kumar
-                </h1>
-                <p className="text-center text-slate-800 font-bold">
-                  +998358756
-                </p>
-                <p className="text-center text-slate-800 font-bold">
-                  kunda@gmail.com
-                </p>
-              </div>
-
-              <p className="p-6 text-xl font-bold text-rose-800 underline underline-offset-4 text-justify">
-                Controller of hostel
-              </p>
-              <div className="flex justify-between gap-3">
-                <AiOutlineWhatsApp className="text-[#25D366] font-bold text-xl" />
-                <AiOutlineLinkedin className="text-[#0a66c2] font-bold text-xl" />
-                <AiOutlineInstagram className="text-[#833AB4] font-bold text-xl" />
-
-                <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
-              </div>
-            </div>
-            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
-              <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
-                <img
-                  className="rounded-full w-[50px] h-[50px]"
-                  src={img}
-                  alt=""
-                />
-              </div>
-
-              <div className="bg-[#F6F1E9] w-full text-black p-5 flex flex-col text-justify ">
-                <h1 className="text-center text-slate-800 font-bold">
-                  Kundan kumar
-                </h1>
-                <p className="text-center text-slate-800 font-bold">
-                  +998358756
-                </p>
-                <p className="text-center text-slate-800 font-bold">
-                  kundan@gmail.com
-                </p>
-              </div>
-
-              <p className="p-6 text-xl font-bold text-rose-800 underline underline-offset-4 text-justify">
-                Controller of hostel
-              </p>
-              <div className="flex justify-between gap-3">
-                <a
-                  className="text-[2rem] cursor-pointer"
-                  href="https://www.linkedin.com/in/shubham-kumar-singh-02b22a233/"
-                >
-                  <AiOutlineWhatsApp className="text-[#25D366] font-bold text-xl" />
-                </a>
-
-                <AiOutlineLinkedin className="text-[#0a66c2] font-bold text-xl" />
-                <AiOutlineInstagram className="text-[#833AB4] font-bold text-xl" />
-
-                <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
-              </div>
-            </div>
-            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
-              <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
-                <img
-                  className="rounded-full w-[50px] h-[50px]"
-                  src={img}
-                  alt=""
-                />
-              </div>
-
-              <div className="bg-[#F6F1E9] w-full text-black p-5 flex flex-col text-justify ">
-                <h1 className="text-center text-slate-800 font-bold">
-                  Kundan kumar
-                </h1>
-                <p className="text-center text-slate-800 font-bold">
-                  +998358756
-                </p>
-                <p className="text-center text-slate-800 font-bold">
-                  kunda@gmail.com
-                </p>
-              </div>
-
-              <p className="p-6 text-xl font-bold text-rose-800 underline underline-offset-4 text-justify">
-                Controller of hostel
-              </p>
-              <div className="flex justify-between gap-3">
-                <AiOutlineWhatsApp className="text-[#25D366] font-bold text-xl" />
-                <AiOutlineLinkedin className="text-[#0a66c2] font-bold text-xl" />
-                <AiOutlineInstagram className="text-[#833AB4] font-bold text-xl" />
-
-                <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
-              </div>
-            </div>
-            <div className="flex bg-[#0f0929]  flex-col border pb-6  rounded-3xl  shadow-lg shadow-gray-500 border-gray-600 items-center ">
-              <div className="bg-orange-400 rounded-3xl clip w-full p-8 flex justify-center items-center">
-                <img
-                  className="rounded-full w-[50px] h-[50px]"
-                  src={img}
-                  alt=""
-                />
-              </div>
-
-              <div className="bg-[#F6F1E9] w-full text-black p-5 flex flex-col text-justify ">
-                <h1 className="text-center text-slate-800 font-bold">
-                  Kundan kumar
-                </h1>
-                <p className="text-center text-slate-800 font-bold">
-                  +998358756
-                </p>
-                <p className="text-center text-slate-800 font-bold">
-                  kunda@gmail.com
-                </p>
-              </div>
-
-              <p className="p-6 text-xl font-bold text-rose-800 underline underline-offset-4 text-justify">
-                Controller of hostel
-              </p>
-              <div className="flex justify-between gap-3">
-                <AiOutlineWhatsApp className="text-[#25D366] font-bold text-xl" />
-                <AiOutlineLinkedin className="text-[#0a66c2] font-bold text-xl" />
-                <AiOutlineInstagram className="text-[#833AB4] font-bold text-xl" />
-
-                <AiOutlineTwitter className="text-[#00acee] font-bold text-xl" />
-              </div>
-            </div>
-          </div>
-        </section>
         <section id="review" className="w-[90vw] mx-auto  py-10 ">
-          <h1 className="text-3xl shadow-md shadow-rose-500 text-center  text-purple-600  font-bold py-0  w-[20vw] border-b-4 border-orange-700">
+          <h1 className="sm:text-3xl text-xl text-green-700 font-bold py-0  sm:w-[20vw] w-[50vw] border-b-4 border-orange-700 ">
             REVIEWS
           </h1>
           <div className="grid md:grid-cols-2 gap-4  items-center my-6 justify-center  mx-auto lg:grid-cols-4">

@@ -89,7 +89,10 @@ export default function HostelInfo({ totalRooms }) {
 
           <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.name} className="flex flex-col-reverse">
+              <div
+                key={stat.name}
+                className="flex justify-center items-center flex-col-reverse"
+              >
                 <dt className="text-base leading-7 text-white-100">
                   {stat.name}
                 </dt>
@@ -97,7 +100,7 @@ export default function HostelInfo({ totalRooms }) {
                   onEnter={() => setCounterOn(true)}
                   onExit={() => setCounterOn(false)}
                 >
-                  <dd className="text-5xl font-bold leading-9 tracking-tight text-orange-800">
+                  <dd className="text-5xl flex justify-center font-bold leading-9 tracking-tight text-orange-800">
                     {countOn && (
                       <CountUp
                         start={0}

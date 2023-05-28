@@ -14,7 +14,7 @@ const Complain = () => {
   const [rooms, setRooms] = useState([]);
   const dispatch = useDispatch();
   const hostelState = useSelector((state) => state.hostel?.hostel?.hostels);
-  console.log(hostelState);
+  // console.log(hostelState);
 
   const { isLoading, isSuccess, isError, createdComplaint } = useSelector(
     (state) => state.complain

@@ -30,7 +30,7 @@ const HostelRooms = () => {
   );
 
   // const { isLoading, isError, isSuccess } = useSelector((state) => state.room);
-  console.log(roomsOfHostel);
+  // console.log(roomsOfHostel);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,9 +50,9 @@ const HostelRooms = () => {
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="max-w-screen-2xl    w-[100%] mx-auto h-fit ">
+        <div className="max-w-screen-3xl mx-auto    w-[100%]  h-fit ">
           <div className=" flex flex-col items-center">
-            <h1 className="text-2xl font-bold text-purple-600 underline text-center">
+            <h1 className="md:text-2xl text-xl font-bold text-purple-600 underline text-center">
               Welcome to {singleHostel?.hostel?.hostel_name}{" "}
             </h1>
             <div className="my-4">
@@ -77,9 +77,9 @@ const HostelRooms = () => {
             </div>
           </div>
 
-          <div className="my-10 p-10 gap-5  grid grid-cols-3 ">
+          <div className="my-10  p-10 gap-5  grid md:grid-cols-3 grid-cols-1">
             {roomsOfHostel?.rooms?.length > 0 ? (
-              <div className="flex col-span-2 p-6 flex-wrap gap-2  ">
+              <div className="flex  col-span-2 p-6 flex-wrap gap-2  ">
                 {roomsOfHostel?.rooms?.map((room, index) => {
                   const isFullyBooked =
                     room?.occupants?.length === room?.capacity;
@@ -98,7 +98,7 @@ const HostelRooms = () => {
                   };
                   return (
                     <Link
-                      className=" amentiesf  h-[60px] w-[60px] flex justify-center items-center rounded-full"
+                      className=" amentiesf  md:h-[60px] md:w-[60px] w-[35px] h-[35px] flex justify-center items-center rounded-full"
                       to={`/room/${room._id}`}
                       key={index}
                       style={linkStyle}
@@ -124,7 +124,7 @@ const HostelRooms = () => {
               </div>
             )}
 
-            <div className="flex roomInfo p-5 rounded-lg  flex-col gap-5 items-center justify-center ">
+            <div className="flex roomInfo p-5 rounded-lg mb-7 flex-col gap-5 items-center justify-center ">
               <div className=" mx-w-[100%] w-[100%]">
                 <img
                   className="w-full amentiesfimg "

@@ -29,7 +29,7 @@ const Login = () => {
     validationSchema: userSchema,
     onSubmit: (values) => {
       dispatch(loginUser(values));
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -109,7 +109,14 @@ const Login = () => {
             className="px-[60px] py-[6px] w-[80%] border text-[0.9rem] bg-purple-900 text-white rounded-2xl hover:scale-90 duration-700 hover:text-white hover:border-orange-500 shadow-2xl shadow-red-400"
             disabled={isLoading}
           >
-            {isLoading ? "Loading..." : "  Log In"}
+            {isLoading ? (
+              <div class="loader">
+                <span class="loader-text">loading</span>
+                <span class="load"></span>
+              </div>
+            ) : (
+              "  Log In"
+            )}
           </button>
         </form>
         <div className="grid grid-cols-3 items-center text-gray-300 m-0">

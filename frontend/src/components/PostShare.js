@@ -36,7 +36,7 @@ const PostShare = () => {
     if (e.target.files && e.target.files[0]) {
       let img = e.target.files[0];
       setImage(img);
-      console.log(image);
+      // console.log(image);
     }
   };
 
@@ -84,9 +84,9 @@ const PostShare = () => {
   // }, []);
   return (
     <>
-      <div className="flex gap-3  p-4 rounded-xl    ">
+      <div className="flex md:flex-row flex-col  gap-3  p-4 rounded-xl    ">
         <img className="rounded-full w-12 h-12 " src={imgg} alt="" />
-        <div className="flex w-[90%] flex-col gap-4 p-2 rounded-xl shadow-sm shadow-gray-300">
+        <div className="flex md:w-[90%] w-full flex-col gap-4 p-2 rounded-xl shadow-sm shadow-gray-300">
           <input
             ref={desc}
             required
@@ -106,7 +106,7 @@ const PostShare = () => {
               <UilPlayCircle className="text-[#4a4eb7]  mr-[1px]" />
               Video
             </div>
-            <div className="option flex align-middle justify-center text-[12px] hover:cursor-pointer">
+            <div className="option md:flex hidden  align-middle justify-center text-[12px] hover:cursor-pointer">
               <UilLocationPoint className="text-[#ef5757]  mr-[1px]" />
               Location
             </div>

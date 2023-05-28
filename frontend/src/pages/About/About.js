@@ -4,7 +4,9 @@ import { aboutUs } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHostels } from "../../features/hostel/hostelSlice";
 import { getAllRooms } from "../../features/room/roomSlice";
-
+const img1 = require("../../assets/vishalsir.jfif");
+const img2 = require("../../assets/nileshsir.jfif");
+const img3 = require("../../assets/principal.jfif");
 const About = () => {
   const dispatch = useDispatch();
 
@@ -17,18 +19,18 @@ const About = () => {
     dispatch(getAllRooms());
   }, []);
   return (
-    <div className="max-w-screen-2xl flex flex-col items-center py-6 mb-40 justify-center ">
+    <div className="max-w-screen-3xl mx-auto flex flex-col items-center py-6 mb-40 justify-center ">
       <h1 className="text-4xl mt-6 text-center  text-[#654E92] font-bold">
         About Us
       </h1>
       <div className="w-[100px] bg-[#0b916d] h-[2px] "></div>
 
-      <div className="flex justify-between  flex-wrap w-[90vw] my-8 gap-6 about ">
+      <div className="flex md:flex-row flex-col justify-between  flex-wrap md:w-[90vw] w-[60vw] my-8 gap-6 about ">
         {aboutUs?.map((data, index) => {
           return (
             <div
               key={index}
-              className="w-[30%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card "
+              className="md:w-[30%] w-full violet-gradient rounded-2xl  md:p-10 p-2 flex flex-col items-center justify-center gap-4 about-card "
             >
               <p className="text-[4rem]">{data.icon}</p>
               <h3 className="text-lg text-[#CE5959] text-bold">
@@ -46,36 +48,46 @@ const About = () => {
       {/* <hr className="text-red-800 bg-red-600" /> */}
       <div className="flex justify-evenly flex-wrap my-10 pt-6 border-t-2   gap-6">
         <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#D76D77] rounded-lg">
-          <p className="text-xl text-white-100 font-bold">Total Hostels</p>
+          <p className="md:text-xl text-md text-white-100 font-bold">
+            Total Hostels
+          </p>
           <p className="text-sm text-red-300 font-bold">{hostelCount}</p>
         </div>
         <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#07a463] to-[#545152] rounded-lg">
-          <p className="text-xl text-white-100 font-bold">Total Rooms</p>
+          <p className="md:text-xl text-md text-white-100 font-bold">
+            Total Rooms
+          </p>
           <p className="text-sm text-red-300 font-bold">{roomCount}</p>
         </div>
         <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#ffaf7b] to-[#b88093] rounded-lg">
-          <p className="text-xl text-white-100 font-bold">Total Canteen</p>
+          <p className="md:text-xl text-md text-white-100 font-bold">
+            Total Canteen
+          </p>
           <p className="text-sm text-red-300 font-bold">1</p>
         </div>
         <div className="border p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#ef3b36] to-[#D76D77] rounded-lg">
-          <p className="text-xl text-white-100 font-bold">Total Mess</p>
+          <p className="md:text-xl text-md text-white-100 font-bold">
+            Total Mess
+          </p>
           <p className="text-sm text-red-300 font-bold">2</p>
         </div>
         <div className="border bg-red-500 p-6 w-[30%] flex flex-col items-center bg-gradient-to-b from-[#3A1C71] to-[#2fe3c2] rounded-lg">
-          <p className="text-xl text-white-100 font-bold">Total Staffs</p>
+          <p className="md:text-xl text-md text-white-100 font-bold">
+            Total Staffs
+          </p>
           <p className="text-sm text-red-300 font-bold">50+</p>
         </div>
       </div>
       <h1 className="text-3xl text-[#654E92] font-bold underline text-center mt-12 underline-offset-4 italic">
         OUR ALUMINI
       </h1>
-      <div className="grid  md:grid-cols-3 my-10  w-[90vw]  justify-between p-2 px-[20px]  ">
-        <div className="p-5 flex max-h-fit gap-4 align-self-auto   col-span-2">
-          <div className="   shadow-md rounded-2xl  shadow-blue-300 flex flex-col self-start p-4 justify-center  items-center w-[25%]   ">
-            <div className="w-[80px] rounded-full border ">
+      <div className="grid  md:grid-cols-3 md:items-center my-10  w-[90vw]  justify-between p-2 px-[20px]  ">
+        <div className="p-5 flex md:flex-row flex-col max-h-fit gap-4 align-self-auto   col-span-2">
+          <div className="   shadow-md rounded-2xl  shadow-blue-300 flex flex-col self-start md:p-4 p-1 justify-center  items-center md:w-[32%] w-[80%] h-[200px]  ">
+            <div className="w-[80px] h-[80px]  rounded-full border ">
               <img
-                className="rounded-full w-[100%] object-cover"
-                src="https://images.unsplash.com/photo-1622281631389-59e63d92760d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmVhdXRpZnVsJTIwbGFkeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+                className="rounded-full w-[100%] h-[100%] object-cover"
+                src={img3}
                 alt=""
               />
             </div>
@@ -85,41 +97,41 @@ const About = () => {
             </h4>
 
             <p className="text-justify text-white font-semibold text-sm">
-              Shravani Roy
+              Mrs. Shravani Roy
             </p>
           </div>
-          <div className="  shadow-md  rounded-2xl shadow-blue-300 flex flex-col p-4 justify-center self-start  items-center w-[25%]   ">
-            <div className="w-[80px] rounded-full border ">
+          <div className="  shadow-md  rounded-2xl shadow-blue-300 flex flex-col p-4 justify-center self-start  items-center md:w-[32%] w-[80%] h-[200px]  ">
+            <div className="w-[80px] h-[80px]  rounded-full border ">
               <img
-                className="rounded-full w-[100%] object-cover"
-                src="https://images.unsplash.com/photo-1622281631389-59e63d92760d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmVhdXRpZnVsJTIwbGFkeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
-                alt=""
-              />
-            </div>
-
-            <h4 className="mt-5 text-boldtext-[#654E92] font-bold text-xl">
-              Our Principal
-            </h4>
-
-            <p className="text-justify text-white font-semibold text-sm">
-              Shravani Roy
-            </p>
-          </div>
-          <div className="  shadow-md rounded-2xl shadow-blue-300 flex flex-col p-4 justify-center self-start  items-center w-[25%]   ">
-            <div className="w-[80px] rounded-full border ">
-              <img
-                className="rounded-full w-[100%] object-cover"
-                src="https://images.unsplash.com/photo-1622281631389-59e63d92760d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmVhdXRpZnVsJTIwbGFkeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+                className="rounded-full w-[100%] h-[100%] object-cover"
+                src={img1}
                 alt=""
               />
             </div>
 
             <h4 className="mt-5 text-bold text-[#654E92] font-bold text-xl">
-              Our Principal
+              Chief Warden
             </h4>
 
             <p className="text-justify text-white font-semibold text-sm">
-              Shravani Roy
+              Mr. Vishal Kumar
+            </p>
+          </div>
+          <div className="  shadow-md rounded-2xl shadow-blue-300 flex flex-col p-4 justify-center self-start  items-center md:w-[32%]   w-[80%] h-[200px]">
+            <div className="w-[80px] h-[80px] rounded-full border ">
+              <img
+                className="rounded-full w-[100%] h-[100%] object-cover"
+                src={img2}
+                alt=""
+              />
+            </div>
+
+            <h4 className="mt-5 text-bold text-[#654E92] font-bold text-xl">
+              Hostel Incharge
+            </h4>
+
+            <p className="text-justify text-white font-semibold text-sm">
+              Mr. Nilesh Kumar
             </p>
           </div>
         </div>

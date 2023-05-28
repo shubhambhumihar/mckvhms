@@ -2,7 +2,10 @@ import React from "react";
 
 const Feedback = () => {
   return (
-    <div className="max-w-screen-2xl my-6  bg-neutral-900 pb-16 " id="feedback">
+    <div
+      className="max-w-screen-3xl mx-auto my-6  bg-neutral-900 pb-16 "
+      id="feedback"
+    >
       <h1 className="text-center text-lg md:text-3xl my-5 font-bold p-7">
         If you have any feedback then please let us know ..
       </h1>

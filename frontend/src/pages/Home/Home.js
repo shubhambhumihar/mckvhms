@@ -20,7 +20,7 @@ import Brand from "./Brand";
 const Home = () => {
   const dispatch = useDispatch();
   const totalRooms = useSelector((state) => state?.room?.rooms?.count);
-  console.log(totalRooms);
+  // console.log(totalRooms);
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAllRooms());
@@ -35,7 +35,7 @@ const Home = () => {
       <HostelInfo totalRooms={totalRooms} />
 
       <Food />
-      <Brand />
+      {/* <Brand /> */}
       <Maintain />
       <Team />
       <ContactInfo />

@@ -19,7 +19,8 @@ const ContactInfo = () => {
   return (
     <div className="max-w-screen-3xl mx-auto mx my-20 py-6 t" id="contact">
       <h1 className="text-center text-xl md:text-4xl font-bold py-6 ">
-        <span className="text-[#654E92] text-5xl">Contact</span> our Staffs.
+        <span className="text-[#654E92] md:text-5xl text-2xl">Contact</span> our
+        Staffs.
       </h1>
       {!isLoading ? (
         staff?.staffs?.length > 0 ? (
@@ -27,28 +28,30 @@ const ContactInfo = () => {
             {staff?.staffs?.map((staff, index) => (
               <div
                 key={index}
-                className=" border-emerald-500 rounded-2xl border w-[300px]     flex flex-col self-start justify-between items-center pt-4  shadow-sm shadow-violet-500 hover:scale-95 duration-500 "
+                className=" border-emerald-500 rounded-2xl border w-[300px]   flex flex-col self-start justify-between items-center pt-4  shadow-sm shadow-violet-500 hover:scale-95 duration-500 "
               >
                 <img
                   src={staff?.images[0]?.url}
                   alt=""
-                  className="rounded-full w-[70px] object-cover"
+                  className="rounded-full md:w-[100px] md:h-[100px] w-[80px] h-[80px] object-cover"
                 />
 
                 <div className="py-3 violet-gradient rounded-2xl text-justify flex flex-col justify-center w-full mt-5 my-auto p-6 ">
                   <h1 className="text-lg md:text-xl text-white">
                     {staff?.name}{" "}
                   </h1>
-                  <p className="text-white">
-                    <span className="text-[#f3f2f7] font-bold ">Phone - </span>{" "}
-                    {staff.contactNumber}
+                  <p className="text-white  md:text-lg text-xs">
+                    <span className="text-[#f3f2f7] font-bold md:text-lg text-xs">
+                      Phone -{" "}
+                    </span>{" "}
+                    {staff?.contactNumber}
                   </p>
 
-                  <p className="text-white">
-                    <span className="text-[#f8f7fa] font-bold ">
+                  <p className="text-white  md:text-lg text-xs">
+                    <span className="text-[#f8f7fa] font-bold md:text-lg text-xs ">
                       Department -
                     </span>{" "}
-                    {staff.department}
+                    {staff?.department}
                   </p>
                 </div>
               </div>

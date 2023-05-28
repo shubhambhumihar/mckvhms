@@ -73,6 +73,7 @@ const initialState = {
   user: getUserFromLocalStorage,
   isError: false,
   isLoading: false,
+  isProfileLoading: false,
   isSuccess: false,
   message: "",
   updatedUser: "",
@@ -175,7 +176,7 @@ export const authSlice = createSlice({
           // Get the user data from local storage
           const userData = JSON.parse(localStorage.getItem("user"));
 
-          console.log(userData);
+          // console.log(userData);
 
           // // Update the user data
           userData.user.name = action.payload.user.name;
@@ -229,16 +230,16 @@ export const authSlice = createSlice({
         }
       })
       .addCase(getProfileOfMine.pending, (state) => {
-        state.isLoading = true;
+        state.isProfileLoading = true;
       })
       .addCase(getProfileOfMine.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.isProfileLoading = false;
         state.isError = false;
         state.isSuccess = true;
         state.user = action.payload;
       })
       .addCase(getProfileOfMine.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isProfileLoading = false;
         state.isSuccess = false;
         state.isError = true;
         state.message = action.error;

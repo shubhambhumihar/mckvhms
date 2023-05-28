@@ -41,8 +41,9 @@ const Hero = () => {
           <a
             href="https://www.ramgarhengg.edu.in/"
             target="_blank"
+            rel="noopener noreferrer"
             style={{ fontSize: "1.2rem" }}
-            className={`${styles.heroSubText}  mt-0 underline pb-2 underline-offset-2 text-[0.8rem] text-sm text-orange-500`}
+            className={`${styles.heroSubText}  mt-0 underline pb-2 underline-offset-2 md:text-[0.8rem] md:text-sm text-xs text-orange-500`}
           >
             {" "}
             Ramgarh Engineering College...

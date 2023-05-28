@@ -13,8 +13,8 @@ const Hostel = ({ hostel }) => {
               src={hostel?.images[0]?.url}
               alt=""
             />
-            <div className="p-4">
-              <p className="py-5">{hostel?.capacity} </p>
+            <div className="md:p-4 p-2">
+              <p className="md:py-5">{hostel?.capacity} </p>
               <button className="button-82-pushable">
                 <span className="button-82-shadow"></span>
                 <span className="button-82-edge"></span>
@@ -26,10 +26,10 @@ const Hostel = ({ hostel }) => {
           </div>
           <div className="flex-1 flex flex-col justify-between rep p-5">
             <div>
-              <p className=" text-end p-1 mb-1 text-yellow-700 underline   rounded-xl ">
+              <p className=" text-end p-1 mb-1 text-green-600 underline   rounded-xl ">
                 {hostel?.hostel_type}'s hostel
               </p>
-              <p className="text-lg bg-[#272626] p-2 mb-6 text-center text-white  rounded-xl ">
+              <p className="sm:text-lg text-md bg-[#272626] p-2 mb-6 text-center text-white  rounded-xl ">
                 {hostel?.hostel_name}
               </p>
 

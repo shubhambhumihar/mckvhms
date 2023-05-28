@@ -43,7 +43,7 @@ const Post = ({ data }) => {
     // setPostId(e);
   };
   const showDeleteModal = (e) => {
-    console.log(e);
+    // console.log(e);
     setIsDeleteModalOpen(true);
     setPostId(e);
   };
@@ -59,7 +59,7 @@ const Post = ({ data }) => {
   // console.log(pageUrl);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth?.user?.user);
-  console.log(user);
+  // console.log(user);
   const [liked, setLiked] = useState(
     data.likes.some((like) => like?.user?.toString() === user?._id?.toString())
   );

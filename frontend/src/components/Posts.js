@@ -21,8 +21,11 @@ const Posts = () => {
   return (
     <div className="flex flex-col gap-4">
       {isLoading ? (
-        <div className="h-[70vh] flex justify-center items-center">
-          <div className="spinner"></div>
+        <div className="flex justify-center pt-5 mt-7">
+          <div class="loader">
+            <span class="loader-text">loading</span>
+            <span class="load"></span>
+          </div>
         </div>
       ) : (
         posts?.posts?.map((post, id) => <Post data={post} key={id} />)

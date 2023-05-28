@@ -24,7 +24,7 @@ const contentStyle = {
 
 const HostelDetail = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const location = useLocation();
 
   const getHostelId = location.pathname.split("/")[2];
@@ -46,7 +46,7 @@ const HostelDetail = () => {
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="max-w-screen-2xl">
+        <div className="max-w-screen-3xl mx-auto">
           <div className="flex h-[15vh] items-center justify-around p-[2rem]">
             <Link
               to="/"
@@ -58,13 +58,13 @@ const HostelDetail = () => {
                 alt="logo"
                 className="w-20 h-9 object-contain animate-pulse"
               />
-              <p className="text-white text-[18px] font-bold cursor-pointer flex ">
+              <p className="text-white text-[18px] font-bold cursor-pointer sm:flex hidden ">
                 Ramgarh &nbsp;
                 <span className="sm:block hidden"> | Engineering College</span>
               </p>
             </Link>
 
-            <p className="relative text-center py-1   border px-20 cursor-pointer border-orange-600 flex justify-center items-center rounded-xl">
+            <p className="relative text-center sm:py-1 py-0  border sm:px-20 px-4 cursor-pointer border-orange-600 flex justify-center items-center rounded-xl">
               <Link to="/" className=" ">
                 {" "}
                 Back to home
@@ -72,18 +72,27 @@ const HostelDetail = () => {
             </p>
           </div>
 
-          <div className="h-[50vh]">
+          <div className="sm:h-[50vh] h-fit">
             <Carousel
               infiniteLoop
               autoPlay={true}
               useKeyboardArrows={true}
-              className="max-w-full h-[50vh] "
+              className="max-w-full sm:h-[50vh] h-fit  "
               showThumbs={false}
             >
               {/* <div className="h-[50vh]"> */}
-              {singleHostel?.hostel?.images?.map((imgs) => (
-                <div className="h-[50vh]">
-                  <img src={imgs.url} alt="ima" />
+              {singleHostel?.hostel?.images?.map((imgs, index) => (
+                <div className="sm:h-[50vh] h-fit flex justify-center items-center">
+                  <img
+                    key={index}
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, #000000, #000000)",
+                    }}
+                    className="bg-cover bg-center bg-blend-soft-light object-cover"
+                    src={imgs.url}
+                    alt="ima"
+                  />
                 </div>
               ))}
             </Carousel>
@@ -106,26 +115,27 @@ const HostelDetail = () => {
                 {/* <img src={imgs.url} alt="ima" /> */}
               </div>
             ))}
-
-            <Carousel
-              infiniteLoop
-              autoPlay={true}
-              useKeyboardArrows={true}
-              className="max-w-full "
-              showThumbs={false}
-              style={contentStyle}
-            >
-              {singleHostel?.hostel?.images?.map((imgs) => (
-                <div style={contentStyle}>
-                  <img
-                    className="rounded-lg"
-                    style={contentStyle}
-                    src={imgs.url}
-                    alt=""
-                  />
-                </div>
-              ))}
-            </Carousel>
+            <div className="mb-[150px]">
+              <Carousel
+                infiniteLoop
+                autoPlay={true}
+                useKeyboardArrows={true}
+                className="max-w-full "
+                showThumbs={false}
+                style={contentStyle}
+              >
+                {singleHostel?.hostel?.images?.map((imgs) => (
+                  <div style={contentStyle}>
+                    <img
+                      className="rounded-lg"
+                      style={contentStyle}
+                      src={imgs.url}
+                      alt=""
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
           </div>
         </div>
       )}

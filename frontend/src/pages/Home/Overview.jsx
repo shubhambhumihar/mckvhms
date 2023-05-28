@@ -44,10 +44,11 @@ const About = () => {
           Overview.
         </h2>
       </motion.div>
-      <motion.div className="flex items-start">
+      <motion.div className="flex md:flex-row flex-col items-start ">
         <motion.p
+          // style={{ lineHeight: "1.5" }}
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          className="mt-4 text-secondary md:text-[17px] text-xs md:leading-7 leading-5  max-w-3xl "
         >
           Looking for a hostel that can cater to all your needs? You've come to
           the right place! Our hostel management team is dedicated to providing

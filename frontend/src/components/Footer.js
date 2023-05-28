@@ -4,67 +4,74 @@ import { Link } from "react-router-dom";
 const foo = require("../assets/home.png");
 const Footer = () => {
   return (
-    <div className="max-w-screen-2xl py-7 mt-60   t footer">
+    <div className="max-w-screen-3xl mx-auto py-7 mt-100   t footer">
       <div className="waves">
         <div className="wave" id="wave1"></div>
         <div className="wave" id="wave2"></div>
         <div className="wave" id="wave3"></div>
         <div className="wave" id="wave4"></div>
       </div>
-      <div className="mx-auto grid md:grid-cols-2 lg:grid-cols-3 justify-center place-items-center  gap-2">
-        <div className="col-span-1  p-6">
+      <div className="mx-auto grid md:grid-cols-2 lg:grid-cols-5 justify-between place-items-center  gap-2">
+        <div className="col-span-2 p-6">
           <div className="text-center flex justify-center align-middle">
             <img className="w-100" src={foo} alt="" />
 
-            <h1 className="ml-5 text-7xl text-purple-700 font-bold">REC</h1>
+            <h1 className="ml-5 md:text-7xl text-5xl text-purple-700 font-bold">
+              REC
+            </h1>
           </div>
           <p className="text-white pt-2 font-bold">
             A premium Institite for BTECH...
           </p>
         </div>
-        <div className="p-10 mx-auto grid md:grid-cols-2  lg:grid-cols-4 justify-center place-items-center  gap-6 col-span-2  ">
-          <div className="m-6">
-            <ul className="text-gray-500 font-bold ">
-              <li className="text-md text-[#454545] border-b-2  border-gray-600 mb-3">
-                USEFUL LINKS
-              </li>
-
-              <Link to="/home">
-                <li className="text-white text-sm my-1 font-normal">Home</li>
-              </Link>
-              <Link to="/hostels">
-                <li className="text-white text-sm my-1 font-normal">HOSTEL</li>
-              </Link>
-              <Link to="/rooms">
-                <li className="text-white text-sm my-1 font-normal">ROOMS</li>
-              </Link>
-              <Link to="/blog">
-                <li className="text-white text-sm my-1 font-normal">BLOGS</li>
-              </Link>
-            </ul>
-          </div>
-          <div className="m-6 ">
-            <ul className="text-gray-500 font-bold">
-              <li className="text-md text-[#454545] border-b-2  border-gray-600 mb-3">
-                USEFUL LINKS
-              </li>
-              <Link to="/about">
-                <li className="text-white text-sm my-1 font-normal">
-                  ABOUT US
+        <div className="p-10 mx-auto grid  justify-center place-items-center  gap-6 col-span-3  ">
+          <div className="md:flex md:flex-row flex-col ">
+            <div className="m-6 w-full">
+              <ul className="text-gray-500 font-bold ">
+                <li className="text-md text-[#454545] border-b-2  border-gray-600 mb-3">
+                  USEFUL LINKS
                 </li>
-              </Link>
-              <Link to="/contact">
-                <li className="text-white text-sm my-1 font-normal">
-                  CONTACT US
-                </li>
-              </Link>
 
-              <li className="text-white text-sm  my-1 font-normal">ECE</li>
-              <li className="text-white text-sm font-normal">ME</li>
-            </ul>
+                <Link to="/home">
+                  <li className="text-white text-sm my-1 font-normal">Home</li>
+                </Link>
+                <Link to="/hostels">
+                  <li className="text-white text-sm my-1 font-normal">
+                    HOSTEL
+                  </li>
+                </Link>
+                <Link to="/rooms">
+                  <li className="text-white text-sm my-1 font-normal">ROOMS</li>
+                </Link>
+                <Link to="/blog">
+                  <li className="text-white text-sm my-1 font-normal">BLOGS</li>
+                </Link>
+              </ul>
+            </div>
+            <div className="m-6 w-full ">
+              <ul className="text-gray-500 font-bold">
+                <li className="text-md text-[#454545] border-b-2  border-gray-600 mb-3">
+                  USEFUL LINKS
+                </li>
+                <Link to="/about">
+                  <li className="text-white text-sm my-1 font-normal">
+                    ABOUT US
+                  </li>
+                </Link>
+                <Link to="/contact">
+                  <li className="text-white text-sm my-1 font-normal">
+                    CONTACT US
+                  </li>
+                </Link>
+
+                <li className="text-white text-sm  my-1 font-normal">ECE</li>
+                <li className="text-white text-sm font-normal">ME</li>
+              </ul>
+            </div>
           </div>
+
           <div className="w-full col-span-2 p-7">
-            <h1 className="text-2xl my-4">Signup our newsletter</h1>
+            <h1 className="md:text-2xl text-md my-4">Signup our newsletter</h1>
             <form action="#">
               <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
                 <div className="relative w-full">
