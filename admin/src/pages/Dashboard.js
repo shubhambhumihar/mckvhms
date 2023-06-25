@@ -62,7 +62,7 @@ const Dashboard = () => {
         <span className="mr-2">Welcome</span>
 
         <Typed
-          strings={[" REC ADMIN"]}
+          strings={[" MCKV ADMIN"]}
           typeSpeed={200}
           backSpeed={100}
           loop

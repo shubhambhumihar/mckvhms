@@ -78,7 +78,7 @@ const LayoutApp = () => {
     <Layout onContextMenu={(e) => e.preventDefault()}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo flex justify-center items-center text-2xl text-pink-500 bg-red-300  font-bold">
-          <h1 className="text-2xl">REC</h1>
+          <h1 className="text-2xl">MCKV</h1>
         </div>
         <Menu
           theme="dark"

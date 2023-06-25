@@ -39,7 +39,7 @@ const Hostels = () => {
               <h1 className=" lg:text-[3rem]">
                 Welcome to{" "}
                 <span className="text-purple-700 font-bold underline mr-2">
-                  REC{" "}
+                  MCKV{" "}
                 </span>
                 Hostel
               </h1>
