@@ -79,13 +79,13 @@ const RoomDetail = () => {
           >
             {" "}
             <img
-              src={logo}
+              src="https://api.logo.com/api/v2/images?logo=logo_923e4cff-6a6a-4798-9795-b287038a59cc&format=webp&margins=0&quality=60&width=500&background=transparent&u=1687705018"
               alt="logo"
-              className="w-20 h-9 object-contain animate-pulse"
+              className="w-25 h-12 object-contain "
             />
             <p className="text-white text-[18px] sm:flex hidden font-bold cursor-pointer  ">
-              Ramgarh &nbsp;
-              <span className="sm:block hidden"> | Engineering College</span>
+              MCKV &nbsp;
+              <span className="sm:block hidden"> Institute Of Engineering</span>
             </p>
           </Link>
 

@@ -2,6 +2,8 @@ const asyncHandler = require("express-async-handler");
 const Enquiry = require("../models/enquiryModel");
 const nodemailer = require("nodemailer");
 
+// controllers
+
 exports.createEnquiry = asyncHandler(async (req, res) => {
   try {
     const { name, mobile, desc } = req.body;
@@ -17,7 +19,7 @@ exports.createEnquiry = asyncHandler(async (req, res) => {
 
     const mailOptions = {
       from: "rechms1234@gmail.com", // replace with your email address
-      to: "sk4957199@gmail.com", // replace with the admin's email address
+      to: "kumarijyotichouhan@gmail.com", // replace with the admin's email address
       subject: "Complaint By Student!",
       html: `
         <p>Name: ${name}</p>

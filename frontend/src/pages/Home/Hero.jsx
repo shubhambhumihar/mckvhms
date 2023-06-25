@@ -22,7 +22,9 @@ const Hero = () => {
           <h1 className={`${styles.heroHeadText} head`}>
             Wel
             <Typed
-              strings={[`come to <span className="text-[#915EFF]">REC</span>`]}
+              strings={[
+                `come to <span className="text-[#915EFF]">MCKV.</span>`,
+              ]}
               typeSpeed={200}
               backSpeed={100}
               loop
@@ -39,14 +41,14 @@ const Hero = () => {
           </h4>
 
           <a
-            href="https://www.ramgarhengg.edu.in/"
+            href="https://www.mckvie.edu.in/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: "1.2rem" }}
             className={`${styles.heroSubText}  mt-0 underline pb-2 underline-offset-2 md:text-[0.8rem] md:text-sm text-xs text-orange-500`}
           >
             {" "}
-            Ramgarh Engineering College...
+            MCKV Institute Of Engineering...
           </a>
 
           <div className="flex items-center py-5 gap-1 cursor-pointer ">

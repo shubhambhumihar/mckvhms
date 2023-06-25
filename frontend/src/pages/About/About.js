@@ -87,7 +87,7 @@ const About = () => {
             <div className="w-[80px] h-[80px]  rounded-full border ">
               <img
                 className="rounded-full w-[100%] h-[100%] object-cover"
-                src={img3}
+                src="http://www.mckvie.edu.in/wp-content/uploads/2021/06/alahiri.559x0-is.png"
                 alt=""
               />
             </div>
@@ -97,7 +97,7 @@ const About = () => {
             </h4>
 
             <p className="text-justify text-white font-semibold text-sm">
-              Mrs. Shravani Roy
+              Prof. Abhijit Lahiri
             </p>
           </div>
           <div className="  shadow-md  rounded-2xl shadow-blue-300 flex flex-col p-4 justify-center self-start  items-center md:w-[32%] w-[80%] h-[200px]  ">
@@ -114,7 +114,7 @@ const About = () => {
             </h4>
 
             <p className="text-justify text-white font-semibold text-sm">
-              Mr. Vishal Kumar
+              Mr. Rajan
             </p>
           </div>
           <div className="  shadow-md rounded-2xl shadow-blue-300 flex flex-col p-4 justify-center self-start  items-center md:w-[32%]   w-[80%] h-[200px]">
@@ -131,7 +131,7 @@ const About = () => {
             </h4>
 
             <p className="text-justify text-white font-semibold text-sm">
-              Mr. Nilesh Kumar
+              Mr. Rahul Kumar
             </p>
           </div>
         </div>

@@ -125,7 +125,7 @@ const AddStudent = () => {
         }, 1000);
       }
 
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 

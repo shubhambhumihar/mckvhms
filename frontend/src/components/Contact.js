@@ -92,8 +92,9 @@ const Contact = () => {
             using the MAP{" "}
           </h1>
           <p className="md:my-5 my-1 text-sm md:p-10 p-2">
-            Address : Chhotki Lari, <br /> Murubanda,
-            <br /> Jharkhand 825101
+            Address : ‘Laxmi Niketan’ , 1st Floor 243, <br /> G. T. Road(North)
+            Liluah, Howrah – 711 204.,
+            <br />
           </p>
         </div>
 
@@ -102,13 +103,17 @@ const Contact = () => {
 
           <div className="w-[100%] md:mt-[50px] mt-[30px] md:h-[400px] ">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7257806211883!2d85.62739847432023!3d23.578290195363994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f458e93cb14f4f%3A0xb22c7b3b8ffb020f!2sRamgarh%20Engineering%20College!5e0!3m2!1sen!2sin!4v1681891093730!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29463.322590818003!2d88.347703!3d22.619637!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d65da7b3775%3A0x30915f7e98f1b0d5!2sMCKV%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1687706005755!5m2!1sen!2sin"
               width="100%"
               height="100%"
               title="map"
               frameborder="0"
               // style={{border:"0"}}
             ></iframe>
+            {/* <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29463.322590818003!2d88.347703!3d22.619637!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d65da7b3775%3A0x30915f7e98f1b0d5!2sMCKV%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1687706005755!5m2!1sen!2sin"
+              
+            ></iframe> */}
           </div>
         </div>
       </div>
@@ -217,7 +222,7 @@ const Contact = () => {
         <div className="mx-w-[100%]  md:mx-w-[20%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card ">
           <img className="w-[150px] h-[150px] rounded-full" src={img1} alt="" />
           <div>
-            <h3 className="text-2xl text-slate-500">Mr. Vishal Kumar</h3>
+            <h3 className="text-2xl text-slate-500">Mr. Rajan Kumar</h3>
             <p className="text-sm text-center font-light">
               Hostel Chief Warden
             </p>
@@ -226,7 +231,7 @@ const Contact = () => {
         <div className="mx-w-[100%]  md:mx-w-[20%] violet-gradient rounded-2xl  p-10 flex flex-col items-center justify-center gap-4 about-card ">
           <img className="w-[150px] h-[150px] rounded-full" src={img2} alt="" />
           <div className="flex flex-col items-center">
-            <h3 className="text-2xl text-slate-500">Mr. Nilesh Kumar</h3>
+            <h3 className="text-2xl text-slate-500">Mr. Rahul Kumar</h3>
             <p className="text-sm text-center font-light">Hostel Incharge</p>
           </div>
         </div>

@@ -20,7 +20,7 @@ const AddBed = () => {
   );
   // console.log(bedState);
   const hostelState = useSelector((state) => state.hostel?.hostels?.hostels);
-  console.log(hostelState);
+  // console.log(hostelState);
 
   useEffect(() => {
     dispatch(getAllHostels());
@@ -52,7 +52,7 @@ const AddBed = () => {
         navigate("/admin/bed-list");
       }, 3000);
 
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
   useEffect(() => {

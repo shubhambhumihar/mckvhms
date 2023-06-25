@@ -87,14 +87,14 @@ const Nav = () => {
               }}
             >
               <img
-                src={logo}
+                src="https://api.logo.com/api/v2/images?logo=logo_923e4cff-6a6a-4798-9795-b287038a59cc&format=webp&margins=0&quality=60&width=500&background=transparent&u=1687705018"
                 alt="logo"
-                className="w-12 h-12 object-contain animate-pulse"
+                className="w-20 h-12 object-contain animate-pulse"
               />
               <h6 className="text-white hidden md:flex text-[15px] font-bold cursor-pointer  ">
-                Ramgarh &nbsp;
+                MCKV &nbsp;
                 <span className="sm:block hidden text-white">
-                  | Engineering College
+                  INSTITUTE oF Engineering
                 </span>
               </h6>
             </Link>

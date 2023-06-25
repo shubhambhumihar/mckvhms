@@ -423,7 +423,7 @@ const aboutUs = [
   {
     icon: <AiOutlineContacts />,
     heading: "Contact Info",
-    desc: "rechms@gmail.com",
+    desc: "mckv@gmail.com",
     desc1: "9989767812",
   },
 ];

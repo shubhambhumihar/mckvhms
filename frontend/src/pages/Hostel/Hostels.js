@@ -54,7 +54,7 @@ const Hostels = () => {
                   className={styles.sectionHeadText}
                   variants={fadeIn("", "", 0.1, 1)}
                 >
-                  REC HOSTEL.
+                  MCKV HOSTEL.
                 </h2>
               </motion.div>
 

@@ -17,7 +17,7 @@ const Footer = () => {
             <img className="w-100" src={foo} alt="" />
 
             <h1 className="ml-5 md:text-7xl text-5xl text-purple-700 font-bold">
-              REC
+              MCKV
             </h1>
           </div>
           <p className="text-white pt-2 font-bold">

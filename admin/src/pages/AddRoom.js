@@ -126,7 +126,7 @@ const AddRoom = () => {
         }, 1000);
       }
 
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
   const imgState = useSelector((state) => state.upload.images.urls);

@@ -123,7 +123,7 @@ const AddHostel = () => {
         }, 300);
       }
 
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
