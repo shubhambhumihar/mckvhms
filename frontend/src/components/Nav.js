@@ -94,7 +94,7 @@ const Nav = () => {
               <h6 className="text-white hidden md:flex text-[15px] font-bold cursor-pointer  ">
                 MCKV &nbsp;
                 <span className="sm:block hidden text-white">
-                  INSTITUTE oF Engineering
+                  INSTITUTE OF ENGINEERING
                 </span>
               </h6>
             </Link>
